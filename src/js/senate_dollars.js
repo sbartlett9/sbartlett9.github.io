@@ -18,14 +18,10 @@ function init() {
             return d.values;
         });
 
-    div = d3.select("tmap").append("div")
+    div = d3.select("#tmap").append("div")
         .style("position", "relative")
-        .style("width", "300px")
-        .style("height", "100%")
-
-    //.style("width", (width + margin.left + margin.right) + "px")
-    //.style("height", (height + margin.top + margin.bottom) + "px")
-    //.style("left", margin.left + "px")
+//        .style("width", "300px")
+//        .style("height", "100%")
     .style("top", margin.top + "px");
 
     color_scale = d3.scale.category20c();
