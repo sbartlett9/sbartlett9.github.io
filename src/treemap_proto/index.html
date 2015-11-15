@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizing Corporate Influence on Lawmaking</title>
+
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/senate_dollars.js"></script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Visualizing Corporate Influence on Lawmaking</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <style>
+            .col-lg-2:nth-of-type(1) {
+                background-color: red;
+                transform: translate(5em, -3em) rotate(90deg);
+            }
+            
+            .row2:nth-of-type(odd) > .democrat-rect:nth-of-type(odd) {
+                background-color: #78D1BB;
+            }
+            
+            .col-lg-2:nth-of-type(2) {
+                background-color: yellow;
+                transform: translate(-3em, 5em) rotate(50deg);
+                opacity: .6;
+            }
+            
+            .col-lg-2:nth-of-type(3) {
+                background-color: green;
+                transform: translate(-6em, 10em) rotate(20deg);
+                opacity: .6;
+            }
+            
+            .col-lg-2:nth-of-type(5) {
+                background-color: purple;
+                transform: translate(5em, 10em) rotate(-20deg);
+                opacity: .6;
+            }
+            
+            .col-lg-2:nth-of-type(6) {
+                background-color: orange;
+                transform: translate(3em, 5em) rotate(-50deg);
+                opacity: .6;
+            }
+            
+            .col-lg-2:nth-of-type(7) {
+                background-color: turquoise;
+                transform: translate(-5em, -3em) rotate(-90deg);
+                opacity: .6;
+            }
+            
+            .democrat > .row1 >.democrat-rect:nth-of-type(1) {
+                background-color: #FB85FC;
+            }
+            
+            .democrat > .row2 >.democrat-rect:nth-of-type(1) {
+                background-color: #FB85FC;
+            }
+            
+            .democrat > .row3 >.democrat-rect:nth-of-type(1) {
+                background-color: #FB85FC;
+            }
+            
+            .democrat > .row4 >.democrat-rect:nth-of-type(1) {
+                background-color: #FB85FC;
+            }
+        </style>
+
+
+
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="placeholder barchart row">
+                        <h4>place holder for other bar chart</h4>
+                    </div>
+                    <div class="seating-chart row">
+
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1474.9 949.2" enable-background="new 0 0 1474.9 949.2" xml:space="preserve">
+                            <rect x="77.9" y="100.3" transform="matrix(0.988 0.1544 -0.1544 0.988 20.9382 -17.0441)" fill="#0B049E" width="84.6" height="52" class="democrat NJ" id="412598" alt="Cory Booker" />
+                            <rect x="178.6" y="116" transform="matrix(0.988 0.1544 -0.1544 0.988 24.5752 -32.4037)" fill="#0B049E" width="84.6" height="52" class="democrat MA" id="412542" alt="Elizabeth Warren" />
+                            <rect x="279.3" y="131.8" transform="matrix(0.988 0.1544 -0.1544 0.988 28.2121 -47.7634)" fill="#0B049E" width="84.6" height="52" class="democrat VA" id="412582" alt="Timothy Kaine" />
+                            <rect x="380" y="147.5" transform="matrix(0.988 0.1544 -0.1544 0.988 31.8491 -63.123)" fill="#0B049E" width="84.6" height="52" class="democrat CT" id="412194" alt="Christopher Murphy" />
+                            <rect x="424.1" y="786" transform="matrix(0.3561 -0.9344 0.9344 0.3561 -458.4608 958.6212)" fill="#0B049E" width="84.6" height="52" class="democrat OH" id="400050" alt="Sherrod Brown" />
+                            <rect x="461.4" y="689.8" transform="matrix(0.3561 -0.9344 0.9344 0.3561 -344.5121 931.5534)" fill="#0B049E" width="84.6" height="52" class="democrat CA" id="300011" alt="Barbara Boxer" />
+                            <rect x="71.7" y="188.1" transform="matrix(0.998 6.332251e-02 -6.332251e-02 0.998 13.7857 -6.7888)" fill="#0B049E" width="84.6" height="52" class="democrat MI" id="412305" alt="Gary Peters" />
+                            <rect x="173.4" y="194.5" transform="matrix(0.998 6.332251e-02 -6.332251e-02 0.998 14.3986 -13.2176)" fill="#0B049E" width="84.6" height="52" class="democrat ND" id="412554" alt="Heidi Heitkamp	" />
+
+                            <rect x="273.6" y="211.9" transform="matrix(0.9999 -1.413044e-02 1.413044e-02 0.9999 -3.3297 4.4878)" fill="#0B049E" width="84.6" height="52" class="independent ME" id="412545" alt="Angus King" />
+
+                            <rect x="375.5" y="210.4" transform="matrix(0.9999 -1.413044e-02 1.413044e-02 0.9999 -3.2992 5.9279)" fill="#0B049E" width="84.6" height="52" class="democrat HI" id="412507" alt="Brian Schatz" />
+
+                            <rect x="71.3" y="269.7" transform="matrix(0.9956 -9.321530e-02 9.321530e-02 0.9956 -27.0663 11.8756)" fill="#0B049E" width="84.6" height="52" class="democrat CT" id="412490" alt="Richard Blumenthal" />
+
+                            <rect x="172.8" y="260.2" transform="matrix(0.9956 -9.321530e-02 9.321530e-02 0.9956 -25.7387 21.2947)" fill="#0B049E" width="84.6" height="52" class="democrat HI" id="412200" alt="Mazie Hirono" />
+                            <rect x="281.4" y="296.6" transform="matrix(0.979 -0.2041 0.2041 0.979 -59.0124 72.8424)" fill="#0B049E" width="84.6" height="52" class="democrat WI" id="400013" alt="Tammy Baldwin" />
+                            <rect x="381.2" y="275.8" transform="matrix(0.979 -0.2041 0.2041 0.979 -52.6679 92.7681)" fill="#0B049E" width="84.6" height="52" class="democrat NY" id="412223" alt="Kristen Gillibrand" />
+                            <rect x="82.1" y="346.9" transform="matrix(0.9801 -0.1984 0.1984 0.9801 -71.5316 32.1034)" fill="#0B049E" width="84.6" height="52" class="democrat MA" id="400253" alt="Edward Markey	" />
+                            <rect x="182" y="326.7" transform="matrix(0.9801 -0.1984 0.1984 0.9801 -65.5306 51.5271)" fill="#0B049E" width="84.6" height="52" class="democrat IN" id="412205" alt="Joe Donnelly" />
+
+                            <rect x="131.2" y="489.1" transform="matrix(0.8909 -0.4542 0.4542 0.8909 -215.0131 135.0306)" fill="#0B049E" width="84.6" height="52" class="democrat NW" id="412281" alt="Martin Heinrich" />
+                            <rect x="222.1" y="442.8" transform="matrix(0.8909 -0.4542 0.4542 0.8909 -184.077 171.2269)" fill="#0B049E" width="84.6" height="52" class="democrat WV" alt="Joe Manchin" id="412391" />
+                            <rect x="312.9" y="396.5" transform="matrix(0.8909 -0.4542 0.4542 0.8909 -153.1409 207.423)" fill="#0B049E" width="84.6" height="52" class="democrat WA" alt="Maria Cantwell" id="300018" />
+                            <rect x="403.7" y="350.2" transform="matrix(0.8909 -0.4542 0.4542 0.8909 -122.2047 243.6193)" fill="#0B049E" width="84.6" height="52" class="democrat MI" alt="Debbie Stabenow" id="300093" />
+                            <rect x="158.7" y="540.4" transform="matrix(0.8531 -0.5217 0.5217 0.8531 -265.9683 188.0555)" fill="#0B049E" width="84.6" height="52" class="democrat RI" id="412247" alt="Sheldon Whitehouse" />
+                            <rect x="250.4" y="492.3" transform="matrix(0.8629 -0.5054 0.5054 0.8629 -221.8146 219.019)" fill="#0B049E" width="84.6" height="52" class="democrat OR" alt="Jeff Merkley" id="412325" />
+                            <rect x="342.4" y="447.3" transform="matrix(0.8354 -0.5496 0.5496 0.8354 -196.8333 289.3907)" fill="#0B049E" width="84.6" height="52" class="democrat NH" alt="Jeanne Shaheen" id="412323" />
+                            <rect x="434.5" y="399.7" transform="matrix(0.816 -0.5781 0.5781 0.816 -158.3597 353.9833)" fill="#0B049E" width="84.6" height="52" class="democrat RI" alt="Jack Reed" id="300081" />
+                            <rect x="193.2" y="588.2" transform="matrix(0.8096 -0.587 0.587 0.8096 -315.7038 255.2285)" fill="#0B049E" width="84.6" height="52" class="democrat CO" alt="Michael Bennet" id="412330" />
+                            <rect x="230.5" y="633.3" transform="matrix(0.7438 -0.6684 0.6684 0.7438 -370.8505 351.2949)" fill="#0B049E" width="84.6" height="52" class="democrat VA" id="412321" alt="Mark Warner" />
+                            <rect x="270.2" y="675.9" transform="matrix(0.6899 -0.7239 0.7239 0.6899 -411.1882 443.9196)" fill="#0B049E" width="84.6" height="52" class="democrat MT" id="412244" alt="Jon Tester" />
+                            <rect x="315.9" y="713.1" transform="matrix(0.6309 -0.7758 0.7758 0.6309 -441.2759 550.6923)" fill="#0B049E" width="84.6" height="52" class="democrat MO" id="412243" alt="Claire McCaskill" />
+                            <rect x="286.9" y="542.6" transform="matrix(0.7446 -0.6675 0.6675 0.7446 -295.4607 364.9747)" fill="#0B049E" width="84.6" height="52" class="democrat NW" id="400413" alt="Tom Udall" />
+                            <rect x="380.5" y="494.8" transform="matrix(0.7399 -0.6727 0.6727 0.7399 -240.4119 419.9249)" fill="#0B049E" width="84.6" height="52" class="democrat NJ" id="400272" alt="Robert Menedez" />
+                            <rect x="476.9" y="447.1" transform="matrix(0.6669 -0.7452 0.7452 0.6669 -179.607 544.5097)" fill="#0B049E" width="84.6" height="52" class="democrat CA" id="300043" alt="Dianne Feinstein" />
+                            <rect x="327.2" y="583.9" transform="matrix(0.6877 -0.726 0.726 0.6877 -327.3748 458.7747)" fill="#0B049E" width="84.6" height="52" class="independent VT" id="400357" alt="Bernard Sanders" />
+                            <rect x="369.8" y="622.9" transform="matrix(0.6529 -0.7574 0.7574 0.6529 -348.4726 537.3834)" fill="#0B049E" width="84.6" height="52" class="democrat DE" id="300019" alt="Thomas Carper" />
+                            <rect x="421.6" y="535.3" transform="matrix(0.6625 -0.7491 0.7491 0.6625 -263.8846 536.9232)" fill="#0B049E" width="84.6" height="52" class="democrat MD" id="400064" alt="Benjamin Cardin" />
+
+
+                            <rect x="497.7" y="594.5" transform="matrix(0.3561 -0.9344 0.9344 0.3561 -232.1325 904.149)" fill="#0B049E" width="84.6" height="52" class="democrat VT" id="300065" alt="Patrick Leahy" />
+                            <rect x="559" y="616" transform="matrix(0.2409 -0.9706 0.9706 0.2409 -166.6444 1070.9442)" fill="#0B049E" width="84.6" height="52" class="democrat MD" id="300073" alt="Barbara Mikulski" />
+                            <rect x="517.9" y="707.1" transform="matrix(0.2409 -0.9706 0.9706 0.2409 -286.1977 1100.2915)" fill="#0B049E" width="84.6" height="52" class="democrat MN" id="412378" alt="Alan Franken" />
+                            <rect x="574.4" y="719.1" transform="matrix(0.1969 -0.9804 0.9804 0.1969 -235.2229 1202.9661)" fill="#0B049E" width="84.6" height="52" class="democrat FL" id="300078" alt="Bill Nelson" />
+                            <rect x="477.6" y="804.6" transform="matrix(0.2989 -0.9543 0.9543 0.2989 -428.0647 1078.4816)" fill="#0B049E" width="84.6" height="52" class="democrat DE" id="412390" alt="Chris Coons" />
+                            <rect x="533.1" y="819.5" transform="matrix(0.2272 -0.9739 0.9739 0.2272 -378.6801 1213.8616)" fill="#0B049E" width="84.6" height="52" class="democrat MN" id="412390" alt="Amy Klobuchar" />
+                            <rect x="589.2" y="831.1" transform="matrix(0.1589 -0.9873 0.9873 0.1589 -315.0061 1344.5344)" fill="#0B049E" width="84.6" height="52" class="democrat PA" id="412246" alt="Robert Casey" />
+                            <rect x="650.4" y="834.8" transform="matrix(-8.679444e-03 -1 1 -8.679444e-03 -162.0584 1560.9698)" fill="#0B049E" width="84.6" height="52" class="democrat NY" id="300087" alt="Charles Schumer" />
+                            <rect x="534" y="499.3" transform="matrix(0.3561 -0.9344 0.9344 0.3561 -119.7528 876.7446)" fill="#0B049E" width="84.6" height="52" class="democrat IL" id="300038" alt="Richard Durbin" />
+                            <rect x="635.8" y="526.5" transform="matrix(2.069917e-02 -0.9998 0.9998 2.069917e-02 111.7124 1219.0011)" fill="#0B049E" width="84.6" height="52" class="democrat NV" id="300082" alt="Harry Reid" />
+
+                            <rect x="1036.6" y="737.4" transform="matrix(-0.4821 -0.8761 0.8761 -0.4821 930.2346 2076.7996)" fill="#A00808" width="84.6" height="52" class="republican MO" id="400034" alt="Roy Blunt" />
+                            <rect x="979.5" y="658.6" transform="matrix(-0.4821 -0.8761 0.8761 -0.4821 914.6341 1909.8462)" fill="#A00808" width="84.6" height="52" class="repubilcan WY" id="300041" alt="Michael Enzi" />
+                            <rect x="905.4" y="579.4" transform="matrix(-0.4821 -0.8761 0.8761 -0.4821 874.1494 1727.6302)" fill="#A00808" width="84.6" height="52" class="republican AL" id="300089" alt="Richard Shelby" />
+                            <rect x="856.2" y="490.1" transform="matrix(-0.4821 -0.8761 0.8761 -0.4821 879.5536 1552.2129)" fill="#A00808" width="84.6" height="52" class="republican TX" id="300027" alt="John Cornyn" />
+                            <rect x="767.1" y="831.4" transform="matrix(-0.1009 -0.9949 0.9949 -0.1009 38.0887 1749.2477)" fill="#A00808" width="84.6" height="52" class="republican KS" id="400284" alt="Jerry Moran" />
+                            <rect x="757.3" y="728.7" transform="matrix(-0.1009 -0.9949 0.9949 -0.1009 129.5137 1626.381)" fill="#A00808" width="84.6" height="52" class="republican ME" id="300025" alt="Susan Collins" />
+                            <rect x="747" y="627.2" transform="matrix(-0.1009 -0.9949 0.9949 -0.1009 219.0836 1504.4956)" fill="#A00808" width="84.6" height="52" class="republican UT" id="300052" alt="Orrin Hatch" />
+                            <rect x="824" y="612.6" transform="matrix(-0.2844 -0.9587 0.9587 -0.2844 500.4775 1650.8655)" fill="#A00808" width="84.6" height="52" class="repubilcan MS" id="300023" alt="Thad Cochran" />
+                            <rect x="816" y="719.9" transform="matrix(-0.2086 -0.978 0.978 -0.2086 307.8544 1740.9512)" fill="#A00808" width="84.6" height="52" class="republican AK" id="300075" alt="Lisa Murkowski" />
+                            <rect x="871.4" y="705.7" transform="matrix(-0.2919 -0.9565 0.9565 -0.2919 480.4872 1819.2238)" fill="#A00808" width="84.6" height="52" class="republican MS" id="400432" alt="Roger Wicker" />
+                            <rect x="925.6" y="685.9" transform="matrix(-0.3679 -0.9299 0.9299 -0.3679 662.0513 1873.7935)" fill="#A00808" width="84.6" height="52" class="republican AL" id="300088" alt="Jefferson Sessions" />
+                            <rect x="987" y="765.1" transform="matrix(-0.4414 -0.8973 0.8973 -0.4414 773.7609 2063.8604)" fill="#A00808" width="84.6" height="52" class="republican SC" id="412471" alt="Tim Scott" />
+                            <rect x="824.6" y="823.3" transform="matrix(-0.2086 -0.978 0.978 -0.2086 217.115 1874.3663)" fill="#A00808" width="84.6" height="52" class="republican AR" id="400040" alt="John Boozman" />
+                            <rect x="880" y="809.2" transform="matrix(-0.2919 -0.9565 0.9565 -0.2919 392.6925 1961.0646)" fill="#A00808" width="84.6" height="52" class="republican NV" id="412218" alt="Dean Heller" />
+                            <rect x="934.2" y="789.3" transform="matrix(-0.3679 -0.9299 0.9299 -0.3679 577.6602 2023.2656)" fill="#A00808" width="84.6" height="52" class="republican NE" id="412556" alt="Deb Fischer" />
+                            <rect x="736.7" y="525.8" transform="matrix(-0.1009 -0.9949 0.9949 -0.1009 308.6536 1382.6102)" fill="#A00808" width="84.6" height="52" class="republican KY" id="300072" alt="Mitch McConnell" />
+                            <rect x="1190.8" y="415.7" transform="matrix(-0.9146 -0.4044 0.4044 -0.9146 2182.3132 1344.3251)" fill="#A00808" width="84.6" height="52" class="republican NC" id="400054" alt="Richard Burr" />
+                            <rect x="1092.2" y="387.2" transform="matrix(-0.9146 -0.4044 0.4044 -0.9146 2005.0231 1249.9772)" fill="#A00808" width="84.6" height="52" class="republican AZ" id="300071" alt="John McCain" />
+                            <rect x="988.7" y="354.4" transform="matrix(-0.9146 -0.4044 0.4044 -0.9146 1820.083 1145.3333)" fill="#A00808" width="84.6" height="52" class="republican OK" id="300055" alt="James Inhofe" />
+                            <rect x="1124.7" y="679.9" transform="matrix(-0.6835 -0.73 0.73 -0.6835 1449.4078 2040.2209)" fill="#A00808" width="84.6" height="52" class="republican SD" id="400546" alt="John Thune" />
+                            <rect x="1054.6" y="604.1" transform="matrix(-0.6835 -0.73 0.73 -0.6835 1386.7184 1861.516)" fill="#A00808" width="84.6" height="52" class="republican ID" id="300030" alt="Michael Crapo" />
+                            <rect x="985" y="529.7" transform="matrix(-0.6835 -0.73 0.73 -0.6835 1323.7515 1685.3912)" fill="#A00808" width="84.6" height="52" class="republican KS" id="300083" alt="Pat Roberts" />
+                            <rect x="1024.8" y="487.7" transform="matrix(-0.7454 -0.6666 0.6666 -0.7454 1520.0674 1607.9596)" fill="#A00808" width="84.6" height="52" class="republican WY" id="412251" alt="John Barrasso" />
+                            <rect x="1061.1" y="441.9" transform="matrix(-0.8074 -0.5899 0.5899 -0.8074 1718.3401 1496.6149)" fill="#A00808" width="84.6" height="52" class="republican SC" id="300047" alt="Lindsey Graham" />
+                            <rect x="1096" y="561.6" transform="matrix(-0.7589 -0.6513 0.6513 -0.7589 1619.4741 1774.7795)" fill="#A00808" width="84.6" height="52" class="republican ID" id="412322" alt="James Risch" />
+                            <rect x="1131.4" y="516.7" transform="matrix(-0.812 -0.5836 0.5836 -0.812 1810.1066 1668.4675)" fill="#A00808" width="84.6" height="52" class="republican FL" id="412491" alt="Marco Rubio" />
+                            <rect x="1162.5" y="468" transform="matrix(-0.8563 -0.5164 0.5164 -0.8563 1981.4493 1539.2887)" fill="#A00808" width="84.6" height="52" class="republican GA" id="400194" alt="John Isakson" />
+                            <rect x="1169.1" y="632" transform="matrix(-0.7589 -0.6513 0.6513 -0.7589 1698.1156 1950.3386)" fill="#A00808" width="84.6" height="52" class="republican ND" id="412494" alt="John Hoeven" />
+                            <rect x="1210.8" y="581.4" transform="matrix(-0.814 -0.576 0.5836 -0.812 1908.2319 1830.0063)" fill="#A00808" width="84.6" height="52" class="republican LA" id="412269" alt="Bill Cassidy" />
+                            <rect x="1244.6" y="521.2" transform="matrix(-0.8563 -0.5164 0.5164 -0.8563 2094.4243 1701.4207)" fill="#A00808" width="84.6" height="52" class="republican UT" id="412495" alt="Mike Lee" />
+                            <rect x="1277.2" y="453.9" transform="matrix(-0.9146 -0.4044 0.4044 -0.9146 2315.2576 1489.4412)" fill="#A00808" width="84.6" height="52" class="republican IN" id="402675" alt="Daniel Coats" />
+
+                            <rect x="1277.2" y="453.9" transform="matrix(-0.9246 -0.4044 0.4044 -0.9146 2350.5776 1440.7512)" fill="#A00808" width="84.6" height="52" class="republican OH" id="402675" alt="Robert Portman" />
+
+                            <rect x="915.3" y="455.3" transform="matrix(-0.6835 -0.73 0.73 -0.6835 1260.7845 1509.2665)" fill="#A00808" width="84.6" height="52" class="republican IA" id="300048" alt="Charles Grassley" />
+                            <rect x="1310.8" y="307.4" transform="matrix(-0.9975 -7.061456e-02 7.061456e-02 -0.9975 2679.3757 778.5148)" fill="#A00808" width="84.6" height="52" class="republican PA" id="400408" alt="Patrick Toomey" />
+                            <rect x="1207.9" y="299.5" transform="matrix(-0.9975 -7.061456e-02 7.061456e-02 -0.9975 2481.3772 785.4631)" fill="#A00808" width="84.6" height="52" class="republican TX" id="412573" alt="Ted Cruz" />
+                            <rect x="1106.2" y="292.3" transform="matrix(-0.9975 -7.061456e-02 7.061456e-02 -0.9975 2271.7791 740.9048)" fill="#A00808" width="84.6" height="52" class="republican LA" id="400418" alt="David Vitter" />
+                            <rect x="1109.4" y="231.8" transform="matrix(-0.9998 1.794543e-02 -1.794543e-02 -0.9998 2304.8149 520.8921)" fill="#A00808" width="84.6" height="52" class="repbulican AZ" id="400134" alt="Jeff Flake" />
+                            <rect x="1001.2" y="119.3" transform="matrix(-0.9938 0.1109 -0.1109 -0.9938 2096.634 174.079)" fill="#A00808" width="84.6" height="52" class="republican IL" id="400222" alt="Mark Kirk" />
+                            <rect x="1099.9" y="106.9" transform="matrix(-0.9938 0.1109 -0.1109 -0.9938 2290.124 178.3499)" fill="#A00808" width="84.6" height="52" class="republican WV" id="400061" alt="Shelley Capito" />
+                            <rect x="1099" y="106" transform="matrix(-0.9938 0.1109 -0.1109 -0.9938 2284 123.3)" fill="#A00808" width="84.6" height="52" class="republican SD" id="412669" alt="Mike Rounds" />
+                            <rect x="1008.2" y="288.1" transform="matrix(-0.9975 -7.061456e-02 7.061456e-02 -0.9975 2076.2461 701.5237)" fill="#A00808" width="84.6" height="52" class="republican TN" id="412248" alt="Bob Corker" />
+                            <rect x="1008.8" y="230.2" transform="matrix(-0.9998 1.794543e-02 -1.794543e-02 -0.9998 2106.7632 493.4795)" fill="#A00808" width="84.6" height="52" class="republican TN" id="412248" alt="Bob Corker" />
+                            <rect x="1006.7" y="174.6" transform="matrix(-0.9968 8.012985e-02 -8.012985e-02 -0.9968 2110.7102 316.5731)" fill="#A00808" width="84.6" height="52" class="republican KY" id="412492" alt="Rand Paul" />
+                            <rect x="1106.7" y="169.1" transform="matrix(-0.9968 8.012985e-02 -8.012985e-02 -0.9968 2307.0012 330.5073)" fill="#A00808" width="84.6" height="52" class="republican NH" id="412492" alt="Kelly Ayotte" />
+                            <rect x="1196.7" y="96.8" transform="matrix(-0.9938 0.1109 -0.1109 -0.9938 2490.957 185.3827)" fill="#A00808" width="84.6" height="52" class="republican AR" id="412508" alt="Tom Cotton" />
+
+                            <rect x="1196.7" y="96.8" transform="matrix(-0.9938 0.1109 -0.1109 -0.9938 2482.957 130.3827)" fill="#A00808" width="84.6" height="52" class="republican IA" id="412667" alt="Joni Ernst" />
+
+
+
+                            <rect x="1196.7" y="96.8" transform="matrix(-0.9938 0.1109 -0.1109 -0.9938 2474.957 75.3827)" fill="#A00808" width="84.6" height="52" class="republican AK" id="412665" alt="Dan Sullivan" />
+
+
+                            <rect x="1303.7" y="83.3" transform="matrix(-0.9938 0.1109 -0.1109 -0.9938 2688.8728 30.6516)" fill="#A00808" width="84.6" height="52" class="republican NE" id="412671" alt="Benjamin Sasse" />
+
+                            <rect x="1303.7" y="83.3" transform="matrix(-0.9938 0.1109 -0.1109 -0.9938 2695.8728 84.6516)" fill="#A00808" width="84.6" height="52" class="republican NC" id="412668" alt="Thom Tillis" />
+
+                            <rect x="1204" y="163.1" transform="matrix(-0.9968 8.012985e-02 -8.012985e-02 -0.9968 2510.8208 345.8108)" fill="#A00808" width="84.6" height="52" class="republican CO" id="412406" alt="Cory Gardner" />
+                            <rect x="1208.5" y="233.2" transform="matrix(-0.9993 3.837445e-02 -3.837445e-02 -0.9993 2518.5771 525.2842)" fill="#A00808" width="84.6" height="52" class="republican MT" id="412549" alt="Steve Daines" />
+                            <rect x="1313.2" y="253" transform="matrix(-0.9992 -4.007688e-02 4.007688e-02 -0.9992 2698.7832 628.0317)" fill="#A00808" width="84.6" height="52" class="republican OK" id="412464" alt="James Lankford" />
+                            <rect x="1312.5" y="196.1" transform="matrix(-0.9996 2.935504e-02 -2.935504e-02 -0.9996 2715.5813 420.3523)" fill="#A00808" width="84.6" height="52" class="republican WI" id="412496" alt="Ron Johnson" />
+                            <rect x="1309.6" y="138.8" transform="matrix(-0.9972 7.504426e-02 -7.504426e-02 -0.9972 2712.3843 244.6198)" fill="#A00808" width="84.6" height="52" class="republican GA" id="412666" alt="David Perdue" />
+
+                            <rect x="634.8" y="725.8" transform="matrix(2.069917e-02 -0.9998 0.9998 2.069917e-02 -88.5684 1413.3033)" fill="#0B049E" width="84.6" height="52" class="democrat OR" id="300100" alt="Ron Wyden" />
+                            <rect x="633.7" y="628.4" transform="matrix(2.069917e-02 -0.9998 0.9998 2.069917e-02 7.755 1316.6949)" fill="#0B049E" width="84.6" height="52" class="democrat WA" id="300076" alt="Patty Murray" />
+
+
+
+                        </svg>
+
+
+
+                    </div>
+                    <!--seating-chart col-lg-9-->
+                    <div class="heatmap placeholder col-lg-3">
+                        <h4>place holder for heatmap</h4>
+                    </div>
+
+
+                </div>
+                <!--row-master-->
+
+
+
+
+
+
+
+                <!--D3 CODE ENDS-->

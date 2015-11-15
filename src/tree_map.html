@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Senate Capitol Words Viz</title>
+    <script src="lib/d3.js"></script>
+    <script src="js/senate_dollars.js"></script>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: auto;
+            position: relative;
+            width: 960px;
+        }
+        
+        .node {
+            border: solid 1px white;
+            font: 10px sans-serif;
+            line-height: 12px;
+            overflow: hidden;
+            position: absolute;
+            text-indent: 2px;
+        }
+    </style>
+</head>
+
+<body onload="init()">
+    <!-- init() method defined in coffee.js-->
+
+    <div style="margin:30;" id="tmap">
+    </div>
+
+    <div id="vis"></div>
+
+</body>
+
+</html>
