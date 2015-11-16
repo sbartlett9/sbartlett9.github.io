@@ -257,30 +257,14 @@ $(function () {
   </div><!--row master-->
 </div><!--#fullpage-->  
         
-        <style>
-        div.tooltip {	
-			position: absolute;			
-			text-align: center;			
-			width: 60px;					
-			height: 28px;					
-			padding: 2px;				
-			font: 12px sans-serif;		
-			background: lightsteelblue;	
-			border: 0px;		
-			border-radius: 8px;			
-			pointer-events: none;	
-		}
-        
-        </style>
-        
     <!--D3 Code Starts-->    
     <script>
 
 	var govtrackID = [];
-  	var data = d3.csv('data/senator_info.csv',function(error,data){
+  var data = d3.csv('data/senator_info.csv',function(error,data){
         
       
-    var senator = d3.select('#Layer_1').selectAll('rect')
+        var senator = d3.select('#Layer_1').selectAll('rect')
                  .classed("senator", true) 
                  .on('mouseover',function(d){
                       //console.log("moused over");
@@ -293,22 +277,13 @@ $(function () {
                          //console.log("govtrackID is" + " " + govtrackID + " " + senatorName);   
                          if(temp_id == e.govtrack_id){
                             console.log('match');
-						 div.transition()
-						 	.duration(200)
-							.style("opacity",.9);
-						  div.html("tool tip working")
-						  	.style("left",(d3.event.pageX) + "px")
-							.style("top",(d3.event.pageY-28) + "px");
+
                          }    //if temp_id == e.govtrack_id   
                       });//data.forEach
                           
                 });//on mouseover
 
-      var div= d3.select("body").append("div")
-	  		.attr("class","tooltip")
-			.style("opacity",0);
-	  
-	  var tip = d3.tip()
+          var tip = d3.tip()
               .attr('class', 'd3-tip')
               .attr('opacity',.9)
               //.offset([-10, 0])
