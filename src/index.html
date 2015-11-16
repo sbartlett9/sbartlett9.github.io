@@ -260,17 +260,30 @@ $(function () {
         <style>
         div.tooltip {	
 			position: absolute;			
-			text-align: center;			
-			width: 10em;					
-			height: 6em;					
-			padding: 1em 1em 1em 1em;				
+			/*text-align: center;*/			
+			width: 30em;					
+			height: 20em;					
+			padding: 1em 1em 1em 1em;	
 			font: 12px sans-serif;		
 			background:#CDCDCD;	
 			border: 0px;		
 			border-radius: 5px;			
 			pointer-events: none;	
 		}
-        
+        div img{
+			border:1px solid black;
+			margin-left:.5em;
+			opacity:1;
+			float:left;
+			position:absolute;
+			}
+		div .Senator_Name{
+			left:5em;
+			position:absolute;
+			display:inline;
+			margin-left:.5em;
+			}
+		
         </style>
         
     <!--D3 Code Starts-->    
@@ -292,17 +305,21 @@ $(function () {
                          //console.log("govtrackID is" + " " + govtrackID + " " + senatorName);   
                          if(temp_id == e.govtrack_id){
                             console.log('match');
-						 	var imgStringBegin = " <img src= img/";   
+						 //image URL	
+							var imgStringBegin = " <img src= img/";   
       						var imgLocation = e.govtrack_id + ".jpeg";
 							var imgStringEnd = ">";
 							var imgURL = imgStringBegin + imgLocation + imgStringEnd;
 							console.log(imgURL);
+						 
 						 div.transition()
 						 	.duration(200)
 							.style("opacity",.9);
-						  div.html(imgURL)
+						 div.html(imgURL + '<h3 class="Senator_Name">' + e.first_name + ' '+ e.last_name + '</h3>')
 						  	.style("left",(d3.event.pageX) + "px")
-							.style("top",(d3.event.pageY-28) + "px");
+							.style("top",(d3.event.pageY) + "px")
+							.style("opacity",1);
+						 
                          }    //if temp_id == e.govtrack_id   
                       });//data.forEach
                         console.log(div);  		
