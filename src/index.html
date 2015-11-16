@@ -261,13 +261,13 @@ $(function () {
         div.tooltip {	
 			position: absolute;			
 			text-align: center;			
-			width: 60px;					
-			height: 28px;					
-			padding: 2px;				
+			width: 10em;					
+			height: 6em;					
+			padding: 1em 1em 1em 1em;				
 			font: 12px sans-serif;		
-			background: lightsteelblue;	
+			background:#CDCDCD;	
 			border: 0px;		
-			border-radius: 8px;			
+			border-radius: 5px;			
 			pointer-events: none;	
 		}
         
@@ -278,8 +278,7 @@ $(function () {
 
 	var govtrackID = [];
   	var data = d3.csv('data/senator_info.csv',function(error,data){
-        
-      
+  
     var senator = d3.select('#Layer_1').selectAll('rect')
                  .classed("senator", true) 
                  .on('mouseover',function(d){
@@ -293,16 +292,21 @@ $(function () {
                          //console.log("govtrackID is" + " " + govtrackID + " " + senatorName);   
                          if(temp_id == e.govtrack_id){
                             console.log('match');
+						 	var imgStringBegin = " <img src= img/";   
+      						var imgLocation = e.govtrack_id + ".jpeg";
+							var imgStringEnd = ">";
+							var imgURL = imgStringBegin + imgLocation + imgStringEnd;
+							console.log(imgURL);
 						 div.transition()
 						 	.duration(200)
 							.style("opacity",.9);
-						  div.html("tool tip working")
+						  div.html(imgURL)
 						  	.style("left",(d3.event.pageX) + "px")
 							.style("top",(d3.event.pageY-28) + "px");
                          }    //if temp_id == e.govtrack_id   
                       });//data.forEach
-                          
-                });//on mouseover
+                        console.log(div);  		
+                });//on 	mouseover
 
       var div= d3.select("body").append("div")
 	  		.attr("class","tooltip")
