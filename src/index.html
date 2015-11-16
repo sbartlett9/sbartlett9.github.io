@@ -271,7 +271,6 @@ $(function () {
 			pointer-events: none;	
 		}
         div img{
-			border:1px solid black;
 			margin-left:.5em;
 			opacity:1;
 			float:left;
@@ -282,6 +281,12 @@ $(function () {
 			position:absolute;
 			display:inline;
 			margin-left:.5em;
+			}
+		div .Senator_State_Party{
+			position:absolute;
+			left:7.5em;
+			
+			top:3em;
 			}
 		
         </style>
@@ -315,7 +320,10 @@ $(function () {
 						 div.transition()
 						 	.duration(200)
 							.style("opacity",.9);
-						 div.html(imgURL + '<h3 class="Senator_Name">' + e.first_name + ' '+ e.last_name + '</h3>')
+						 div.html(imgURL  
+						 		+'<h3 class="Senator_Name">' + e.first_name + ' '+ e.last_name + '</h3>'
+								+'<h4 class="Senator_State_Party">' + 	e.state + ' | ' + e.party + '</h4>'
+							)
 						  	.style("left",(d3.event.pageX) + "px")
 							.style("top",(d3.event.pageY) + "px")
 							.style("opacity",1);
