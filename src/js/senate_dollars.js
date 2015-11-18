@@ -1,11 +1,11 @@
 var chart;
-var height = 400;
-var width = 600;
+var height = 800;
+var width = 350;
 var margin = {
-    top: 20,
-    right: 70,
-    bottom: 30,
-    left: 60
+    top: 5,
+    right: 0,
+    bottom: 10,
+    left: 5
 };
 
 
@@ -20,9 +20,9 @@ function init() {
 
     div = d3.select("#tmap").append("div")
         .style("position", "relative")
-//        .style("width", "300px")
-//        .style("height", "100%")
-    .style("top", margin.top + "px");
+        //        .style("width", "300px")
+        //        .style("height", "100%")
+        .style("top", margin.top + "px");
 
     color_scale = d3.scale.category20c();
 

@@ -13,9 +13,10 @@
 
     <script src="js/senate_dollars.js"></script>
 
-    <link type="text/css" rel="stylesheet" href="css/jquery-ui.css" />
-    <link type="text/css" rel="stylesheet" href="css/jquery-ui.structure.css" />
-    <link type="text/css" rel="stylesheet" href="css/jquery-ui.theme.css" />
+    <!--
+<link type="text/css" rel="stylesheet" href="css/jquery-ui.css" />
+<link type="text/css" rel="stylesheet" href="css/jquery-ui.structure.css" />
+<link type="text/css" rel="stylesheet" href="css/jquery-ui.theme.css" /> -->
     <link type="text/css" rel="stylesheet" href="style.css" />
 
 
@@ -37,7 +38,7 @@
             </div>
         </div>
     </nav>
-
+<div id="main">
     <div class="placeholder barchart row">
         <h4>place holder for other bar chart</h4>
     </div>
@@ -181,32 +182,29 @@
         </svg>
 
     </div>
-    <!--seating-chart col-lg-9-->
     </div>
-    <!--row-->
+    <div class="treemap">
+        <h4>Organization Contributions</h4>
+        <div id="tmap"></div>
     </div>
-    <!--col-lg-9-->
-    <div class="treemap" id="tmap">
-        <h4>place holder for tree map</h4>
-    </div>
-    <!--treemap-->
+</body>
 
-    <!--D3 Code Starts-->
-    <script>
-        var tip = d3.tip()
-            .attr("class", "d3-tip")
-            .offset([-10, 0])
+<!--D3 Code Starts-->
+<script>
+    var tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([-10, 0])
 
 
-        /*d3.csv("data/senator_info.csv",function(error,data){
-        	data.forEach(function(d){
-        		return d.first_name;
-        		return d.last_name;
-        		}
-        	
-        }*/
-    </script>
+    /*d3.csv("data/senator_info.csv",function(error,data){
+    	data.forEach(function(d){
+    		return d.first_name;
+    		return d.last_name;
+    		}
+    	
+    }*/
+</script>
 
 
 
-    <!--D3 CODE ENDS-->
+<!--D3 CODE ENDS-->
