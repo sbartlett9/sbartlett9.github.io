@@ -1,5 +1,5 @@
 var chart;
-var height = 800;
+var height = 700;
 var width = 300;
 var margin = {
     top: 2,
