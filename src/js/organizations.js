@@ -26,7 +26,7 @@ function init() {
 
     color_scale = d3.scale.category20c();
 
-    d3.csv('data/sample_data_org_aggr.csv', update);
+    d3.csv('data/sample_data_org_aggr.csv', update_orgs);
 
 }
 
@@ -34,8 +34,8 @@ function init() {
 function updateClicked() {}
 
 //Callback for when data is loaded
-function update(rawdata) {
-    console.log("success");
+function update_orgs(rawdata) {
+    console.log("org load success");
     nested_data = d3.nest()
         .key(function (d) {
             return d.DonorOrganization;
