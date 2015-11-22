@@ -67,6 +67,67 @@
             <div class="placeholder barchart row">
                 <h4>place holder for other bar chart</h4>
             </div>
+<<<<<<< HEAD
+        
+            <div id="vis"></div>
+        
+      </div>	<!--treemap-->
+      </div>
+  </div><!--row master-->
+</div><!--#fullpage-->  
+        
+    <!--D3 Code Starts-->    
+    <script>
+
+	var govtrackID = [];
+  var data = d3.csv('data/senator_info.csv',function(error,data){
+        
+      
+        var senator = d3.select('#Layer_1').selectAll('rect')
+                 .classed("senator", true) 
+                 .on('mouseover',function(d){
+                      //console.log("moused over");
+                      console.log("id for this element is:"+ " " + this.id);
+                      var temp_id = this.id.replace(/\D/g,'');
+                      data.forEach(function(e){
+                         govtrackID.push (e.govtrack_id);
+                         var senatorName = e.first_name + " " + e.last_name;    
+                         var rect = d3.select('id'+govtrackID[e]);
+                         //console.log("govtrackID is" + " " + govtrackID + " " + senatorName);   
+                         if(temp_id == e.govtrack_id){
+                            console.log('match');
+
+                         }    //if temp_id == e.govtrack_id   
+                      });//data.forEach
+                          
+                });//on mouseover
+
+          var tip = d3.tip()
+              .attr('class', 'd3-tip')
+              .attr('opacity',.9)
+              //.offset([-10, 0])
+              .html(function(d) {
+                return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
+              })
+
+         // senator.call(tip);
+          //senator
+           // .on('mouseover',tip.show)
+  
+
+
+
+
+  })//data = d3.csv
+
+
+
+	</script>  
+  
+
+
+<!--D3 CODE ENDS-->
+=======
             <div class="seating-chart row">
 
 
@@ -184,6 +245,7 @@
                     <rect x="1303.7" y="83.3" transform="matrix(-0.9938 0.1109 -0.1109 -0.9938 2695.8728 84.6516)" fill="#A00808" width="84.6" height="52" class="republican NC" id="id412668" alt="Thom Tillis" />
 
                     <rect x="1204" y="163.1" transform="matrix(-0.9968 8.012985e-02 -8.012985e-02 -0.9968 2510.8208 345.8108)" fill="#A00808" width="84.6" height="52" class="republican CO" id="id412406" alt="Cory Gardner" />
+>>>>>>> origin/master
 
 
 
