@@ -27,19 +27,39 @@ div img {
     position: absolute;
 }
 
-div .Senator_Name {
+/*div .Senator_Name {
     left: 5em;
     position: absolute;
+	font-size:2em;
     display: inline;
     margin-left: .5em;
 }
 
 div .Senator_State_Party {
     position: absolute;
-    left: 7.5em;
-    top: 3em;
+    left: 7em;
+    top: 2em;
+	font-size:1.5em;
 }
 
+div .total_contribution_amount{
+	position: absolute;
+    left: 7em;
+    top: 3em;
+	font-size:1.5em;
+	}*/
+
+div span p{
+	float:left;
+	display:inline-block;
+	font-size:1.5em;
+	position:relative;
+	float:left;
+	left:1em;
+	line-height:1em;
+	width:inherit;
+	margin-left:6em;
+	}
 text-indent: 2px;
 .d3-tip {
     line-height: 1;
@@ -134,9 +154,13 @@ text-indent: 2px;
 
 .treemap {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin: auto;
+    /*margin: auto;
     float: right;
-    width: 300px;
+    width: 300px;*/
+	position:absolute;
+	left:75%;
+	top:40%;
+	height:300px;
 }
 
 #main {

@@ -56,21 +56,14 @@
     </nav>
     <div id='viz_container'>
 
-        <div class="treemap">
-            <!--                        <h4>Individual Contributions from Organizations</h4>-->
-
-            <div id="tmap">
-            </div>
-
-        </div>
+       
         <div id="main">
             <div class="placeholder barchart row">
                 <h4>place holder for other bar chart</h4>
             </div>
             <div class="seating-chart row">
-
-
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1474.9 949.2" enable-background="new 0 0 1474.9 949.2" xml:space="preserve">
+            
+                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1474.9 949.2" enable-background="new 0 0 1474.9 949.2" xml:space="preserve">
 
                     <rect data-toggle="tooltip" data-placement="left" x="77.9" y="100.3" transform="matrix(0.988 0.1544 -0.1544 0.988 20.9382 -17.0441)" fill="#0B049E" width="84.6" height="52" class="democrat NJ" id="id412598" alt="Cory Booker" />
                     <rect x="178.6" y="116" transform="matrix(0.988 0.1544 -0.1544 0.988 24.5752 -32.4037)" fill="#0B049E" width="84.6" height="52" class="democrat MA" id="id412542" alt="Elizabeth Warren" />
@@ -190,15 +183,10 @@
                     <rect x="1204" y="163.1" transform="matrix(-0.9968 8.012985e-02 -8.012985e-02 -0.9968 2611.8208 337.8108)" fill="#A00808" width="84.6" height="52" class="republican WI" id="id412496" alt="Ron Johnson" />
 
 
-
-
-
                     <rect x="1208.5" y="233.2" transform="matrix(-0.9993 3.837445e-02 -3.837445e-02 -0.9993 2518.5771 525.2842)" fill="#A00808" width="84.6" height="52" class="republican OK" id="id412549" alt="Steve Daines" />
 
                     <rect x="1208.5" y="233.2" transform="matrix(-0.9993 3.837445e-02 -3.837445e-02 -0.9993 2618.5771 520.2842)" fill="#A00808" width="84.6" height="52" class="republican MT" id="id412464" alt="James Lankford" />
 
-                    <!--rect x="1313.2" y="253" transform="matrix(-0.9992 -4.007688e-02 4.007688e-02 -0.9992 2698.7832 650.0317)" fill="#A00808" width="84.6" height="52" class="republican OK" id="id412464" alt="James Lankford"/-->
-                    <!--rect x="1312.5" y="196.1" transform="matrix(-0.9996 2.935504e-02 -2.935504e-02 -0.9996 2715.5813 420.3523)" fill="#A00808" width="84.6" height="52" class="republican WI" id="id412496" alt="Ron Johnson"/-->
                     <rect x="1309.6" y="138.8" transform="matrix(-0.9972 7.504426e-02 -7.504426e-02 -0.9972 2710.3843 251.6198)" fill="#A00808" width="84.6" height="52" class="republican GA" id="id412666" alt="David Perdue" />
 
                     <rect x="634.8" y="725.8" transform="matrix(2.069917e-02 -0.9998 0.9998 2.069917e-02 -88.5684 1413.3033)" fill="#0B049E" width="84.6" height="52" class="democrat OR" id="id300100" alt="Ron Wyden" />
@@ -207,73 +195,19 @@
 
 
                 </svg>
-
-            </div>
+			</div><!--seating-chart row-->
+               
+                 <div class="treemap">
+                        <!--                        <h4>Individual Contributions from Organizations</h4>-->
+            
+                        <div id="tmap">
+                        </div>
+            
+                    </div>
+               
+            
             <!--seating-chart col-lg-9-->
         </div>
         <!--row-->
     </div>
-    <!--D3 Code Starts-->
-    <script>
-        var govtrackID = [];
-        var data = d3.csv('data/senator_info.csv', function (error, data) {
-
-                var senator = d3.select('#Layer_1').selectAll('rect')
-                    .classed("senator", true)
-                    .on('mouseover', function (d) {
-                        //console.log("moused over");
-                        console.log("id for this element is:" + " " + this.id);
-                        var temp_id = this.id.replace(/\D/g, '');
-                        data.forEach(function (e) {
-                            govtrackID.push(e.govtrack_id);
-                            var senatorName = e.first_name + " " + e.last_name;
-                            var rect = d3.select('id' + govtrackID[e]);
-                            //console.log("govtrackID is" + " " + govtrackID + " " + senatorName);   
-                            if (temp_id == e.govtrack_id) {
-                                console.log('match');
-                                //image URL	
-                                var imgStringBegin = " <img src= img/";
-                                var imgLocation = e.govtrack_id + ".jpeg";
-                                var imgStringEnd = ">";
-                                var imgURL = imgStringBegin + imgLocation + imgStringEnd;
-                                console.log(imgURL);
-
-                                div.transition()
-                                    .duration(200)
-                                    .style("opacity", .9);
-                                div.html(imgURL + '<h3 class="Senator_Name">' + e.first_name + ' ' + e.last_name + '</h3>' + '<h4 class="Senator_State_Party">' + e.state + ' | ' + e.party + '</h4>')
-                                    .style("left", (d3.event.pageX) + "px")
-                                    .style("top", (d3.event.pageY) + "px")
-                                    .style("opacity", 1);
-
-                            } //if temp_id == e.govtrack_id   
-                        }); //data.forEach
-                        console.log(div);
-                    }); //on 	mouseover
-
-                var div = d3.select("body").append("div")
-                    .attr("class", "tooltip")
-                    .style("opacity", 0);
-
-                var tip = d3.tip()
-                    .attr('class', 'd3-tip')
-                    .attr('opacity', .9)
-                    //.offset([-10, 0])
-                    .html(function (d) {
-                        return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
-                    })
-
-                // senator.call(tip);
-                //senator
-                // .on('mouseover',tip.show)
-
-
-
-
-
-            }) //data = d3.csv
-    </script>
-
-
-
-    <!--D3 CODE ENDS-->
+  

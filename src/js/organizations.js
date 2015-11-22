@@ -1,22 +1,22 @@
 var chart;
-var height = 700;
+var height = 600;
 var width = 300;
 var margin = {
-    top: 2,
+    top: 1,
     right: 0,
     bottom: 10,
-    left: 5
+    left: 6
 };
 
 //Gets called when the page is loaded.
 function init() {
-    var height = 700;
+    var height = 600;
     var width = 300;
     var margin = {
-        top: 2,
+        top: 1,
         right: 0,
         bottom: 10,
-        left: 5
+        left: 6
     };
 
     div = d3.select("#tmap")
