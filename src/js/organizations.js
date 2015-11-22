@@ -1,28 +1,29 @@
-var chart;
-var height = 700;
-var width = 300;
-var margin = {
-    top: 2,
-    right: 0,
-    bottom: 10,
-    left: 5
-};
-
-
 //Gets called when the page is loaded.
 function init() {
+    var height = 700;
+    var width = 300;
+    var margin = {
+        top: 2,
+        right: 0,
+        bottom: 10,
+        left: 5
+    };
+
+    div = d3.select("#tmap")
+        //    .append("div")
+        .style("position", "relative");
+    //        .style("width", width)
+    //        .style("height", height)
+    //        .style("top", margin.top + "px");
+    //var width = div.width;
+    //height = div.height;
+
     treemap = d3.layout.treemap()
         .size([width, height])
         .sticky(true)
         .value(function (d) {
             return d.values;
         });
-
-    div = d3.select("#tmap").append("div")
-        .style("position", "relative")
-        .style("width", width)
-        .style("height", height)
-        //.style("top", margin.top + "px");
 
     color_scale = d3.scale.category20c();
 
