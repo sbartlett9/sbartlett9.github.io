@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/js/senate_dollars.js
 var chart;
 var height = 700;
 var width = 300;
@@ -9,8 +10,28 @@ var margin = {
 };
 
 
+=======
+>>>>>>> origin/master:src/js/organizations.js
 //Gets called when the page is loaded.
 function init() {
+    var height = 700;
+    var width = 300;
+    var margin = {
+        top: 2,
+        right: 0,
+        bottom: 10,
+        left: 5
+    };
+
+    div = d3.select("#tmap")
+        //    .append("div")
+        .style("position", "relative");
+    //        .style("width", width)
+    //        .style("height", height)
+    //        .style("top", margin.top + "px");
+    //var width = div.width;
+    //height = div.height;
+
     treemap = d3.layout.treemap()
         .size([width, height])
         .sticky(true)
@@ -18,15 +39,18 @@ function init() {
             return d.values;
         });
 
+<<<<<<< HEAD:src/js/senate_dollars.js
     div = d3.select("#tmap").append("div")
         .style("position", "relative")
         .style("width", width)
         .style("height", height)
         //.style("top", margin.top + "px");
 
+=======
+>>>>>>> origin/master:src/js/organizations.js
     color_scale = d3.scale.category20c();
 
-    d3.csv('data/sample_data_org_aggr.csv', update);
+    d3.csv('data/sample_data_org_aggr.csv', update_orgs);
 
 }
 
@@ -34,8 +58,8 @@ function init() {
 function updateClicked() {}
 
 //Callback for when data is loaded
-function update(rawdata) {
-    console.log("success");
+function update_orgs(rawdata) {
+    console.log("org load success");
     nested_data = d3.nest()
         .key(function (d) {
             return d.DonorOrganization;
