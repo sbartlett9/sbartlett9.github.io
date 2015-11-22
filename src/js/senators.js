@@ -1,3 +1,5 @@
+var govetrack_id;
+
 repub_scale = d3.scale.ordinal()
     .range(colorbrewer.Reds[3]);
 
@@ -71,8 +73,16 @@ function getScale(sen) {
                                 var imgLocation = e.govtrack_id + ".jpeg";
                                 var imgStringEnd = ">";
                                 var imgURL = imgStringBegin + imgLocation + imgStringEnd;
-                                console.log(imgURL);
-
+                                //console.log(imgURL);
+								govtrack_id = e.govtrack_id;
+								console.log(govtrack_id);
+								
+		
+								
+								
+								
+								
+								
                                 div.transition()
                                     .duration(200)
                                     .style("opacity", .9);
@@ -88,7 +98,8 @@ function getScale(sen) {
 
                             } //if temp_id == e.govtrack_id   
                         }); //data.forEach
-                        console.log(div);
+                        //console.log(div);
+						
                     })
 					
 					 .on("mouseout", function(d) {		

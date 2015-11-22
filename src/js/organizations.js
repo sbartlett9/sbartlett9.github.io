@@ -7,6 +7,7 @@ var margin = {
     bottom: 10,
     left: 6
 };
+var govtrck_id_org;
 
 //Gets called when the page is loaded.
 function init() {
@@ -50,6 +51,8 @@ function update_orgs(rawdata) {
     nested_data = d3.nest()
         .key(function (d) {
             return d.DonorOrganization;
+			var tempGovtrackID = d.govtrack_id;
+			console.log(tempGovtrackID);
         })
         .rollup(function (leaves) {
             return d3.sum(leaves, function (d) {
@@ -95,3 +98,4 @@ function position() {
             return Math.max(0, d.dy - 1) + "px";
         });
 }
+
