@@ -8,11 +8,12 @@
     <link type="text/css" rel="stylesheet" href="style.css" />
 
     <script src="lib/d3.js"></script>
+    <script src="lib/colorbrewer.js"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-<script src="js/senate_dollars.js"></script>
-    <script src="js/senate_individual_totals"></script>
+    <script src="js/organizations.js"></script>
+    <script src="js/senators.js"></script>
 
-<!--
+    <!--
   <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/jquery.fullPage.js"></script>
@@ -53,8 +54,15 @@
             </div>
         </div>
     </nav>
-    <div>
+    <div id='viz_container'>
 
+        <div class="treemap">
+            <!--                        <h4>Individual Contributions from Organizations</h4>-->
+
+            <div id="tmap">
+            </div>
+
+        </div>
         <div id="main">
             <div class="placeholder barchart row">
                 <h4>place holder for other bar chart</h4>
@@ -204,13 +212,6 @@
             <!--seating-chart col-lg-9-->
         </div>
         <!--row-->
-        <div class="treemap">
-            <!--                        <h4>Individual Contributions from Organizations</h4>-->
-
-            <div id="tmap">
-            </div>
-
-        </div>
     </div>
     <!--D3 Code Starts-->
     <script>
