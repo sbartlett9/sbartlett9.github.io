@@ -1,64 +1,149 @@
 @charset "UTF-8";
+
 /* CSS Document */
 
-.placeholder{
-	border:3px solid grey;
-	background-color:#D2D0D0;
-	display:block;
-	text-align:center;
-	
-	}
-.placeholder h4{
-	margin:0 auto;
-	line-height:300px;
-	}
-.heatmap{
-	height:32em;
-	}	
-.seating-chart{
-	margin-top:2em;
-	}
-.democrat-rect{
-	width:25px;
-	height:40px;
-	margin:.12em .12em;
-	border:1px solid black;
-	background-color:#3045C4;
-	float:left;
-	position:relative;
-	}
-.democrat-rect-group{
-	float:none;
-	pading:0 auto;
-	margin:0 auto;
-	}
-.republican-rect{
-	width:25px;
-	height:40px;
-	margin:.12em .12em;
-	border:1px solid black;
-	background-color: #D80206;
-	float:left;
-	position:relative;
-	}
-.republican-rect-group{
-	float:none;
-	pading:0 auto;
-	margin:0 auto;
-	}
-.extra_block{
-	width:2em;
-	height:2em;
-	border:1px solid black;
-	background-color: #9C9B9B;
-	float:left;
-	position:relative;
-	}
+div.tooltip {
+    position: absolute;
+    /*text-align: center;*/
+    width: 30em;
+    height: 20em;
+    padding: 1em 1em 1em 1em;
+    font: 12px sans-serif;
+    background: #CDCDCD;
+    border: 0px;
+    border-radius: 5px;
+    pointer-events: none;
+}
 
-.seating-chart rect:hover{
-	opacity:.6;
-	border:10px solid #A19C9C;
-	}
-.independent{
-	fill:#AAAAAA;
-	}
+div img {
+    margin-left: .5em;
+    opacity: 1;
+    float: left;
+    position: absolute;
+}
+
+div .Senator_Name {
+    left: 5em;
+    position: absolute;
+    display: inline;
+    margin-left: .5em;
+}
+
+div .Senator_State_Party {
+    position: absolute;
+    left: 7.5em;
+    top: 3em;
+}
+
+text-indent: 2px;
+.d3-tip {
+    line-height: 1;
+    font-weight: bold;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 2px;
+}
+
+.d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+}
+
+.placeholder {
+    border: 3px solid grey;
+    background-color: #D2D0D0;
+    display: block;
+    text-align: center;
+}
+
+.placeholder h4 {
+    margin: 0 auto;
+    line-height: 250px;
+}
+
+.heatmap {
+    height: 32em;
+}
+
+.seating-chart {
+    margin-top: 2em;
+}
+
+.democrat-rect {
+    width: 25px;
+    height: 40px;
+    margin: .12em .12em;
+    border: 1px solid black;
+    background-color: #3045C4;
+    float: left;
+    position: relative;
+}
+
+.democrat-rect-group {
+    float: none;
+    pading: 0 auto;
+    margin: 0 auto;
+}
+
+.republican-rect {
+    width: 25px;
+    height: 40px;
+    margin: .12em .12em;
+    border: 1px solid black;
+    background-color: #D80206;
+    float: left;
+    position: relative;
+}
+
+.republican-rect-group {
+    float: none;
+    pading: 0 auto;
+    margin: 0 auto;
+}
+
+.extra_block {
+    width: 2em;
+    height: 2em;
+    border: 1px solid black;
+    background-color: #9C9B9B;
+    float: left;
+    position: relative;
+}
+
+.seating-chart rect:hover {
+    opacity: .6;
+    border: 10px solid #A19C9C;
+}
+
+.independent {
+    fill: #AAAAAA;
+}
+
+.treemap {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: auto;
+    float: right;
+    width: 300px;
+}
+
+#main {
+    float: left;
+    width: 650px;
+}
+
+.node {
+    border: solid 1px white;
+    font: 10px sans-serif;
+    line-height: 12px;
+    overflow: hidden;
+    position: absolute;
+    text-indent: 2px;
+}
