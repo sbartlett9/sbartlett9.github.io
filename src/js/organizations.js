@@ -1,4 +1,3 @@
-<<<<<<< HEAD:src/js/senate_dollars.js
 var chart;
 var height = 700;
 var width = 300;
@@ -9,9 +8,6 @@ var margin = {
     left: 5
 };
 
-
-=======
->>>>>>> origin/master:src/js/organizations.js
 //Gets called when the page is loaded.
 function init() {
     var height = 700;
@@ -39,15 +35,6 @@ function init() {
             return d.values;
         });
 
-<<<<<<< HEAD:src/js/senate_dollars.js
-    div = d3.select("#tmap").append("div")
-        .style("position", "relative")
-        .style("width", width)
-        .style("height", height)
-        //.style("top", margin.top + "px");
-
-=======
->>>>>>> origin/master:src/js/organizations.js
     color_scale = d3.scale.category20c();
 
     d3.csv('data/sample_data_org_aggr.csv', update_orgs);
