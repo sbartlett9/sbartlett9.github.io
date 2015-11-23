@@ -1,10 +1,10 @@
 var govetrack_id;
 
 repub_scale = d3.scale.ordinal()
-    .range(colorbrewer.Reds[3]);
+    .range(colorbrewer.Reds[7]);
 
 dem_scale = d3.scale.ordinal()
-    .range(colorbrewer.Blues[3]);
+    .range(colorbrewer.Blues[7]);
 
 ind_scale = d3.scale.ordinal()
     .range(colorbrewer.Purples[3]);
