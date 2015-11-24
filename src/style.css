@@ -166,6 +166,16 @@ text-indent: 2px;
     height: 665px;
 }
 
+.treemap h5 {
+    margin-top: 1em;
+    margin-bottom: .5em;
+}
+
+.treemap h6 {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
 #main {
     margin-right: 320px;
 }

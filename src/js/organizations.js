@@ -1,8 +1,8 @@
 var govtrck_id_org;
+var tm_height = 600;
 
 //Gets called when the page is loaded.
 function init() {
-    var height = 600;
     var width = 300;
     var margin = {
         top: 1,
@@ -16,7 +16,7 @@ function init() {
         .style("top", margin.top + "px");
 
     treemap = d3.layout.treemap()
-        .size([width, height])
+        .size([width, tm_height])
         .sticky(true)
         .value(function (d) {
             return d.values;
@@ -24,7 +24,7 @@ function init() {
 
     color_scale = d3.scale.category20c();
 
-    d3.json('data/org_contributions_with_senators.json', update_orgs);
+    d3.json('data/org_contributions_over_halfmillion.json', update_orgs);
 
 }
 
@@ -49,10 +49,10 @@ function update_orgs(rawdata) {
     var root = {};
     root.children = nested_data;
 
-    //var nodes = treemap.nodes(root);
+    var nodes = treemap.nodes(root).sort();
 
     var node = div.datum(root).selectAll(".node")
-        .data(treemap.nodes)
+        .data(nodes)
         .enter().append("div")
         .attr("class", "node")
         .call(position)
