@@ -1,12 +1,3 @@
-var chart;
-var height = 600;
-var width = 300;
-var margin = {
-    top: 1,
-    right: 0,
-    bottom: 10,
-    left: 6
-};
 var govtrck_id_org;
 
 //Gets called when the page is loaded.
@@ -21,13 +12,8 @@ function init() {
     };
 
     div = d3.select("#tmap")
-        //    .append("div")
-        .style("position", "relative");
-    //        .style("width", width)
-    //        .style("height", height)
-    //        .style("top", margin.top + "px");
-    //var width = div.width;
-    //height = div.height;
+        .style("position", "relative")
+        .style("top", margin.top + "px");
 
     treemap = d3.layout.treemap()
         .size([width, height])

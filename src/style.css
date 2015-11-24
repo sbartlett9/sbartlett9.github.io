@@ -158,15 +158,16 @@ text-indent: 2px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: auto;
     float: right;
-    width: 300px;
-    /*position: absolute;
-    left:75%;
-	top:40%;
-	height:300px;*/
+    width: 303px;
+    border-style: solid;
+    position: relative;
+    /*left:75%;
+	top:40%;*/
+    height: 665px;
 }
 
 #main {
-    margin-right: 300px;
+    margin-right: 320px;
 }
 
 .node {
