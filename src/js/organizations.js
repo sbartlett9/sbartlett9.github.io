@@ -17,6 +17,9 @@ function init() {
 
     treemap = d3.layout.treemap()
         .size([width, tm_height])
+        .sort(function (a, b) {
+            return a.value - b.value;
+        })
         .sticky(true)
         .value(function (d) {
             return d.values;
@@ -49,7 +52,7 @@ function update_orgs(rawdata) {
     var root = {};
     root.children = nested_data;
 
-    var nodes = treemap.nodes(root).sort();
+    var nodes = treemap.nodes(root);
 
     var node = div.datum(root).selectAll(".node")
         .data(nodes)
