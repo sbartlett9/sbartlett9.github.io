@@ -38,7 +38,7 @@ function init() {
 
     color_scale = d3.scale.category20c();
 
-    d3.csv('data/sample_data_org_aggr.csv', update_orgs);
+    d3.json('data/org_contributions_with_senators.json', update_orgs);
 
 }
 
@@ -51,12 +51,10 @@ function update_orgs(rawdata) {
     nested_data = d3.nest()
         .key(function (d) {
             return d.DonorOrganization;
-			var tempGovtrackID = d.govtrack_id;
-			console.log(tempGovtrackID);
         })
         .rollup(function (leaves) {
             return d3.sum(leaves, function (d) {
-                return d.total;
+                return d.Total;
             })
         })
         .entries(rawdata);
@@ -80,8 +78,6 @@ function update_orgs(rawdata) {
         });
 
 
-
-
 }
 
 function position() {
@@ -98,4 +94,3 @@ function position() {
             return Math.max(0, d.dy - 1) + "px";
         });
 }
-
