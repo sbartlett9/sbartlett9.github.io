@@ -1,4 +1,3 @@
-var govtrck_id_org;
 var tm_height = 600;
 
 //Gets called when the page is loaded.

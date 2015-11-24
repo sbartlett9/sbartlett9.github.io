@@ -2,6 +2,12 @@
 
 /* CSS Document */
 
+h3,
+h4 {
+    text-align: center;
+    width: 100%;
+}
+
 .viz_container {
     width: 900;
     height: 600px;
