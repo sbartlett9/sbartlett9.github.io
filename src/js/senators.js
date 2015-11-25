@@ -1,11 +1,11 @@
-repub_scale = d3.scale.ordinal()
-    .range(colorbrewer.Reds[5]);
+repub_scale = d3.scale.linear()
+    .range(colorbrewer.Reds[3]);
 
-dem_scale = d3.scale.ordinal()
-    .range(colorbrewer.Blues[5]);
+dem_scale = d3.scale.linear()
+    .range(colorbrewer.Blues[3]);
 
-ind_scale = d3.scale.ordinal()
-    .range(colorbrewer.Greens[5]);
+ind_scale = d3.scale.linear()
+    .range(colorbrewer.Greens[3]);
 
 d3.json('data/senators_with_totals.json', update_senators);
 
@@ -13,9 +13,17 @@ d3.json('data/senators_with_totals.json', update_senators);
 //Callback for when data is loaded
 function update_senators(rawdata) {
     console.log("senator data load success");
-    var domain = d3.extent(rawdata, function (d) {
+    //    var domain = d3.extent(rawdata, function (d) {
+    //        return d.total;
+    //    });
+    var min = d3.min(rawdata, function (d) {
         return d.total;
     });
+    var max = d3.max(rawdata, function (d) {
+        return d.total;
+    });
+    var pivot = (max - min) / 2
+    domain = [min, pivot, max];
 
     repub_scale.domain(domain);
 

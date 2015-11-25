@@ -1,5 +1,6 @@
 var tm_height = 600;
 
+
 //Gets called when the page is loaded.
 function init() {
     var width = 300;
@@ -24,9 +25,10 @@ function init() {
             return d.values;
         });
 
-    color_scale = d3.scale.category20c();
+    color_scale = d3.scale.ordinal().range(colorbrewer.Greys[3]);
 
-    d3.json('data/org_contributions_over_40k.json', update_orgs);
+    d3.json('data/light_and_dark_money.json', update_orgs);
+    //d3.json('data/org_contributions_over_40k.json', update_orgs);
 
 }
 
@@ -37,6 +39,9 @@ function updateClicked() {}
 function update_orgs(rawdata) {
     console.log("org load success");
     nested_data = d3.nest()
+        //        .key(function (d) {
+        //            return d.type;
+        //        })        
         .key(function (d) {
             return d.DonorOrganization;
         })
@@ -53,7 +58,7 @@ function update_orgs(rawdata) {
         })
         .map(rawdata, d3.map);
 
-    // Creat the root node for the treemap
+    // Create the root node for the treemap
     var root = {};
     root.children = nested_data;
 
@@ -65,10 +70,11 @@ function update_orgs(rawdata) {
         .attr("class", "node")
         .call(position)
         .style("background", function (d) {
+            //return d.children ? null : color_scale(master_org_list.get(d.key).type);
             return d.children ? color_scale(d.key) : null;
         })
         .text(function (d) {
-            return d.key;
+            return d.children ? null : d.key;
         })
         .on("click", function (d) {
             d.selected = !d.selected;
