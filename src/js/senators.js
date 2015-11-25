@@ -1,10 +1,10 @@
-repub_scale = d3.scale.linear()
+repub_scale = d3.scale.quantize()
     .range(colorbrewer.Reds[3]);
 
-dem_scale = d3.scale.linear()
+dem_scale = d3.scale.quantize()
     .range(colorbrewer.Blues[3]);
 
-ind_scale = d3.scale.linear()
+ind_scale = d3.scale.quantize()
     .range(colorbrewer.Greens[3]);
 
 d3.json('data/senators_with_totals.json', update_senators);
