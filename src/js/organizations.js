@@ -26,7 +26,7 @@ function init() {
 
     color_scale = d3.scale.category20c();
 
-    d3.json('data/org_contributions_over_halfmillion.json', update_orgs);
+    d3.json('data/org_contributions_over_40k.json', update_orgs);
 
 }
 
@@ -47,6 +47,12 @@ function update_orgs(rawdata) {
         })
         .entries(rawdata);
 
+    var master_org_list = d3.nest()
+        .key(function (d) {
+            return d.DonorOrganization;
+        })
+        .map(rawdata, d3.map);
+
     // Creat the root node for the treemap
     var root = {};
     root.children = nested_data;
@@ -63,6 +69,18 @@ function update_orgs(rawdata) {
         })
         .text(function (d) {
             return d.key;
+        })
+        .on("click", function (d) {
+            d.selected = !d.selected;
+            //this.style("border-style", "solid");
+            if (d.selected) {
+                selectSenators(master_org_list.get(d.key));
+            } else {
+                clearSenatorSelection();
+            }
+        })
+        .on("mouseover", function (d) {
+            //TODO have an org name tooltip
         });
 
 
@@ -81,4 +99,21 @@ function position() {
         .style("height", function (d) {
             return Math.max(0, d.dy - 1) + "px";
         });
+}
+
+function selectSenators(org) {
+    var senators = d3.select('#Layer_1').selectAll('rect').transition().style("opacity", .1);
+    org.forEach(function (d) {
+        var id = '#id' + d.govtrack_id;
+        var sen = master_senators_list.get(d.govtrack_id)[0];
+        var scale = getScale(sen);
+        var rect = d3.select(id)
+            .transition()
+            .style("opacity", 1)
+            .style("border-style", "solid");
+    });
+}
+
+function clearSenatorSelection() {
+    var senators = d3.select('#Layer_1').selectAll('rect').transition().style("opacity", 1);
 }

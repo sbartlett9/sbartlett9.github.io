@@ -7,7 +7,7 @@ dem_scale = d3.scale.ordinal()
 ind_scale = d3.scale.ordinal()
     .range(colorbrewer.Greens[5]);
 
-d3.csv('data/senators_with_totals.csv', update_senators);
+d3.json('data/senators_with_totals.json', update_senators);
 
 
 //Callback for when data is loaded
@@ -35,24 +35,25 @@ function update_senators(rawdata) {
             return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
         });
 
-    rawdata.forEach(function (sen) {
-        var id = '#id' + sen.govtrack_id;
-        var scale = getScale(sen);
+    rawdata.forEach(function (d) {
+        var id = '#id' + d.govtrack_id;
+        var scale = getScale(d);
+        var senatorName = d.first_name + " " + d.last_name;
+        var imgStringBegin = " <img src= img/";
+        var imgLocation = d.govtrack_id + ".jpeg";
+        var imgStringEnd = ">";
+        var imgURL = imgStringBegin + imgLocation + imgStringEnd;
+        var tip_html = imgURL + '<span><p class="Senator_Name">' + senatorName + '</p></span>' + '<span><p class="Senator_State_Party">' + d.state + ' | ' + d.party + '</p></span>' + '<span><p class="total_contribution_amount">' + 'Total Amount Received:' + d.total + '</p></span>' + '<span><p class="top_contributor">' + 'Top Contributors:' + '</p></span>'
         var rect = d3.select(id)
             .style("fill", function () {
-                return scale(sen.total);
+                return scale(d.total);
             })
             .classed("senator", true)
             .on('mouseover', function (d) {
-                var senatorName = sen.first_name + " " + sen.last_name;
-                var imgStringBegin = " <img src= img/";
-                var imgLocation = sen.govtrack_id + ".jpeg";
-                var imgStringEnd = ">";
-                var imgURL = imgStringBegin + imgLocation + imgStringEnd;
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div.html(imgURL + '<span><p class="Senator_Name">' + senatorName + '</p></span>' + '<span><p class="Senator_State_Party">' + sen.state + ' | ' + sen.party + '</p></span>' + '<span><p class="total_contribution_amount">' + 'Total Amount Received:' + sen.total + '</p></span>' + '<span><p class="top_contributor">' + 'Top Contributors:' + '</p></span>')
+                div.html(tip_html)
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY) + "px")
                     .style("opacity", 1);
@@ -65,9 +66,13 @@ function update_senators(rawdata) {
             });
     });
 
-    master_senators_list = d3.map(rawdata, function (d) {
-        return d.govtrack_id;
-    });
+    /*this should work with d3.map, but for some reason it doesn't :( */
+    master_senators_list = d3.nest()
+        .key(function (d) {
+            return d.govtrack_id;
+        })
+        .map(rawdata, d3.map);
+
 
 }
 
@@ -78,9 +83,4 @@ function getScale(sen) {
         return dem_scale;
     }
     return ind_scale;
-}
-
-function selectSenators(org) {
-    var senators = d3.select('#Layer_1').selectAll('rect');
-    senators.filter(function (d) {});
 }
