@@ -17,6 +17,7 @@ function init() {
 
     treemap = d3.layout.treemap()
         .size([width, tm_height])
+        .round(true)
         .sort(function (a, b) {
             return a.value - b.value;
         })
@@ -25,7 +26,9 @@ function init() {
             return d.values;
         });
 
-    color_scale = d3.scale.ordinal().range(colorbrewer.Greys[3]);
+    color_scale = d3.scale.ordinal()
+        .domain(["light", "dark"])
+        .range(colorbrewer.Greys[3]);
 
     d3.json('data/light_and_dark_money.json', update_orgs);
     //d3.json('data/org_contributions_over_40k.json', update_orgs);
@@ -39,18 +42,16 @@ function updateClicked() {}
 function update_orgs(rawdata) {
     console.log("org load success");
     nested_data = d3.nest()
-        //        .key(function (d) {
-        //            return d.type;
-        //        })        
         .key(function (d) {
+            return d.type;
+        }).key(function (d) {
             return d.DonorOrganization;
         })
         .rollup(function (leaves) {
             return d3.sum(leaves, function (d) {
                 return d.Total;
             })
-        })
-        .entries(rawdata);
+        }).entries(rawdata);
 
     var master_org_list = d3.nest()
         .key(function (d) {
@@ -60,7 +61,10 @@ function update_orgs(rawdata) {
 
     // Create the root node for the treemap
     var root = {};
-    root.children = nested_data;
+    root.values = nested_data;
+    root.key = "Data";
+
+    root = reSortRoot(root, "Total");
 
     var nodes = treemap.nodes(root);
 
@@ -71,16 +75,16 @@ function update_orgs(rawdata) {
         .call(position)
         .style("background", function (d) {
             //return d.children ? null : color_scale(master_org_list.get(d.key).type);
-            return d.children ? color_scale(d.key) : null;
+            return d.depth == 1 ? color_scale(d.name) : null;
         })
         .text(function (d) {
-            return d.children ? null : d.key;
+            return d.children ? null : d.name;
         })
         .on("click", function (d) {
             d.selected = !d.selected;
             //this.style("border-style", "solid");
             if (d.selected) {
-                selectSenators(master_org_list.get(d.key));
+                selectSenators(master_org_list.get(d.name));
             } else {
                 clearSenatorSelection();
             }
@@ -122,4 +126,28 @@ function selectSenators(org) {
 
 function clearSenatorSelection() {
     var senators = d3.select('#Layer_1').selectAll('rect').transition().style("opacity", 1);
+}
+
+//turns nested data into format needed for treemap
+function reSortRoot(root, value_key) {
+    //console.log("Calling");
+    for (var key in root) {
+        if (key == "key") {
+            root.name = root.key;
+            delete root.key;
+        }
+        if (key == "values" && root.values.length) {
+            //this is because we have a rollup function where values is both the value and the children attribute
+            root.children = [];
+            for (item in root.values) {
+                root.children.push(reSortRoot(root.values[item], value_key));
+            }
+            delete root.values;
+        }
+        if (key == value_key) {
+            root.value = parseFloat(root[value_key]);
+            delete root[value_key];
+        }
+    }
+    return root;
 }
