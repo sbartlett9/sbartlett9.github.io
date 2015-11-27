@@ -27,7 +27,7 @@ function init() {
         });
 
     color_scale = d3.scale.ordinal()
-        .domain(["light", "dark"])
+        .domain(["light", "dark", "dark indirect"])
         .range(colorbrewer.Greys[3]);
 
     d3.json('data/light_and_dark_money2.json', update_orgs);
@@ -75,7 +75,13 @@ function update_orgs(rawdata) {
         .map(rawdata, d3.map);
 
 
-    // Create the root node for the treemap
+    var org_tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function (d) {
+            return "<strong>" + d.name + ":</strong> <span style='color:red'>" + d.values + "</span>";
+        })
+        // Create the root node for the treemap
     var root = {};
     root.values = nested_data;
     root.key = "Data";
@@ -83,6 +89,8 @@ function update_orgs(rawdata) {
     root = reSortRoot(root, "Total");
 
     var nodes = treemap.nodes(root);
+
+    //div.call(org_tip);
 
     var node = div.datum(root).selectAll(".node")
         .data(nodes)
@@ -97,17 +105,15 @@ function update_orgs(rawdata) {
             return d.children ? null : d.name;
         })
         .on("click", function (d) {
+            clearSenatorSelection();
             d.selected = !d.selected;
-            //this.style("border-style", "solid");
             if (d.selected) {
+                this.style.border = "solid 2px black"; //("border-style", "solid");
                 selectSenators(master_org_list.get(d.name));
-            } else {
-                clearSenatorSelection();
             }
         })
-        .on("mouseover", function (d) {
-            //TODO have an org name tooltip
-        });
+        //.on("mouseover", org_tip.show)
+        //.on("mouseout", org_tip.hide);
 
     init_senators();
 }
@@ -146,6 +152,10 @@ function clearSenatorSelection() {
         .transition()
         .style("opacity", 1)
         .style("stroke", "none");
+    //reset tree map selections
+    var tmap_nodes = d3.selectAll(".node");
+    tmap_nodes.style("border", "solid 1px white");
+    tmap_nodes.selected = false;
 }
 
 //turns nested data into format needed for treemap

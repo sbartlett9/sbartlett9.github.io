@@ -1,12 +1,12 @@
 function init_senators() {
     repub_scale = d3.scale.quantize()
-        .range(colorbrewer.Reds[3]);
+        .range(colorbrewer.Reds[5]);
 
     dem_scale = d3.scale.quantize()
-        .range(colorbrewer.Blues[3]);
+        .range(colorbrewer.Blues[5]);
 
     ind_scale = d3.scale.quantize()
-        .range(colorbrewer.Greens[3]);
+        .range(colorbrewer.Greens[5]);
 
     d3.json('data/senators_with_totals.json', update_senators);
 }
