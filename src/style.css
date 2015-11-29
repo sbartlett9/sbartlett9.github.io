@@ -212,3 +212,26 @@ text-indent: 2px;
     position: absolute;
     text-indent: 2px;
 }
+
+.searchSenatorInfo{
+	position:absolute;
+	border:1px solid black;
+	width:10em;
+	left:55%;
+	top:20%;
+	
+}
+
+.searchSenatorInfo .row{
+	width:16em;
+	margin:0 auto;
+	}
+	
+.searchSenatorInfo	.dropdown{
+	width:15em;
+	margin:0 auto;
+	}
+.dropdown-menu{
+	 height:20em; 
+	 overflow-y:scroll;
+	}
