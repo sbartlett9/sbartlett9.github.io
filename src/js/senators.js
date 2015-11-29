@@ -31,6 +31,17 @@ function update_senators(rawdata) {
 
     ind_scale.domain(domain);
 
+	var senatorInfoDiv = d3.select("#senator_info").append("div")
+		.attr("class", "senatorName")
+		.style("border","1px solid black")
+		.style("width", "10em")
+		.style("margin-left","3em")
+		.style("fill","blue")
+		.html(function (d) {
+            return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
+        });
+		
+		
     var div = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
@@ -57,20 +68,25 @@ function update_senators(rawdata) {
         var imgLocation = d.govtrack_id + ".jpeg";
         var imgStringEnd = ">";
         var imgURL = imgStringBegin + imgLocation + imgStringEnd;
-        var tip_html = imgURL + '<span><p class="Senator_Name">' + senatorName + '</p></span>' + '<span><p class="Senator_State_Party">' + d.state + ' | ' + d.party + '</p></span>' + '<span><p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br/>PAC Expenditures: ' + indep_exp_supporting + '<br/> PAC Indirect Expenditures: ' + indep_exp_indirect + '<br/></p></span>';
+        var infoPane_html = imgURL + '<span><p class="Senator_Name">' + senatorName + '</p></span>' + '<span><p class="Senator_State_Party">' + d.state + ' | ' + d.party + '</p></span>' + '<span><p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br/>PAC Expenditures: ' + indep_exp_supporting + '<br/> PAC Indirect Expenditures: ' + indep_exp_indirect + '<br/></p></span>';
         var rect = d3.select(id)
             .style("fill", function () {
                 return scale(total);
             })
             .classed("senator", true)
-            .on('mouseover', function (d) {
-                div.transition()
+            .on('click', function (d) {
+               /* div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div.html(tip_html)
+                
+				div.html(tip_html)
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY) + "px")
-                    .style("opacity", 1);
+                    .style("opacity", 1);*/
+				
+				senatorInfoDiv
+					.html(infoPane_html);
+					
 
             })
             .on("mouseout", function (d) {
