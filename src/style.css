@@ -1,9 +1,11 @@
 @charset "UTF-8";
 
 /* CSS Document */
-
-h3,
-h4 {
+@font-face {
+    font-family: Georgia;
+    src:url(fonts/Georgia.ttf);
+}
+#title {
     text-align: center;
     width: 100%;
 }
@@ -28,9 +30,11 @@ div.tooltip {
 
 #senator_info img {
     margin-left: 2em;
+	margin-right:2em;
+	padding:0 auto;
     opacity: 1;
     float: left;
-    position: absolute;
+   
 }
 
 
@@ -56,11 +60,14 @@ div .total_contribution_amount{
     top: 3em;
 	font-size:1.5em;
 	}*/
+#senator_info h2, h3{
+	font-family:Georgia, Helvetica, Arial, sans-serif;
+	}
 
 #senator_info span p{
 	float:left;
+	font-family:Georgia, Helvetica, Arial, sans-serif;
 	font-size:1.2em;
-	color:blue;
 	margin-left:1em;
 	line-height:1em;
 	
