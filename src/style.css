@@ -175,6 +175,7 @@ text-indent: 2px;
 .treemap h5 {
     margin-top: 1em;
     margin-bottom: .5em;
+    text-align: center;
 }
 
 .treemap h6 {
@@ -184,6 +185,7 @@ text-indent: 2px;
 
 #main {
     margin-right: 360px;
+    height: 620px;
 }
 
 .node {
