@@ -4,21 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Visualizing Corporate Influence on Lawmaking</title>
-
     <link type="text/css" rel="stylesheet" href="style.css" />
+    <link type="text/css" rel="stylesheet" href="css/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="css/jquery-ui.structure.css" />
+	<link type="text/css" rel="stylesheet" href="css/jquery-ui.theme.css" />
+     <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <script src="lib/d3.js"></script>
     <script src="lib/colorbrewer.js"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
     <script src="js/organizations.js"></script>
     <script src="js/senators.js"></script>
 
     <!--
-  <script src="js/jquery-1.11.3.min.js"></script>
+ 
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/jquery.fullPage.js"></script>
 <link type="text/css" rel="stylesheet" href="css/jquery.fullPage.css" />
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 <script src="js/angular-0.10.0.js"></script>
 <script src="js/angular-animate.min.js"></script>
@@ -30,12 +35,10 @@
 <script src="js/angular-mocks.js"></script>
 <script src="js/angular-scenario.js"></script>
 
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="script.js"></script>-->
 
 
-<link type="text/css" rel="stylesheet" href="css/jquery-ui.css" />
-<link type="text/css" rel="stylesheet" href="css/jquery-ui.structure.css" />
-<link type="text/css" rel="stylesheet" href="css/jquery-ui.theme.css" /> -->
+
 </head>
 
 <body onload="init()" ng-app="myApp">
@@ -55,7 +58,7 @@
         </div>
     </div>
 </nav>-->
-    <h3>Visualizing Campaign Contributions to the 114th Senate</h3>
+    <h3 id="title">Visualizing Campaign Contributions to the 114th Senate</h3>
     <div id='viz_container'>
 
 
@@ -71,8 +74,9 @@
 
         </div>
         <div id="main">
-            <div class="seating-chart row">
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1500 1000" enable-background="new 0 0 1474.9 949.2" xml:space="preserve">
+   
+            <div class="seating-chart">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 2000 1000" enable-background="new 0 0 1474.9 949.2" xml:space="preserve">
 
                     <rect data-toggle="tooltip" data-placement="left" x="77.9" y="100.3" transform="matrix(0.988 0.1544 -0.1544 0.988 20.9382 -17.0441)" fill="#0B049E" width="84.6" height="52" class="democrat NJ" id="id412598" alt="Cory Booker" />
                     <rect x="178.6" y="116" transform="matrix(0.988 0.1544 -0.1544 0.988 24.5752 -32.4037)" fill="#0B049E" width="84.6" height="52" class="democrat MA" id="id412542" alt="Elizabeth Warren" />
@@ -201,11 +205,92 @@
                     <rect x="634.8" y="725.8" transform="matrix(2.069917e-02 -0.9998 0.9998 2.069917e-02 -88.5684 1413.3033)" fill="#0B049E" width="84.6" height="52" class="democrat OR" id="id300100" alt="Ron Wyden" />
                     <rect x="633.7" y="628.4" transform="matrix(2.069917e-02 -0.9998 0.9998 2.069917e-02 7.755 1316.6949)" fill="#0B049E" width="84.6" height="52" class="democrat WA" id="id300076" alt="Patty Murray" />
 
-
-
                 </svg>
             </div>
             <!--seating-chart row-->
+    		<div class="row" id="senator_info"></div>
+            
+            
+            <div class="searchSenatorInfo">
+             
+             <div id="searchbox" class="row">
+   				 <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for Senator Name">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                    	<i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                </div><!-- /input-group -->
+	
+    			<br>
+           </div><!--searchbox-->
+            
+              <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Select from List of States
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">AL</a></li>
+                    <li><a href="#">AK</a></li>
+                    <li><a href="#">AS</a></li>
+                    <!--li role="separator" class="divider"></li-->
+                    <li><a href="#">AZ</a></li>
+                    <li><a href="#">AR</a></li>
+                    <li><a href="#">CA</a></li>
+                    <li><a href="#">CO</a></li>
+                    <li><a href="#">CT</a></li>
+                    <li><a href="#">DE</a></li>
+                    <li><a href="#">DC</a></li>
+                    <li><a href="#">FL</a></li>
+                    <li><a href="#">GA</a></li>
+                    <li><a href="#">HI</a></li>
+                    <li><a href="#">ID</a></li>
+                    <li><a href="#">IL</a></li>
+                    <li><a href="#">IN</a></li>
+                    <li><a href="#">IA</a></li>
+                    <li><a href="#">KS</a></li>
+                    <li><a href="#">KY</a></li>
+                    <li><a href="#">LA</a></li>
+                    <li><a href="#">ME</a></li>
+                    <li><a href="#">MD</a></li>
+                    <li><a href="#">MH</a></li>
+                    <li><a href="#">MA</a></li>
+                    <li><a href="#">MI</a></li>
+                    <li><a href="#">MN</a></li>
+                    <li><a href="#">MS</a></li>
+                    <li><a href="#">MO</a></li>
+                    <li><a href="#">MT</a></li>
+                    <li><a href="#">NE</a></li>
+                    <li><a href="#">NJ</a></li>
+                    <li><a href="#">NM</a></li>
+                    <li><a href="#">NY</a></li>
+                    <li><a href="#">ND</a></li>
+                    <li><a href="#">MP</a></li>
+                    <li><a href="#">OH</a></li>
+                    <li><a href="#">OK</a></li>
+                    <li><a href="#">OR</a></li>
+                    <li><a href="#">PA</a></li>
+                    <li><a href="#">RI</a></li>
+                    <li><a href="#">SC</a></li>
+                    <li><a href="#">SD</a></li>
+                    <li><a href="#">TN</a></li>
+                    <li><a href="#">TX</a></li>
+                    <li><a href="#">UT</a></li>
+                    <li><a href="#">VT</a></li>
+                    <li><a href="#">VA</a></li>
+                    <li><a href="#">WA</a></li>
+                    <li><a href="#">WV</a></li>
+                    <li><a href="#">WI</a></li>
+                    <li><a href="#">WY</a></li>
+
+                  </ul>
+              </div><!--dropdown-->
+
+            </div>
+			</div><!--searchForSenatorInfo-->
+                        
             <div class="placeholder barchart row">
                 <h4>place holder for other bar chart</h4>
             </div>
