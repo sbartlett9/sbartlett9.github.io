@@ -95,6 +95,27 @@ text-indent: 2px;
     color: #fff;
     border-radius: 2px;
 }
+.seating-chart{
+	position:absolute;
+	left:3em;
+	top:5em;
+	z-index:20;
+	width:80%;
+	height:auto;
+	}
+
+.seating-chart-duplicate{
+	position:absolute;
+	left:3em;
+	top:5em;
+	z-index:99;
+	width:80%;
+	height:auto;
+	}
+.seating-chart-duplicate rect{
+	opacity:.5;
+	fill:#CCCCCC;
+	}
 
 .d3-tip:after {
     box-sizing: border-box;
@@ -124,9 +145,6 @@ text-indent: 2px;
     height: 32em;
 }
 
-.seating-chart {
-    margin-top: 2em;
-}
 
 .democrat-rect {
     width: 25px;
