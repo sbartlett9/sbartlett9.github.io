@@ -34,7 +34,8 @@ function update_senators(rawdata) {
 	var senatorInfoDiv = d3.select("#senator_info")
 		.style("border","1px solid black")
 		.style("width", "100%")
-		.style("margin-left","3em")
+		.style("position","absolute")
+		.style("left","10em")
 		.style("fill","blue")
 		.html(function (d) {
             return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
