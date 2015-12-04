@@ -72,9 +72,17 @@ function update_senators(rawdata) {
         var imgLocation = d.govtrack_id + ".jpeg";
         var imgStringEnd = ">";
         var imgURL = imgStringBegin + imgLocation + imgStringEnd;
-        var infoPane_html = imgURL + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' 
+        var infoPane_html = 
+		'<div class="col-lg-2">' + imgURL + '</div>' 
+		+ '<div class="col-lg-6">'
+		+ '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' 
 		+ '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' 
-		+ '<span><p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br/>PAC Expenditures: ' + indep_exp_supporting + '<br/> PAC Indirect Expenditures: ' + indep_exp_indirect + '<br/></p></span>';
+		+ '</div>'
+		+ '<div class="col-lg-4">' 
+		+ '<span><p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont 
+		+ '<br>PAC Expenditures: ' + indep_exp_supporting 
+		+ '<br> PAC Indirect Expenditures: ' + indep_exp_indirect + '<br/></p></span>'
+		+ '</div>';
         var rect = d3.select(id)
             .style("fill", function () {
                 return scale(total);

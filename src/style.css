@@ -36,7 +36,11 @@ div.tooltip {
 	width:150px;
 }
 
-
+.donation_details{
+	float:left;
+	position:relative;
+	background-color:yellow;
+	}
 
 /*div .Senator_Name {
     left: 5em;
