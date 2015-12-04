@@ -33,9 +33,13 @@ function update_senators(rawdata) {
 
 	var senatorInfoDiv = d3.select("#senator_info")
 		.style("border","1px solid black")
-		.style("width", "100%")
+		.style("width", "90em")
+		.style("height","20em")
+		.style("padding", "1em")
+		.style("border-radius","1em")
 		.style("position","absolute")
 		.style("left","10em")
+		.style("top","10em")
 		.style("fill","blue")
 		.html(function (d) {
             return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
@@ -64,12 +68,12 @@ function update_senators(rawdata) {
         var indep_exp_supporting = totals.get("dark");
         var indep_exp_indirect = totals.get("dark indirect");
 
-        var imgStringBegin = " <img src= img/";
+        var imgStringBegin = " <img src= Images/";
         var imgLocation = d.govtrack_id + ".jpeg";
         var imgStringEnd = ">";
         var imgURL = imgStringBegin + imgLocation + imgStringEnd;
         var infoPane_html = imgURL + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' 
-		+ '<span><h3 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h3></span>' 
+		+ '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' 
 		+ '<span><p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br/>PAC Expenditures: ' + indep_exp_supporting + '<br/> PAC Indirect Expenditures: ' + indep_exp_indirect + '<br/></p></span>';
         var rect = d3.select(id)
             .style("fill", function () {
