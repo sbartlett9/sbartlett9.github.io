@@ -32,11 +32,9 @@ function update_senators(rawdata) {
     ind_scale.domain(domain);
 
 	var senatorInfoDiv = d3.select("#senator_info")
-		.style("border","1px solid black")
 		.style("width", "90em")
 		.style("height","20em")
 		.style("padding", "1em")
-		.style("border-radius","1em")
 		.style("position","absolute")
 		.style("left","10em")
 		.style("top","10em")
@@ -90,18 +88,15 @@ function update_senators(rawdata) {
                 return scale(total);
             })
             .classed("senator", true)
-            .on('click', function (d) {
-               /* div.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                
-				div.html(tip_html)
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY) + "px")
-                    .style("opacity", 1);*/
-				
+            .on('mouseover', function (d) {
 				senatorInfoDiv
-					.html(infoPane_html);
+					.html(infoPane_html)
+					/*.classed('democrat')
+						.select('img')
+						.attr('class','democrat-circle')
+					.classed("republican",true)
+							.select('img')
+						.attr('class','republican-circle')*/;
 					
 
             })
@@ -109,7 +104,13 @@ function update_senators(rawdata) {
                 div.transition()
                     .duration(500)
                     .style("opacity", 0);
-            });
+            }
+			.on("click",function(d){
+					
+					
+			})
+			
+			);
     });
 
     /*this should work with d3.map, but for some reason it doesn't :( */
@@ -120,7 +121,12 @@ function update_senators(rawdata) {
         .map(rawdata, d3.map);
 
 
-}
+} 
+
+
+
+
+
 
 function getScale(sen) {
     if (sen.party == 'Republican') {

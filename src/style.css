@@ -263,3 +263,19 @@ text-indent: 2px;
 	 height:20em; 
 	 overflow-y:scroll;
 	}
+
+.democrat-circle{
+	width:10em;
+	height:10em;
+	border-radius:100%;
+	background-color:#2F4ED6;
+	border: 4px solid #2F4ED6;
+	}
+.republican-circle{
+	width:10em;
+	height:10em;
+	border-radius:100%;
+	background-color:#B61B1E;
+	border: 4px solid #90090C;
+	
+	}
