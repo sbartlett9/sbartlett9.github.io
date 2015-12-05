@@ -33,8 +33,13 @@ function update_senators(rawdata) {
 
 	var senatorInfoDiv = d3.select("#senator_info")
 		.style("border","1px solid black")
-		.style("width", "100%")
-		.style("margin-left","3em")
+		.style("width", "90em")
+		.style("height","20em")
+		.style("padding", "1em")
+		.style("border-radius","1em")
+		.style("position","absolute")
+		.style("left","10em")
+		.style("top","10em")
 		.style("fill","blue")
 		.html(function (d) {
             return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
@@ -58,18 +63,28 @@ function update_senators(rawdata) {
         var scale = getScale(d);
         var senatorName = d.first_name + " " + d.last_name;
         var totals = senator_totals.get(d.govtrack_id); //map like "dark": 567890, "light": 345668
+        var formatdollar = d3.format("0,000");
         var total = d3.sum(totals.values());
-        var ind_cont = totals.get("light");
-        var indep_exp_supporting = totals.get("dark");
-        var indep_exp_indirect = totals.get("dark indirect");
-
-        var imgStringBegin = " <img src= img/";
+        var ind_cont = "$ "+ formatdollar(totals.get("light"));
+        var ies = (ies === undefined) ? 0 : totals.get("dark");
+        var indep_exp_supporting = "$ "+formatdollar(ies);
+        var iei = (iei === undefined) ? 0 : totals.get("dark indirect");
+        var indep_exp_indirect = "$ "+formatdollar(iei);
+        var imgStringBegin = " <img src= Images/";
         var imgLocation = d.govtrack_id + ".jpeg";
         var imgStringEnd = ">";
         var imgURL = imgStringBegin + imgLocation + imgStringEnd;
-        var infoPane_html = imgURL + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' 
-		+ '<span><h3 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h3></span>' 
-		+ '<span><p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br/>PAC Expenditures: ' + indep_exp_supporting + '<br/> PAC Indirect Expenditures: ' + indep_exp_indirect + '<br/></p></span>';
+        var infoPane_html = 
+		'<div class="col-lg-2">' + imgURL + '</div>' 
+		+ '<div class="col-lg-6">'
+		+ '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' 
+		+ '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' 
+		+ '</div>'
+		+ '<div class="col-lg-4">' 
+		+ '<span><p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont 
+		+ '<br>PAC Expenditures: ' + indep_exp_supporting 
+		+ '<br> PAC Indirect Expenditures: ' + indep_exp_indirect + '<br/></p></span>'
+		+ '</div>';
         var rect = d3.select(id)
             .style("fill", function () {
                 return scale(total);

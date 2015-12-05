@@ -29,15 +29,18 @@ div.tooltip {
 }
 
 #senator_info img {
-    margin-left: 2em;
-	margin-right:2em;
+    margin:3em 0 0 2em;	
 	padding:0 auto;
     opacity: 1;
     float: left;
-   
+	width:150px;
 }
 
-
+.donation_details{
+	float:left;
+	position:relative;
+	background-color:yellow;
+	}
 
 /*div .Senator_Name {
     left: 5em;
@@ -60,7 +63,11 @@ div .total_contribution_amount{
     top: 3em;
 	font-size:1.5em;
 	}*/
-#senator_info h2, h3{
+#senator_info h2, #senator_info h3, #senator_info h4{
+	float:left;
+	font-weight:800;
+	padding-left:1em;
+	display:inline-block;
 	font-family:Georgia, Helvetica, Arial, sans-serif;
 	}
 
@@ -68,7 +75,7 @@ div .total_contribution_amount{
 	float:left;
 	font-family:Georgia, Helvetica, Arial, sans-serif;
 	font-size:1.2em;
-	margin-left:1em;
+	margin-left:2em;
 	line-height:1em;
 	
 	}
@@ -95,6 +102,27 @@ text-indent: 2px;
     color: #fff;
     border-radius: 2px;
 }
+.seating-chart{
+	position:absolute;
+	left:12em;
+	top:27em;
+	z-index:20;
+	width:80%;
+	height:auto;
+	}
+
+.seating-chart-duplicate{
+	position:absolute;
+	left:12em;
+	top:27em;
+	z-index:99;
+	width:80%;
+	height:auto;
+	}
+.seating-chart-duplicate rect{
+	opacity:.5;
+	fill:#CCCCCC;
+	}
 
 .d3-tip:after {
     box-sizing: border-box;
@@ -124,9 +152,6 @@ text-indent: 2px;
     height: 32em;
 }
 
-.seating-chart {
-    margin-top: 2em;
-}
 
 .democrat-rect {
     width: 25px;
@@ -217,20 +242,19 @@ text-indent: 2px;
 
 .searchSenatorInfo{
 	position:absolute;
-	left:55%;
-	top:20%;
-	width:20em;
+	left:35%;
+	top:8%;
+	width:50em;
 	height:10em;
 	border-radius:10px;
-	background-color:#959292;
 	opacity:.6;
 }
 
-.searchSenatorInfo .row{
+.searchSenatorInfo .input-group-item{
 	width:16em;
 	position:relative;
-	margin-top:2em;
-	margin-left:2em;
+	float:left;
+	margin-right:2em;
 	}
 	
 .searchSenatorInfo	.dropdown{
