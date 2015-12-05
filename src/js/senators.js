@@ -32,19 +32,9 @@ function update_senators(rawdata) {
     ind_scale.domain(domain);
 
     var senatorInfoDiv = d3.select("#senator_info")
-        .style("border", "1px solid black")
-        .style("width", "90em")
-        .style("height", "20em")
-        .style("padding", "1em")
-        .style("border-radius", "1em")
-        .style("position", "absolute")
-        .style("left", "10em")
-        .style("top", "10em")
-        .style("fill", "blue")
         .html(function (d) {
             return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
         });
-
 
     var div = d3.select("body").append("div")
         .attr("class", "tooltip")
@@ -96,7 +86,9 @@ function update_senators(rawdata) {
                     .style("opacity", 1);*/
 
                 senatorInfoDiv
-                    .html(infoPane_html);
+                    .transition()
+                    .style("visibility", "visible");
+                senatorInfoDiv.html(infoPane_html);
 
 
             })

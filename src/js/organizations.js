@@ -1,5 +1,7 @@
 var tm_height = 550;
 
+sen_rect_width = 84.6;
+sen_rect_scale = d3.scale.linear().range([0, sen_rect_width]);
 
 //Gets called when the page is loaded.
 function init() {
@@ -135,6 +137,9 @@ function position() {
 
 function selectSenators(org) {
     var senators = d3.select('#Layer_1').selectAll('rect').transition().style("opacity", .1);
+    sen_rect_scale.domain([0, d3.sum(org, function (d) {
+        return d.Total;
+    })]);
     org.forEach(function (d) {
         var id = '#id' + d.govtrack_id;
         var lid = '#lid' + d.govtrack_id;
@@ -144,7 +149,12 @@ function selectSenators(org) {
             .transition()
             .style("opacity", 1)
             .style("stroke", "black");
-        d3.select(lid).transition().attr("width", 30).style("opacity", .5);
+
+        d3.select(lid)
+            .transition()
+            .attr("width", sen_rect_scale(d.Total))
+            .attr("fill", color_scale(d.type))
+            .style("opacity", .9);
     });
 }
 
@@ -154,6 +164,11 @@ function clearSenatorSelection() {
         .transition()
         .style("opacity", 1)
         .style("stroke", "none");
+
+    d3.select('#senate_overlay').selectAll('rect')
+        .transition()
+        .attr('width', 0)
+        .style('opacity', 0);
     //reset tree map selections
     var tmap_nodes = d3.selectAll(".node");
     tmap_nodes.style("border", "solid 1px white");
