@@ -65,10 +65,11 @@ function update_senators(rawdata) {
         var totals = senator_totals.get(d.govtrack_id); //map like "dark": 567890, "light": 345668
         var formatdollar = d3.format("0,000");
         var total = d3.sum(totals.values());
-        var ind_cont = "$ "+formatdollar(totals.get("light"));
-        var indep_exp_supporting = "$ "+formatdollar(totals.get("dark"));
-        var indep_exp_indirect = "$ "+formatdollar(totals.get("dark indirect"));
-
+        var ind_cont = "$ "+ formatdollar(totals.get("light"));
+        var ies = (ies === undefined) ? 0 : totals.get("dark");
+        var indep_exp_supporting = "$ "+formatdollar(ies);
+        var iei = (iei === undefined) ? 0 : totals.get("dark indirect");
+        var indep_exp_indirect = "$ "+formatdollar(iei);
         var imgStringBegin = " <img src= Images/";
         var imgLocation = d.govtrack_id + ".jpeg";
         var imgStringEnd = ">";
