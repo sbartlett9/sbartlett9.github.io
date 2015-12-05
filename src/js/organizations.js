@@ -137,12 +137,14 @@ function selectSenators(org) {
     var senators = d3.select('#Layer_1').selectAll('rect').transition().style("opacity", .1);
     org.forEach(function (d) {
         var id = '#id' + d.govtrack_id;
+        var lid = '#lid' + d.govtrack_id;
         var sen = master_senators_list.get(d.govtrack_id)[0];
         var scale = getScale(sen);
         var rect = d3.select(id)
             .transition()
             .style("opacity", 1)
             .style("stroke", "black");
+        d3.select(lid).transition().attr("width", 30).style("opacity", .5);
     });
 }
 

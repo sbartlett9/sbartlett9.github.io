@@ -31,21 +31,21 @@ function update_senators(rawdata) {
 
     ind_scale.domain(domain);
 
-	var senatorInfoDiv = d3.select("#senator_info")
-		.style("border","1px solid black")
-		.style("width", "90em")
-		.style("height","20em")
-		.style("padding", "1em")
-		.style("border-radius","1em")
-		.style("position","absolute")
-		.style("left","10em")
-		.style("top","10em")
-		.style("fill","blue")
-		.html(function (d) {
+    var senatorInfoDiv = d3.select("#senator_info")
+        .style("border", "1px solid black")
+        .style("width", "90em")
+        .style("height", "20em")
+        .style("padding", "1em")
+        .style("border-radius", "1em")
+        .style("position", "absolute")
+        .style("left", "10em")
+        .style("top", "10em")
+        .style("fill", "blue")
+        .html(function (d) {
             return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
         });
-		
-		
+
+
     var div = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
@@ -64,34 +64,29 @@ function update_senators(rawdata) {
         var senatorName = d.first_name + " " + d.last_name;
         var totals = senator_totals.get(d.govtrack_id); //map like "dark": 567890, "light": 345668
         var formatdollar = d3.format("0,000");
-        var total = d3.sum(totals.values());
-        var ind_cont = "$ "+ formatdollar(totals.get("light"));
-        var ies = (ies === undefined) ? 0 : totals.get("dark");
-        var indep_exp_supporting = "$ "+formatdollar(ies);
-        var iei = (iei === undefined) ? 0 : totals.get("dark indirect");
-        var indep_exp_indirect = "$ "+formatdollar(iei);
+        var total = d3.sum(totals.values()); //use this for color scale
+
+        var ind_cont = "$ " + formatdollar(totals.get("light"));
+        var ies = totals.get("dark");
+        ies = (ies === undefined) ? 0 : ies;
+        var indep_exp_supporting = "$ " + formatdollar(ies);
+        var iei = totals.get("dark indirect");
+        iei = (iei === undefined) ? 0 : iei;
+        var indep_exp_indirect = "$ " + formatdollar(iei);
+
         var imgStringBegin = " <img src= Images/";
         var imgLocation = d.govtrack_id + ".jpeg";
         var imgStringEnd = ">";
         var imgURL = imgStringBegin + imgLocation + imgStringEnd;
-        var infoPane_html = 
-		'<div class="col-lg-2">' + imgURL + '</div>' 
-		+ '<div class="col-lg-6">'
-		+ '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' 
-		+ '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' 
-		+ '</div>'
-		+ '<div class="col-lg-4">' 
-		+ '<span><p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont 
-		+ '<br>PAC Expenditures: ' + indep_exp_supporting 
-		+ '<br> PAC Indirect Expenditures: ' + indep_exp_indirect + '<br/></p></span>'
-		+ '</div>';
+        var infoPane_html =
+            '<div class="col-lg-2">' + imgURL + '</div>' + '<div class="col-lg-6">' + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' + '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' + '</div>' + '<div class="col-lg-4">' + '<span><p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br>PAC Expenditures: ' + indep_exp_supporting + '<br> PAC Indirect Expenditures: ' + indep_exp_indirect + '<br/></p></span>' + '</div>';
         var rect = d3.select(id)
             .style("fill", function () {
                 return scale(total);
             })
             .classed("senator", true)
             .on('click', function (d) {
-               /* div.transition()
+                /* div.transition()
                     .duration(200)
                     .style("opacity", .9);
                 
@@ -99,10 +94,10 @@ function update_senators(rawdata) {
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY) + "px")
                     .style("opacity", 1);*/
-				
-				senatorInfoDiv
-					.html(infoPane_html);
-					
+
+                senatorInfoDiv
+                    .html(infoPane_html);
+
 
             })
             .on("mouseout", function (d) {
