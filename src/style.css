@@ -279,3 +279,9 @@ text-indent: 2px;
 	border: 4px solid #90090C;
 	
 	}
+.contribution-amount p{
+	font-family:Georgia, Helvetica, Arial, sans-serif;
+	font-size:2em;
+	line-height:1.5em;
+	padding-left:1em;
+	}
