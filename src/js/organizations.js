@@ -9,7 +9,7 @@ var formatdollar = d3.format("0,000"); //put this here because this file gets lo
 
 //Gets called when the page is loaded.
 function init() {
-    var width = 330;
+    var width = 520;
     var margin = {
         top: 1,
         right: 0,
