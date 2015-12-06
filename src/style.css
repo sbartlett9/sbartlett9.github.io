@@ -140,7 +140,7 @@ text-indent: 2px;
 
 .seating-chart {
     position: absolute;
-	width:90em;
+	width:40em;
     left: 20px;
     top: 27em;
     z-index: 20;
@@ -149,7 +149,7 @@ text-indent: 2px;
 
 .seating-chart-duplicate {
     position: absolute;
-	width:90em;
+	width:40em;
     left: 20px;
     top: 27em;
     z-index: 99;
@@ -454,3 +454,25 @@ li {
 	stroke-width: 20;
 	stroke-linecap:round;
 }
+
+/*D3 BAR CHART*/
+#chart rect{
+  fill: #4aaeea;
+}
+
+#chart text{
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end; 
+}
+
+.axis text{
+  font: 10px sans-serif;
+}
+
+.axis path, .axis line{
+  fill: none;
+  stroke : #fff;
+  shape-rendering: crispEdges;
+}
+
