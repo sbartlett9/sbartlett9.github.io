@@ -7,7 +7,7 @@
     <link type="text/css" rel="stylesheet" href="style.css" />
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js'></script>
-    <!--script src="js/jquery.js"></script-->
+     <!--script src="js/jquery.js"></script-->
     <link type="text/css" rel="stylesheet" href="css/jquery-ui.css" />
     <link type="text/css" rel="stylesheet" href="css/jquery-ui.structure.css" />
     <link type="text/css" rel="stylesheet" href="css/jquery-ui.theme.css" />
@@ -17,7 +17,7 @@
     <script src="lib/d3.js"></script>
     <script src="lib/colorbrewer.js"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-
+   
     <script src="js/bootstrap.js"></script>
     <script src="js/organizations.js"></script>
     <script src="js/senators.js"></script>
@@ -33,35 +33,39 @@
 <body onload="init()">
 
 
-    </head>
+</head>
 
 
 
     <script src="js/angular.js"></script>
     <script src="js/prefixfree.min.js"></script>
     <script src="js/senatorSearch.js"></script>
-
-
-
-    </head>
+ 
+ 
+ 			
+</head>
 
     <h3 id="title">Visualizing Campaign Contributions to the 114th Senate</h3>
     <div id='viz_container'>
 
 
         <div class="treemap">
-            <h3>Contributions</h3>
+            <h2>Contribution Type</h2>
+            <div class="white"><i class="fa fa-circle fa-2x" style="color:#ffffff;"></i><h4 style="display:inline-block;">Individual Contributions</h4></div>
+            <div class="grey"><i class="fa fa-circle fa-2x" style="color:#BFBFBF;"></i> <h4 style="display:inline-block;">Indenpendent Expenditures</h4></div>
+             <div class="dark_grey"><i class="fa fa-circle fa-2x" style="color:#787878;"></i><h4 style="display:inline-block;">Opponent Oppositions</h4></div>
             <!--            <h6>* with totals > 40k</h6>-->
             <!--
   <input type="checkbox" checked=true onchange="changeTreeSelection" name="individual">Individual</input>
 <input type="checkbox" checked=true onchange="changeTreeSelection" name="independent">PAC Spending</input>-->
-            <input id="orgslider" name="dick" type="range" min="0" step="25000" value="50000" onchange="updateMoneyRange(this.value)" />
+<br>
+            <input id="orgslider" type="range" min="0" step="25000" value="50000" onchange="updateMoneyRange(this.value)" />
 
             <div id="tmap">
             </div>
 
         </div>
-        <div id="main" ng-app="myApp">
+        <div id="main" ng-app="myApp" >
 
 
             <div class="seating-chart-duplicate">
@@ -111,7 +115,7 @@
 
                     <rect x="497.7" y="594.5" transform="matrix(0.3561 -0.9344 0.9344 0.3561 -232.1325 904.149)" width="84.6" height="52" id="lid300065" alt="Patrick Leahy" />
                     <rect x="559" y="616" transform="matrix(0.2409 -0.9706 0.9706 0.2409 -166.6444 1070.9442)" width="84.6" height="52" id="lid300073" alt="Barbara Mikulski" />
-                    <rect x="517.9" y="707.1" transform="matrix(0.2409 -0.9706 0.9706 0.2409 -286.1977 1100.2915)" width="84.6" height="52" id="lid412378" alt="Alan Franken" ng-style="myStyle" />
+                    <rect x="517.9" y="707.1" transform="matrix(0.2409 -0.9706 0.9706 0.2409 -286.1977 1100.2915)" width="84.6" height="52" id="lid412378" alt="Alan Franken" ng-style="myStyle"/>
                     <rect x="574.4" y="719.1" transform="matrix(0.1969 -0.9804 0.9804 0.1969 -235.2229 1202.9661)" width="84.6" height="52" id="lid300078" alt="Bill Nelson" />
                     <rect x="477.6" y="804.6" transform="matrix(0.2989 -0.9543 0.9543 0.2989 -428.0647 1078.4816)" width="84.6" height="52" id="lid412390" alt="Chris Coons" />
                     <rect x="533.1" y="819.5" transform="matrix(0.2272 -0.9739 0.9739 0.2272 -378.6801 1213.8616)" width="84.6" height="52" id="lid412242" alt="Amy Klobuchar" />
@@ -334,11 +338,11 @@
             <div id="senator_info"></div>
 
             <div class="row" id="senator_hover"></div>
+			
 
 
-
-
-            <!--div id="senatorsSearchList" class="input-group-item" ng-controller="senatorListCtrl">
+			  
+                <!--div id="senatorsSearchList" class="input-group-item" ng-controller="senatorListCtrl">
                     <div class="input-group">
                         <input type="text" class="form-control" id="query" placeholder="Search for Senator" ng-model="query"/>
                         	<select ng-model="orderList">
@@ -364,93 +368,93 @@
              
                     <br>
                 </div-->
-            <!--searchbox-->
+                <!--searchbox-->
+               
+                <div class="input-group-item dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Select from List of States
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">AL</a></li>
+                        <li><a href="#">AK</a></li>
+                        <li><a href="#">AS</a></li>
+                        <!--li role="separator" class="divider"></li-->
+                        <li><a href="#">AZ</a></li>
+                        <li><a href="#">AR</a></li>
+                        <li><a href="#">CA</a></li>
+                        <li><a href="#">CO</a></li>
+                        <li><a href="#">CT</a></li>
+                        <li><a href="#">DE</a></li>
+                        <li><a href="#">DC</a></li>
+                        <li><a href="#">FL</a></li>
+                        <li><a href="#">GA</a></li>
+                        <li><a href="#">HI</a></li>
+                        <li><a href="#">ID</a></li>
+                        <li><a href="#">IL</a></li>
+                        <li><a href="#">IN</a></li>
+                        <li><a href="#">IA</a></li>
+                        <li><a href="#">KS</a></li>
+                        <li><a href="#">KY</a></li>
+                        <li><a href="#">LA</a></li>
+                        <li><a href="#">ME</a></li>
+                        <li><a href="#">MD</a></li>
+                        <li><a href="#">MH</a></li>
+                        <li><a href="#">MA</a></li>
+                        <li><a href="#">MI</a></li>
+                        <li><a href="#">MN</a></li>
+                        <li><a href="#">MS</a></li>
+                        <li><a href="#">MO</a></li>
+                        <li><a href="#">MT</a></li>
+                        <li><a href="#">NE</a></li>
+                        <li><a href="#">NJ</a></li>
+                        <li><a href="#">NM</a></li>
+                        <li><a href="#">NY</a></li>
+                        <li><a href="#">ND</a></li>
+                        <li><a href="#">MP</a></li>
+                        <li><a href="#">OH</a></li>
+                        <li><a href="#">OK</a></li>
+                        <li><a href="#">OR</a></li>
+                        <li><a href="#">PA</a></li>
+                        <li><a href="#">RI</a></li>
+                        <li><a href="#">SC</a></li>
+                        <li><a href="#">SD</a></li>
+                        <li><a href="#">TN</a></li>
+                        <li><a href="#">TX</a></li>
+                        <li><a href="#">UT</a></li>
+                        <li><a href="#">VT</a></li>
+                        <li><a href="#">VA</a></li>
+                        <li><a href="#">WA</a></li>
+                        <li><a href="#">WV</a></li>
+                        <li><a href="#">WI</a></li>
+                        <li><a href="#">WY</a></li>
 
-            <div class="input-group-item dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Select from List of States
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">AL</a></li>
-                    <li><a href="#">AK</a></li>
-                    <li><a href="#">AS</a></li>
-                    <!--li role="separator" class="divider"></li-->
-                    <li><a href="#">AZ</a></li>
-                    <li><a href="#">AR</a></li>
-                    <li><a href="#">CA</a></li>
-                    <li><a href="#">CO</a></li>
-                    <li><a href="#">CT</a></li>
-                    <li><a href="#">DE</a></li>
-                    <li><a href="#">DC</a></li>
-                    <li><a href="#">FL</a></li>
-                    <li><a href="#">GA</a></li>
-                    <li><a href="#">HI</a></li>
-                    <li><a href="#">ID</a></li>
-                    <li><a href="#">IL</a></li>
-                    <li><a href="#">IN</a></li>
-                    <li><a href="#">IA</a></li>
-                    <li><a href="#">KS</a></li>
-                    <li><a href="#">KY</a></li>
-                    <li><a href="#">LA</a></li>
-                    <li><a href="#">ME</a></li>
-                    <li><a href="#">MD</a></li>
-                    <li><a href="#">MH</a></li>
-                    <li><a href="#">MA</a></li>
-                    <li><a href="#">MI</a></li>
-                    <li><a href="#">MN</a></li>
-                    <li><a href="#">MS</a></li>
-                    <li><a href="#">MO</a></li>
-                    <li><a href="#">MT</a></li>
-                    <li><a href="#">NE</a></li>
-                    <li><a href="#">NJ</a></li>
-                    <li><a href="#">NM</a></li>
-                    <li><a href="#">NY</a></li>
-                    <li><a href="#">ND</a></li>
-                    <li><a href="#">MP</a></li>
-                    <li><a href="#">OH</a></li>
-                    <li><a href="#">OK</a></li>
-                    <li><a href="#">OR</a></li>
-                    <li><a href="#">PA</a></li>
-                    <li><a href="#">RI</a></li>
-                    <li><a href="#">SC</a></li>
-                    <li><a href="#">SD</a></li>
-                    <li><a href="#">TN</a></li>
-                    <li><a href="#">TX</a></li>
-                    <li><a href="#">UT</a></li>
-                    <li><a href="#">VT</a></li>
-                    <li><a href="#">VA</a></li>
-                    <li><a href="#">WA</a></li>
-                    <li><a href="#">WV</a></li>
-                    <li><a href="#">WI</a></li>
-                    <li><a href="#">WY</a></li>
+                    </ul>
+                </div>
+                <!--dropdown-->
 
-                </ul>
             </div>
-            <!--dropdown-->
-
         </div>
-    </div>
-    <!--searchForSenatorInfo-->
+        <!--searchForSenatorInfo-->
 
-    <div class="placeholder barchart row">
-        <!--<h4>place holder for other bar chart</h4>-->
-        <div id="org_info"></div>
-    </div>
-
+        <div class="placeholder barchart row">
+            <!--<h4>place holder for other bar chart</h4>-->
+            <div id="org_info"></div>
+        </div>
 
 
-    <!--seating-chart col-lg-9-->
+
+        <!--seating-chart col-lg-9-->
     </div>
     <!--row-->
     </div>
-
-    <script type="text/javascript" src="js/app.js"></script>
-    <script>
-        $(function () {
-            if ($('li').text().indexOf('Alan') != -1) {
-                console.log("Has Alan");
-                //$('#id412378').attr('class','selected');
-            }
-        });
-    </script>
+    
+         <script type="text/javascript" src="js/app.js"></script>
+         <script>
+         $(function(){
+				if($('li').text().indexOf('Alan') != -1){
+					 console.log("Has Alan");
+					//$('#id412378').attr('class','selected');
+				}
+			});
+         </script>
