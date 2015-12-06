@@ -60,35 +60,7 @@ function updateMoneyRange(value) {
     }));
 }
 
-function redrawTreeMap(data) {
-    var nested_data = d3.nest()
-        .key(function (d) {
-            return d.DonorOrganization;
-        })
-        .key(function (d) {
-            return d.type;
-        })
-        .rollup(function (leaves) {
-            return d3.sum(leaves, function (d) {
-                return d.Total;
-            })
-        }).entries(data);
-    var root = {};
-    root.values = nested_data;
-    root.key = "Data";
-
-    root = reSortRoot(root, "Total");
-
-    var nodes = treemap.nodes(root);
-
-    //div.call(org_tip);
-
-    var node = div.datum(root).selectAll(".node")
-        .data(nodes)
-        .transition()
-        .duration(1500)
-        .call(position);
-} //Callback for when data is loaded
+//Callback for when data is loaded
 function update_orgs(flatdata) {
     console.log("org load success");
     senator_totals = d3.nest()
@@ -165,7 +137,7 @@ function update_orgs(flatdata) {
             clearSenatorSelection();
             d.selected = !d.selected;
             if (d.selected) {
-                this.style.border = "solid 2px black"; //("border-style", "solid");
+                this.style.border = "solid 4px yellow"; //("border-style", "solid");
                 selectSenators(master_org_list.get(d.name));
                 selected_org = d;
             }
@@ -213,7 +185,7 @@ function selectSenators(org) {
         var rect = d3.select(id);
         rect.transition()
             .style("opacity", 1)
-            .style("stroke", "black");
+            .style("stroke", "yellow");
         //        rect.on('mouseover', function (d) {
         //                //TODO show hover tip with d.total
         //            })
@@ -229,6 +201,8 @@ function selectSenators(org) {
             .style("opacity", .9);
     });
 }
+
+function clearOrgSelection() {}
 
 function clearSenatorSelection() {
     var senators = d3.select('#Layer_1')
