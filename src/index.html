@@ -75,7 +75,7 @@
 
             <div class="seating-chart-duplicate">
 
-                <svg version="1.1" id="senate_overlay" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 2500 1000" enable-background="new 0 0 1474.9 949.2" xml:space="preserve">
+                <svg version="1.1" id="senate_overlay" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1800 1000" enable-background="new 0 0 1474.9 949.2" xml:space="preserve">
 
                     <rect data-toggle="tooltip" data-placement="left" x="77.9" y="100.3" transform="matrix(0.988 0.1544 -0.1544 0.988 20.9382 -17.0441)" width="84.6" height="52" id="lid412598" alt="Cory Booker" />
                     <rect x="178.6" y="116" transform="matrix(0.988 0.1544 -0.1544 0.988 24.5752 -32.4037)" width="84.6" height="52" id="lid412542" alt="Elizabeth Warren" />
@@ -210,7 +210,7 @@
 
 
             <div class="seating-chart">
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 2500 1000" enable-background="new 0 0 1474.9 949.2" xml:space="preserve">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1800 1000" enable-background="new 0 0 1474.9 949.2" xml:space="preserve">
 
                     <rect data-toggle="tooltip" data-placement="left" x="77.9" y="100.3" transform="matrix(0.988 0.1544 -0.1544 0.988 20.9382 -17.0441)" width="84.6" height="52" fill="#0B049E" class="democrat NJ" id="id412598" alt="Cory Booker" />
                     <rect x="178.6" y="116" transform="matrix(0.988 0.1544 -0.1544 0.988 24.5752 -32.4037)" fill="#0B049E" width="84.6" height="52" class="democrat MA" id="id412542" alt="Elizabeth Warren" />
@@ -375,9 +375,10 @@
                 </div-->
                 <!--searchbox-->
                
+               <div class="row">
                 <div class="searchSenatorInfo">
-
-                <div id="searchbox" class="input-group-item" onSubmit = "srch()">
+				<div class="col-lg-2"></div>
+                <div id="searchbox" class="input-group-item col-lg-3" onSubmit = "srch()">
                     <div class="input-group">
                         <input type="text" id = "schbx" class="form-control" placeholder="Search for Senator Name" >
 
@@ -392,13 +393,10 @@
                     <br>
                 </div>
                 <!--searchbox-->
-
-                <div class="input-group-item dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <input type="TextBox" ID="datebox" Class="form-control" value = "Select from List of States"></input>
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" id = "ddlist" aria-labelledby="dropdownMenu1">
+				<div class="dropdown input-group-item col-lg-3">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Select from List of States
+                    <span class="caret"></span></button>
+                   <ul class="dropdown-menu" id = "ddlist" aria-labelledby="dropdownMenu1">
                         <li><a href="#">AL</a></li>
                         <li><a href="#">AK</a></li>
                         <li><a href="#">AS</a></li>
@@ -453,9 +451,13 @@
                         <li><a href="#">WY</a></li>
 
                     </ul>
-                </div>
+                  </div>	
+                    
+                    
+         
                 <!--dropdown-->
 
+            </div><!--searchSenatorInfo-->
             </div>
 
         </div>
