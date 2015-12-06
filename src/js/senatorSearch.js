@@ -3,502 +3,602 @@ function senatorListCtrl($scope) {
   {
     "name":"Benjamin Sasse",
     "state":"NE",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412671"
   },
   {
     "name":"Mike Rounds",
     "state":"SD",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412669"
   },
   {
     "name":"Thom Tillis",
     "state":"NC",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412668"
   },
   {
     "name":"Joni Ernst",
     "state":"IA",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412667"
   },
   {
     "name":"David Perdue",
     "state":"GA",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412666"
   },
   {
     "name":"Dan Sullivan",
     "state":"AK",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412665"
   },
   {
     "name":"Cory Booker",
     "state":"NJ",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412598"
   },
   {
     "name":"Timothy Kaine",
     "state":"VA",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412582"
   },
   {
     "name":"Ted Cruz",
     "state":"TX",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412573"
   },
   {
     "name":"Deb Fischer",
     "state":"NE",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412556"
   },
   {
     "name":"Heidi Heitkamp",
     "state":"ND",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412554"
   },
   {
     "name":"Steve Daines",
     "state":"MT",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412549"
   },
   {
     "name":"Angus King",
     "state":"ME",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412545"
   },
   {
     "name":"Elizabeth Warren",
     "state":"MA",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412542"
   },
   {
     "name":"Tom Cotton",
     "state":"AR",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412508"
   },
   {
     "name":"Brian Schatz",
     "state":"HI",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412507"
   },
   {
     "name":"Dean Heller",
     "state":"NV",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412218"
   },
   {
     "name":"Ron Wyden",
     "state":"OR",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"300100"
   },
   {
     "name":"David Vitter",
     "state":"LA",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"400418"
   },
   {
     "name":"Patrick Toomey",
     "state":"PA",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"400408"
   },
   {
     "name":"John Thune",
     "state":"SD",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"400546"
   },
   {
     "name":"Richard Shelby",
     "state":"AL",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"300089"
   },
   {
     "name":"Tim Scott",
     "state":"SC",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412471"
   },
   {
     "name":"Charles Schumer",
     "state":"NY",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"300087"
   },
   {
     "name":"Marco Rubio",
     "state":"FL",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"412491"
   },
   {
     "name":"Harry Reid",
     "state":"NV",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"300082"
   },
   {
     "name":"Robert Portman",
     "state":"OH",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"400325"
   },
   {
     "name":"Gary Peters",
     "state":"MI",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412305"
   },
   {
     "name":"Rand Paul",
     "state":"KY",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"412492"
   },
   {
     "name":"Patty Murray",
     "state":"WA",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"300076"
   },
   {
     "name":"Christopher Murphy",
     "state":"CT",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412194"
   },
   {
     "name":"Lisa Murkowski",
     "state":"AK",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"300075"
   },
   {
     "name":"Jerry Moran",
     "state":"KS",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"400284"
   },
   {
     "name":"Barbara Mikulski",
     "state":"MD",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"300073"
   },
   {
     "name":"John McCain",
     "state":"AZ",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"300071"
   },
   {
     "name":"Edward Markey",
     "state":"MA",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"400253"
   },
   {
     "name":"Mike Lee",
     "state":"UT",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"412495"
   },
   {
     "name":"Patrick Leahy",
     "state":"VT",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"300065"
   },
   {
     "name":"James Lankford",
     "state":"OK",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412464"
   },
   {
     "name":"Mark Kirk",
     "state":"IL",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"400222"
   },
   {
     "name":"Ron Johnson",
     "state":"WI",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"412496"
   },
   {
     "name":"John Isakson",
     "state":"GA",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"400194"
   },
   {
     "name":"John Hoeven",
     "state":"ND",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"412494"
   },
   {
     "name":"Mazie Hirono",
     "state":"HI",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412200"
   },
   {
     "name":"Martin Heinrich",
     "state":"NM",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412281"
   },
   {
     "name":"Charles Grassley",
     "state":"IA",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"300048"
   },
   {
     "name":"Cory Gardner",
     "state":"CO",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412406"
   },
   {
     "name":"Jeff Flake",
     "state":"AZ",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"400134"
   },
   {
     "name":"Joe Donnelly",
     "state":"IN",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412205"
   },
   {
     "name":"Michael Crapo",
     "state":"ID",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"300030"
   },
   {
     "name":"Daniel Coats",
     "state":"IN",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"402675"
   },
   {
     "name":"Bill Cassidy",
     "state":"LA",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412269"
   },
   {
     "name":"Shelley Capito",
     "state":"WV",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"400061"
   },
   {
     "name":"Richard Burr",
     "state":"NC",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"400054"
   },
   {
     "name":"Barbara Boxer",
     "state":"CA",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"300011"
   },
   {
     "name":"John Boozman",
     "state":"AR",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"400040"
   },
   {
     "name":"Roy Blunt",
     "state":"MO",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"400034"
   },
   {
     "name":"Richard Blumenthal",
     "state":"CT",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"412490"
   },
   {
     "name":"Michael Bennet",
     "state":"CO",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"412330"
   },
   {
     "name":"Tammy Baldwin",
     "state":"WI",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"400013"
   },
   {
     "name":"Kelly Ayotte",
     "state":"NH",
-    "term":4.9
+    "term_year":4.9,
+    "govtrack_id":"412493"
   },
   {
     "name":"Joe Manchin",
     "state":"WV",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412391"
   },
   {
     "name":"Chris Coons",
     "state":"DE",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412390"
   },
   {
     "name":"Alan Franken",
     "state":"MN",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412378"
   },
   {
     "name":"Kirsten Gillibrand",
     "state":"NY",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412223"
   },
   {
     "name":"Mark Warner",
     "state":"VA",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412321"
   },
   {
     "name":"Tom Udall",
     "state":"NM",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"400413"
   },
   {
     "name":"Jeanne Shaheen",
     "state":"NH",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412323"
   },
   {
     "name":"Jefferson Sessions",
     "state":"AL",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"300088"
   },
   {
     "name":"Pat Roberts",
     "state":"KS",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"300083"
   },
   {
     "name":"James Risch",
     "state":"ID",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412322"
   },
   {
     "name":"John Reed",
     "state":"RI",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"300081"
   },
   {
     "name":"Jeff Merkley",
     "state":"OR",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"412325"
   },
   {
     "name":"Mitch McConnell",
     "state":"KY",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"300072"
   },
   {
     "name":"James Inhofe",
     "state":"OK",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"300055"
   },
   {
     "name":"Lindsey Graham",
     "state":"SC",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"300047"
   },
   {
     "name":"Michael Enzi",
     "state":"WY",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"300041"
   },
   {
     "name":"Richard Durbin",
     "state":"IL",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"300038"
   },
   {
     "name":"John Cornyn",
     "state":"TX",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"300027"
   },
   {
     "name":"Susan Collins",
     "state":"ME",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"300025"
   },
   {
     "name":"Thad Cochran",
     "state":"MS",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"300023"
   },
   {
     "name":"Lamar Alexander",
     "state":"TN",
-    "term":0.9
+    "term_year":0.9,
+    "govtrack_id":"300002"
   },
   {
     "name":"Roger Wicker",
     "state":"MS",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"400432"
   },
   {
     "name":"John Barrasso",
     "state":"WY",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412251"
   },
   {
     "name":"Sheldon Whitehouse",
     "state":"RI",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412247"
   },
   {
     "name":"Jon Tester",
     "state":"MT",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412244"
   },
   {
     "name":"Debbie Stabenow",
     "state":"MI",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"300093"
   },
   {
     "name":"Bernard Sanders",
     "state":"VT",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"400357"
   },
   {
     "name":"Bill Nelson",
     "state":"FL",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"300078"
   },
   {
     "name":"Robert MenÃ©ndez",
     "state":"NJ",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"400272"
   },
   {
     "name":"Claire McCaskill",
     "state":"MO",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412243"
   },
   {
     "name":"Amy Klobuchar",
     "state":"MN",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412242"
   },
   {
     "name":"Orrin Hatch",
     "state":"UT",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"300052"
   },
   {
     "name":"Dianne Feinstein",
     "state":"CA",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"300043"
   },
   {
     "name":"Bob Corker",
     "state":"TN",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412248"
   },
   {
     "name":"Robert Casey",
     "state":"PA",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"412246"
   },
   {
     "name":"Thomas Carper",
     "state":"DE",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"300019"
   },
   {
     "name":"Benjamin Cardin",
     "state":"MD",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"400064"
   },
   {
     "name":"Maria Cantwell",
     "state":"WA",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"300018"
   },
   {
     "name":"Sherrod Brown",
     "state":"OH",
-    "term":2.9
+    "term_year":2.9,
+    "govtrack_id":"400050"
   }
 ];
 $scope.orderList = "name";

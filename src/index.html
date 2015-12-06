@@ -325,18 +325,18 @@
                         <select ng-model="orderList">
                             <option value="name">By Name</option>
                              <option value="state">By State</option>
-                            <option value="-term">Oldest</option>
-                            <option value="term">Newest</option>
+                            <option value="-term_year">Oldest</option>
+                            <option value="term_year">Newest</option>
                           </select>
                           
-                            <ul id="notebook_ul">
+                            <ul id="senator_ul">
                             <li ng-repeat="senator in senators | filter:query | orderBy: orderList">
                               name: {{senator.name}}<br/>
                               state: {{senator.state}}<br/>
-                              term: {{senator.term}}<br/>
-                              <div class="right top">{{senator.term}}</div>
+                              term: {{senator.term_year}}<br/>
+                              <div class="right top">term length:{{senator.term_year}}</div>
                             </li>
-                          </ul>
+                           </ul>
                        
                     </div>
                     <!-- /input-group -->
