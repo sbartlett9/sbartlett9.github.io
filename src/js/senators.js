@@ -169,6 +169,7 @@ function clstat() {
 }
 
 function srch() {
+    clstat();
     var srch = document.getElementById("schbx").value
     console.log(srch);
     var srch = new RegExp(srch, 'i')
@@ -220,9 +221,12 @@ function srch() {
     console.log(filtered);
     filtered.forEach(function (d) {
         console.log(d)
-        var seln = d3.select(d);
+        var seln = d3.selectAll(d);
         console.log(seln);
         seln.classed("foobar", true);
+        seln.transition()
+            .style("opacity", 1)
+            .style("stroke", "orangered");
     })
 
 }
