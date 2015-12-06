@@ -30,7 +30,22 @@ div.tooltip {
     pointer-events: none;
 }
 
-#senator_info,
+#senator_info{
+	position:absolute;
+	left:28%;
+	background:whitesmoke;
+	box-shadow:inset 1px 1px 0 white;
+	border-radius:5px;
+	border:1px solid rgba(0,0,0,0.2);
+	padding:1em 1em;
+	}
+#senator_info p{
+	font-size:20px;
+	}
+#senator_info img{
+	padding-top:0;
+	padding-bottom:2em;
+	}
 #org_info {
     position: relative;
     border: 1px solid black;
@@ -318,7 +333,7 @@ text-indent: 2px;
   background: whitesmoke;
   position: absolute;
   left: 2em;
-  top:2em;
+  top:4em;
   width: 400px;
   padding: 15px;
   border: 1px solid rgba(0, 0, 0, 0.2);
