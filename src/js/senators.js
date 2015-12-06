@@ -78,9 +78,9 @@ function update_senators(rawdata) {
 
         +'<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont
             + '<br>Independent Expenditures: ' + indep_exp_supporting + '<br> Opponent Opposition: ' + indep_exp_indirect + '<br/></p>' + '</div>' + '</div>'
-			
-			
-		;
+
+
+        ;
         var rect = d3.select(id)
             .style("fill", function () {
                 return scale(total);
@@ -124,12 +124,18 @@ function selectSenator(sen) {
     //TODO clear any org selections
     selected_senator = sen;
     updateOrgMap(org_rawdata.filter(function (d) {
-        return d.govtrack_id == sen.govtrack_id;
+        var filter = d3.select("#orgslider")[0][0].value;
+        return d.govtrack_id == sen.govtrack_id && d.Total > filter;
+        //return d.govtrack_id == sen.govtrack_id;
     }));
     console.log(sen);
 
 }
 
+function deselectSenator(sen) {
+    selected_senator = null;
+    resetOrgMap();
+}
 
 function getScale(sen) {
     if (sen.party == 'Republican') {

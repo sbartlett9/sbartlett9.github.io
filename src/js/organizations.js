@@ -60,6 +60,13 @@ function updateMoneyRange(value) {
     }));
 }
 
+function resetOrgMap() { //basically an unfilter, resets to filter from slider 
+    var filter = d3.select("#orgslider")[0][0].value;
+    updateOrgMap(org_rawdata.filter(function (d) {
+        return d.Total > filter;
+    }));
+}
+
 function updateOrgMap(flatdata) {
     var nested_data = d3.nest()
         .key(function (d) {
@@ -103,7 +110,9 @@ function updateOrgMap(flatdata) {
     node.exit().remove();
     node.enter().append("div")
         .attr("class", "node");
-    node.call(position)
+    node.transition()
+        .duration(500)
+        .call(position)
         .style("background", function (d) {
             //return d.children ? null : color_scale(master_org_list.get(d.key).type);
             return d.depth == 2 ? color_scale(d.name) : null;
@@ -125,7 +134,7 @@ function updateOrgMap(flatdata) {
             return d.children ? d.name : null
         })
 
-    .on("click", function (d) {
+    node.on("click", function (d) {
             clearSenatorSelection();
             d.selected = !d.selected;
             if (d.selected) {
@@ -205,13 +214,13 @@ function selectSenators(org) {
         //            .on("mouseout", function (d) {
         //                //TODO hide/destroy ttip
         //            });        rect.call(tip);
-        d3.select(lid)
-            .transition()
-            .attr("width", sen_rect_scale(d.Total))
-            .attr("fill", function () {
-                return color_scale(d.type);
-            })
-            .style("opacity", .9);
+        //        d3.select(lid)
+        //            .transition()
+        //            .attr("width", sen_rect_scale(d.Total))
+        //            .attr("fill", function () {
+        //                return color_scale(d.type);
+        //            })
+        //            .style("opacity", .9);    
     });
 }
 
