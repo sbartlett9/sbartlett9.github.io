@@ -58,6 +58,8 @@ function update_senators(rawdata) {
         var senatorName = d.first_name + " " + d.last_name;
         var totals = senator_totals.get(d.govtrack_id); //map like "dark": 567890, "light": 345668
         var total = totals ? d3.sum(totals.values()) : 0;
+        var age = (new Date("06/12/2015") - new Date(d.birthday))/ (1000 * 3600 * 24 * 365);
+        var tenure = (new Date("06/12/2015") - new Date(d.assumed_office))/ (1000 * 3600 * 24 * 365);
         if (totals) {
             var ind_cont = "$ " + formatdollar(totals.get("light"));
             var ies = totals.get("dark");
