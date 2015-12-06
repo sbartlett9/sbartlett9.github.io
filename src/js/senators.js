@@ -58,8 +58,8 @@ function update_senators(rawdata) {
         var senatorName = d.first_name + " " + d.last_name;
         var totals = senator_totals.get(d.govtrack_id); //map like "dark": 567890, "light": 345668
         var total = totals ? d3.sum(totals.values()) : 0;
-        var age = (new Date("06/12/2015") - new Date(d.birthday))/ (1000 * 3600 * 24 * 365);
-        var tenure = (new Date("06/12/2015") - new Date(d.assumed_office))/ (1000 * 3600 * 24 * 365);
+        var age = (new Date("06/12/2015") - new Date(d.birthday)) / (1000 * 3600 * 24 * 365);
+        var tenure = (new Date("06/12/2015") - new Date(d.assumed_office)) / (1000 * 3600 * 24 * 365);
         if (totals) {
             var ind_cont = "$ " + formatdollar(totals.get("light"));
             var ies = totals.get("dark");
@@ -86,12 +86,19 @@ function update_senators(rawdata) {
                 return scale(total);
             })
             .classed("senator", true)
-            .on('click', function (d) {
+            .on('click', function () {
                 senatorInfoDiv
                     .transition()
                     .style("visibility", "visible");
                 senatorInfoDiv.html(infoPane_html);
-
+                this.selected = !this.selected;
+                if (this.selected) {
+                    this.style.stroke = "yellow";
+                    selectSenator(d);
+                } else {
+                    this.style.stroke = "none";
+                    deselectSenator();
+                }
             })
             .on("mouseout", function (d) {
                     div.transition()
@@ -113,8 +120,15 @@ function update_senators(rawdata) {
 }
 
 
+function selectSenator(sen) {
+    //TODO clear any org selections
+    selected_senator = sen;
+    updateOrgMap(org_rawdata.filter(function (d) {
+        return d.govtrack_id == sen.govtrack_id;
+    }));
+    console.log(sen);
 
-
+}
 
 
 function getScale(sen) {
@@ -130,16 +144,15 @@ function getScale(sen) {
 function stateseln(State) {
     clstat();
     //console.log(State);
-    var x = "."+ State
-    //console.log(x);
+    var x = "." + State
+        //console.log(x);
     var rec = d3.select('#Layer_1').selectAll("rect").filter(x).attr("style", "stroke: orangered; stroke-width: 4");
     rec.classed('foobar', true)
-    //console.log(rec)
-    
+        //console.log(rec)
+
 }
 
-function clstat()
-{
+function clstat() {
     console.log("Y")
     var doo = d3.select('#Layer_1').selectAll("rect").filter(".foobar")
     doo.classed('foobar', false)
@@ -147,27 +160,26 @@ function clstat()
     doo.style("stroke", "none")
 }
 
-function srch()
-{
-     var srch =document.getElementById("schbx").value
+function srch() {
+    var srch = document.getElementById("schbx").value
     console.log(srch);
-     var srch = new RegExp(srch, 'i')
-     console.log(srch)
-     var sens = ['Lisa Murkowski', 'Dan Sullivan', 'Jefferson Sessions', 'Richard Shelby', 'John Boozman', 'Tom Cotton',
+    var srch = new RegExp(srch, 'i')
+    console.log(srch)
+    var sens = ['Lisa Murkowski', 'Dan Sullivan', 'Jefferson Sessions', 'Richard Shelby', 'John Boozman', 'Tom Cotton',
       'Jeff Flake', 'John McCain', 'Dianne Feinstein', 'Barbara Boxer', 'Michael Bennet', 'Cory Gardner', 'Richard Blumenthal',
        'Christopher Murphy', 'Thomas Carper', 'Chris Coons', 'Bill Nelson', 'Marco Rubio', 'John Isakson', 'David Perdue',
         'Mazie Hirono', 'Brian Schatz', 'Charles Grassley', 'Joni Ernst', 'James Risch', 'Michael Crapo', 'Richard Durbin',
          'Mark Kirk', 'Daniel Coats', 'Joe Donnelly', 'Pat Roberts', 'Jerry Moran', 'Mitch McConnell', 'Rand Paul',
           'Bill Cassidy', 'David Vitter', 'Edward Markey', 'Elizabeth Warren', 'Benjamin Cardin', 'Barbara Mikulski',
            'Susan Collins', 'Angus King', 'Debbie Stabenow', 'Gary Peters', 'Amy Klobuchar', 'Alan Franken', 'Claire McCaskill',
-            'Roy Blunt', 'Roger Wicker', 'Thad Cochran', 'Jon Tester', 'Steve Daines', 'Richard Burr', 'Thom Tillis', 
+            'Roy Blunt', 'Roger Wicker', 'Thad Cochran', 'Jon Tester', 'Steve Daines', 'Richard Burr', 'Thom Tillis',
             'John Hoeven', 'Heidi Heitkamp', 'Deb Fischer', 'Benjamin Sasse', 'Jeanne Shaheen', 'Kelly Ayotte',
              'Robert Menendez', 'Cory Booker', 'Tom Udall', 'Martin Heinrich', 'Harry Reid', 'Dean Heller',
               'Kirsten Gillibrand', 'Charles Schumer', 'Sherrod Brown', 'Robert Portman', 'James Inhofe',
                'James Lankford', 'Jeff Merkley', 'Ron Wyden', 'Robert Casey', 'Patrick Toomey', 'Sheldon Whitehouse',
                 'John Reed', 'Lindsey Graham', 'Tim Scott', 'John Thune', 'Mike Rounds', 'Bob Corker', 'Lamar Alexander',
                  'John Cornyn', 'Ted Cruz', 'Orrin Hatch', 'Mike Lee', 'Mark Warner', 'Timothy Kaine', 'Bernard Sanders',
-                  'Patrick Leahy', 'Maria Cantwell', 'Patty Murray', 'Tammy Baldwin', 'Ron Johnson', 'Joe Manchin', 
+                  'Patrick Leahy', 'Maria Cantwell', 'Patty Murray', 'Tammy Baldwin', 'Ron Johnson', 'Joe Manchin',
                   'Shelley Capito', 'John Barrasso', 'Michael Enzi'];
     var ids = ['#lid300041', '#lid412251', '#lid400061', '#lid412391', '#lid412496', '#lid400013', '#lid300076', '#lid300018', '#lid300065',
  '#lid400357', '#lid412582', '#lid412321', '#lid412495', '#lid300052', '#lid412573', '#lid300027', '#lid300002', '#lid412248',
@@ -181,21 +193,22 @@ function srch()
          '#lid400194', '#lid412491', '#lid300078', '#lid412390', '#lid300019', '#lid412194', '#lid412490', '#lid412406', '#lid412330',
           '#lid300011', '#lid300043', '#lid300071', '#lid400134', '#lid412508', '#lid400040', '#lid300089', '#lid300088', '#lid412665',
            '#lid300075'];
-    var filtered = (function(){
-    var filtered = [], i = sens.length;
-    while (i--) {
-        if (srch.test(sens[i])) {
-            filtered.push(ids[i]);
+    var filtered = (function () {
+        var filtered = [],
+            i = sens.length;
+        while (i--) {
+            if (srch.test(sens[i])) {
+                filtered.push(ids[i]);
+            }
         }
-    }
-    return filtered;
-})();
+        return filtered;
+    })();
     console.log(filtered);
     filtered.forEach(function (d) {
         console.log(d)
         var seln = d3.select(d).style("stroke", "black");;
         console.log(seln);
         seln.classed("foobar", true);
-}  )
+    })
 
 }
