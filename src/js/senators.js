@@ -1,12 +1,20 @@
+//global
+selected_senator = null;
+
+repub_scale = d3.scale.quantize()
+    .range(colorbrewer.Reds[5]);
+
+dem_scale = d3.scale.quantize()
+    .range(colorbrewer.Blues[5]);
+
+ind_scale = d3.scale.quantize()
+    .range(colorbrewer.Greens[5]);
+
 function init_senators() {
-    repub_scale = d3.scale.quantize()
-        .range(colorbrewer.Reds[5]);
-
-    dem_scale = d3.scale.quantize()
-        .range(colorbrewer.Blues[5]);
-
-    ind_scale = d3.scale.quantize()
-        .range(colorbrewer.Greens[5]);
+    senatorInfoDiv = d3.select("#senator_info")
+        .html(function (d) {
+            return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
+        });
 
     d3.json('data/senators_with_totals.json', update_senators);
 }
@@ -15,26 +23,21 @@ function init_senators() {
 //Callback for when data is loaded
 function update_senators(rawdata) {
     console.log("senator data load success");
-
     var min = d3.min(senator_totals.values(), function (d) {
         return d3.sum(d.values());
-    });
+    }); // var min = 0;
     var max = d3.max(senator_totals.values(), function (d) {
         return d3.sum(d.values());
     });
     var pivot = (max - min) / 2
     domain = [min, pivot, max];
+    //domain = [min, max];
 
     repub_scale.domain(domain);
 
     dem_scale.domain(domain);
 
     ind_scale.domain(domain);
-
-    var senatorInfoDiv = d3.select("#senator_info")
-        .html(function (d) {
-            return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
-        });
 
 
     var div = d3.select("body").append("div")
@@ -54,15 +57,16 @@ function update_senators(rawdata) {
         var scale = getScale(d);
         var senatorName = d.first_name + " " + d.last_name;
         var totals = senator_totals.get(d.govtrack_id); //map like "dark": 567890, "light": 345668
-        var formatdollar = d3.format("0,000");
-        var total = d3.sum(totals.values());
-        var ind_cont = "$ " + formatdollar(totals.get("light"));
-        var ies = totals.get("dark");
-        ies = (ies === undefined) ? 0 : ies;
-        var indep_exp_supporting = "$ " + formatdollar(ies);
-        var iei = totals.get("dark indirect");
-        iei = (iei === undefined) ? 0 : iei;
-        var indep_exp_indirect = "$ " + formatdollar(iei);
+        var total = totals ? d3.sum(totals.values()) : 0;
+        if (totals) {
+            var ind_cont = "$ " + formatdollar(totals.get("light"));
+            var ies = totals.get("dark");
+            ies = (ies === undefined) ? 0 : ies;
+            var indep_exp_supporting = "$ " + formatdollar(ies);
+            var iei = totals.get("dark indirect");
+            iei = (iei === undefined) ? 0 : iei;
+            var indep_exp_indirect = "$ " + formatdollar(iei);
+        }
         var imgStringBegin = " <img src= Images/";
         var imgLocation = d.govtrack_id + ".jpeg";
         var imgStringEnd = ">";
@@ -82,7 +86,6 @@ function update_senators(rawdata) {
                     .transition()
                     .style("visibility", "visible");
                 senatorInfoDiv.html(infoPane_html);
-
 
             })
             .on("mouseout", function (d) {
