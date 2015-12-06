@@ -3,6 +3,8 @@ var tm_height = 550;
 sen_rect_width = 84.6;
 sen_rect_scale = d3.scale.linear().rangeRound([0, sen_rect_width]);
 
+selected_org = null;
+
 //Gets called when the page is loaded.
 function init() {
     var width = 350;
@@ -110,6 +112,9 @@ function update_orgs(rawdata) {
         .style("z-index", function (d) {
             return d.depth == 1 ? 20 : 0;
         })
+        .attr("title", function (d) {
+            return d.depth == 1 ? d.name : null;
+        })
         .text(function (d) {
             return d.children ? d.name : null
         })
@@ -119,6 +124,7 @@ function update_orgs(rawdata) {
             if (d.selected) {
                 this.style.border = "solid 2px black"; //("border-style", "solid");
                 selectSenators(master_org_list.get(d.name));
+                selected_org = d;
             }
             if (!d.selected) {
                 var div = d3.select('#org_info')
@@ -165,7 +171,13 @@ function selectSenators(org) {
         var rect = d3.select(id)
             .transition()
             .style("opacity", 1)
-            .style("stroke", "black");
+            .style("stroke", "black")
+            .on('mouseover', function (d) {
+                //TODO show hover tip with d.total
+            })
+            .on("mouseout", function (d) {
+                //TODO hide/destroy ttip
+            });
 
         d3.select(lid)
             .transition()

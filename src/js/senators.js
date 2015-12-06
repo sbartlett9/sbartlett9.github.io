@@ -1,3 +1,6 @@
+//global
+selected_senator = null;
+
 function init_senators() {
     repub_scale = d3.scale.quantize()
         .range(colorbrewer.Reds[5]);
