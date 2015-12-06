@@ -440,3 +440,13 @@ li {
 	width:120%;
 	height:120%;
 	}
+	
+@keyframes bounce {
+     
+}
+
+.selected{
+	stroke: black;
+	stroke-width: 20;
+	stroke-linecap:round;
+}

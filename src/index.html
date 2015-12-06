@@ -30,7 +30,7 @@
 
 </head>
 
-<body onload="init()" ng-app="myApp">
+<body onload="init()">
 
 
 </head>
@@ -60,7 +60,7 @@
             </div>
 
         </div>
-        <div id="main">
+        <div id="main" ng-app="myApp" >
 
 
             <div class="seating-chart-duplicate">
@@ -110,7 +110,7 @@
 
                     <rect x="497.7" y="594.5" transform="matrix(0.3561 -0.9344 0.9344 0.3561 -232.1325 904.149)" width="84.6" height="52" id="lid300065" alt="Patrick Leahy" />
                     <rect x="559" y="616" transform="matrix(0.2409 -0.9706 0.9706 0.2409 -166.6444 1070.9442)" width="84.6" height="52" id="lid300073" alt="Barbara Mikulski" />
-                    <rect x="517.9" y="707.1" transform="matrix(0.2409 -0.9706 0.9706 0.2409 -286.1977 1100.2915)" width="84.6" height="52" id="lid412378" alt="Alan Franken" />
+                    <rect x="517.9" y="707.1" transform="matrix(0.2409 -0.9706 0.9706 0.2409 -286.1977 1100.2915)" width="84.6" height="52" id="lid412378" alt="Alan Franken" ng-style="myStyle"/>
                     <rect x="574.4" y="719.1" transform="matrix(0.1969 -0.9804 0.9804 0.1969 -235.2229 1202.9661)" width="84.6" height="52" id="lid300078" alt="Bill Nelson" />
                     <rect x="477.6" y="804.6" transform="matrix(0.2989 -0.9543 0.9543 0.2989 -428.0647 1078.4816)" width="84.6" height="52" id="lid412390" alt="Chris Coons" />
                     <rect x="533.1" y="819.5" transform="matrix(0.2272 -0.9739 0.9739 0.2272 -378.6801 1213.8616)" width="84.6" height="52" id="lid412242" alt="Amy Klobuchar" />
@@ -245,7 +245,7 @@
 
                     <rect x="497.7" y="594.5" transform="matrix(0.3561 -0.9344 0.9344 0.3561 -232.1325 904.149)" fill="#0B049E" width="84.6" height="52" class="democrat VT" id="id300065" alt="Patrick Leahy" />
                     <rect x="559" y="616" transform="matrix(0.2409 -0.9706 0.9706 0.2409 -166.6444 1070.9442)" fill="#0B049E" width="84.6" height="52" class="democrat MD" id="id300073" alt="Barbara Mikulski" />
-                    <rect x="517.9" y="707.1" transform="matrix(0.2409 -0.9706 0.9706 0.2409 -286.1977 1100.2915)" fill="#0B049E" width="84.6" height="52" class="democrat MN" id="id412378" alt="Alan Franken" />
+                    <rect x="517.9" y="707.1" transform="matrix(0.2409 -0.9706 0.9706 0.2409 -286.1977 1100.2915)" fill="#0B049E" width="84.6" height="52" class="democrat MN" id="id412378" alt="Alan Franken" ng-style="myStyle" />
                     <rect x="574.4" y="719.1" transform="matrix(0.1969 -0.9804 0.9804 0.1969 -235.2229 1202.9661)" fill="#0B049E" width="84.6" height="52" class="democrat FL" id="id300078" alt="Bill Nelson" />
                     <rect x="477.6" y="804.6" transform="matrix(0.2989 -0.9543 0.9543 0.2989 -428.0647 1078.4816)" fill="#0B049E" width="84.6" height="52" class="democrat DE" id="id412390" alt="Chris Coons" />
                     <rect x="533.1" y="819.5" transform="matrix(0.2272 -0.9739 0.9739 0.2272 -378.6801 1213.8616)" fill="#0B049E" width="84.6" height="52" class="democrat MN" id="id412242" alt="Amy Klobuchar" />
@@ -337,7 +337,7 @@
 
 
 			  
-                <div id="senatorsSearchList" class="input-group-item" ng-controller="senatorListCtrl">
+                <!--div id="senatorsSearchList" class="input-group-item" ng-controller="senatorListCtrl">
                     <div class="input-group">
                         <input type="text" class="form-control" id="query" placeholder="Search for Senator" ng-model="query"/>
                         	<select ng-model="orderList">
@@ -348,7 +348,7 @@
                           </select>
                           
                             <ul id="senator_ul">
-                                <li ng-reply="test" ng-repeat="senator in senators | filter:query | orderBy: orderList">
+                                <li type="button" ng-repeat="senator in senators | filter:query | orderBy: orderList" ng-attr-stroke="grey">
                                   name: {{senator.name}}<br/>
                                   state: {{senator.state}}<br/>
                                   term: {{senator.term_year}}<br/>
@@ -356,19 +356,15 @@
                                   <div class="right top">term length:{{senator.term_year}}</div>
                                 </li>
                             </ul>
+                            <span ng-style="myStyle">Sample Text</span>
                             
 
                     </div>
              
                     <br>
-                </div>
+                </div-->
                 <!--searchbox-->
-                <script>
-					var senTemp = $('li').attr('ng-reply');
-                	//console.log($('li').attr('ng-reply'));
-					console.log(senTemp);
-                </script>
-
+               
                 <div class="input-group-item dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         Select from List of States
@@ -449,3 +445,11 @@
     </div>
     
          <script type="text/javascript" src="js/app.js"></script>
+         <script>
+         $(function(){
+				if($('li').text().indexOf('Alan') != -1){
+					 console.log("Has Alan");
+					//$('#id412378').attr('class','selected');
+				}
+			});
+         </script>
