@@ -261,41 +261,7 @@ text-indent: 2px;
     text-indent: 2px;
 }
 
-.searchSenatorInfo {
-    position: absolute;
-    left: 20px;
-    top: 8%;
-    width: 50em;
-    border-radius: 10px;
-    opacity: .6;
-}
 
-.searchSenatorInfo {
-    position: absolute;
-    left: 35%;
-    top: 8%;
-    width: 50em;
-    height: 10em;
-    border-radius: 10px;
-    opacity: .6;
-}
-
-.searchSenatorInfo .input-group-item {
-    width: 16em;
-    position: relative;
-    float: left;
-    margin-right: 2em;
-}
-
-.searchSenatorInfo .dropdown {
-    width: 15em;
-    margin: 0 auto;
-}
-
-.dropdown-menu {
-    height: 20em;
-    overflow-y: scroll;
-}
 
 .democrat-circle {
     width: 10em;
