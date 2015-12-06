@@ -81,7 +81,7 @@ function update_senators(rawdata) {
                 return scale(total);
             })
             .classed("senator", true)
-            .on('mouseover', function (d) {
+            .on('click', function (d) {
                 senatorInfoDiv
                     .transition()
                     .style("visibility", "visible");
