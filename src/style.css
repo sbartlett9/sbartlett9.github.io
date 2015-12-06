@@ -138,6 +138,7 @@ text-indent: 2px;
     width: 80%;
     height: auto;
     pointer-events: none;
+    opacity: 0;
 }
 
 .seating-chart-duplicate rect {
@@ -269,6 +270,16 @@ text-indent: 2px;
     opacity: .6;
 }
 
+.searchSenatorInfo {
+    position: absolute;
+    left: 35%;
+    top: 8%;
+    width: 50em;
+    height: 10em;
+    border-radius: 10px;
+    opacity: .6;
+}
+
 .searchSenatorInfo .input-group-item {
     width: 16em;
     position: relative;
@@ -284,4 +295,27 @@ text-indent: 2px;
 .dropdown-menu {
     height: 20em;
     overflow-y: scroll;
+}
+
+.democrat-circle {
+    width: 10em;
+    height: 10em;
+    border-radius: 100%;
+    background-color: #2F4ED6;
+    border: 4px solid #2F4ED6;
+}
+
+.republican-circle {
+    width: 10em;
+    height: 10em;
+    border-radius: 100%;
+    background-color: #B61B1E;
+    border: 4px solid #90090C;
+}
+
+.contribution-amount p {
+    font-family: Georgia, Helvetica, Arial, sans-serif;
+    font-size: 2em;
+    line-height: 1.5em;
+    padding-left: 1em;
 }

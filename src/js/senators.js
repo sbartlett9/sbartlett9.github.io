@@ -36,6 +36,7 @@ function update_senators(rawdata) {
             return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
         });
 
+
     var div = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
@@ -54,37 +55,27 @@ function update_senators(rawdata) {
         var senatorName = d.first_name + " " + d.last_name;
         var totals = senator_totals.get(d.govtrack_id); //map like "dark": 567890, "light": 345668
         var formatdollar = d3.format("0,000");
-        var total = d3.sum(totals.values()); //use this for color scale
-
+        var total = d3.sum(totals.values());
         var ind_cont = "$ " + formatdollar(totals.get("light"));
-        var ies = totals.get("dark");
-        ies = (ies === undefined) ? 0 : ies;
+        var ies = (ies === undefined) ? 0 : totals.get("dark");
         var indep_exp_supporting = "$ " + formatdollar(ies);
-        var iei = totals.get("dark indirect");
-        iei = (iei === undefined) ? 0 : iei;
+        var iei = (iei === undefined) ? 0 : totals.get("dark indirect");
         var indep_exp_indirect = "$ " + formatdollar(iei);
-
         var imgStringBegin = " <img src= Images/";
         var imgLocation = d.govtrack_id + ".jpeg";
         var imgStringEnd = ">";
         var imgURL = imgStringBegin + imgLocation + imgStringEnd;
         var infoPane_html =
-            '<div class="col-lg-2">' + imgURL + '</div>' + '<div class="col-lg-6">' + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' + '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' + '</div>' + '<div class="col-lg-4">' + '<span><p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br>PAC Expenditures: ' + indep_exp_supporting + '<br> PAC Indirect Expenditures: ' + indep_exp_indirect + '<br/></p></span>' + '</div>';
+            '<div class="col-lg-2">' + imgURL + '</div>' + '<div class="col-lg-10">' + '<div class="row">' + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' + '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' + '</div>'
+
+        +'<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont
+            + '<br>PAC Expenditures: ' + indep_exp_supporting + '<br> PAC Indirect Expenditures: ' + indep_exp_indirect + '<br/></p>' + '</div>' + '</div>';
         var rect = d3.select(id)
             .style("fill", function () {
                 return scale(total);
             })
             .classed("senator", true)
-            .on('click', function (d) {
-                /* div.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                
-				div.html(tip_html)
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY) + "px")
-                    .style("opacity", 1);*/
-
+            .on('mouseover', function (d) {
                 senatorInfoDiv
                     .transition()
                     .style("visibility", "visible");
@@ -93,10 +84,12 @@ function update_senators(rawdata) {
 
             })
             .on("mouseout", function (d) {
-                div.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            });
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                }
+
+            );
     });
 
     /*this should work with d3.map, but for some reason it doesn't :( */
@@ -108,6 +101,11 @@ function update_senators(rawdata) {
 
 
 }
+
+
+
+
+
 
 function getScale(sen) {
     if (sen.party == 'Republican') {
