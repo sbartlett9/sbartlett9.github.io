@@ -9,7 +9,7 @@ var formatdollar = d3.format("0,000"); //put this here because this file gets lo
 
 //Gets called when the page is loaded.
 function init() {
-    var width = 330;
+    var width = 520;
     var margin = {
         top: 1,
         right: 0,
@@ -34,7 +34,7 @@ function init() {
 
     color_scale = d3.scale.ordinal()
         .domain(["light", "dark", "dark indirect"])
-        .range(colorbrewer.Greys[3]);
+        .range(colorbrewer.Greens[3]);
 
 
     d3.json('data/light_and_dark_money2.json', function (data) {
@@ -60,23 +60,7 @@ function updateMoneyRange(value) {
     }));
 }
 
-//Callback for when data is loaded
-function update_orgs(flatdata) {
-    console.log("org load success");
-    senator_totals = d3.nest()
-        .key(function (d) {
-            return d.govtrack_id;
-        })
-        .key(function (d) {
-            return d.type;
-        })
-        .rollup(function (leaves) {
-            return d3.sum(leaves, function (d) {
-                return d.Total;
-            })
-        })
-        .map(flatdata, d3.map);
-
+function updateOrgMap(flatdata) {
     var nested_data = d3.nest()
         .key(function (d) {
             return d.DonorOrganization;
@@ -158,8 +142,26 @@ function update_orgs(flatdata) {
         .on("mouseover", function (d) {
 
         })
+}
+//Callback for when data is loaded
+function update_orgs(flatdata) {
+    console.log("org load success");
+    senator_totals = d3.nest()
+        .key(function (d) {
+            return d.govtrack_id;
+        })
+        .key(function (d) {
+            return d.type;
+        })
+        .rollup(function (leaves) {
+            return d3.sum(leaves, function (d) {
+                return d.Total;
+            })
+        })
+        .map(flatdata, d3.map);
 
     init_senators();
+    updateOrgMap(flatdata);
 }
 
 function position() {

@@ -83,12 +83,19 @@ function update_senators(rawdata) {
                 return scale(total);
             })
             .classed("senator", true)
-            .on('click', function (d) {
+            .on('click', function () {
                 senatorInfoDiv
                     .transition()
                     .style("visibility", "visible");
                 senatorInfoDiv.html(infoPane_html);
-                selectSenator(d);
+                this.selected = !this.selected;
+                if (this.selected) {
+                    this.style.stroke = "yellow";
+                    selectSenator(d);
+                } else {
+                    this.style.stroke = "none";
+                    deselectSenator();
+                }
             })
             .on("mouseout", function (d) {
                     div.transition()
@@ -112,7 +119,12 @@ function update_senators(rawdata) {
 
 function selectSenator(sen) {
     //TODO clear any org selections
-    console.log(d);
+    selected_senator = sen;
+    updateOrgMap(org_rawdata.filter(function (d) {
+        return d.govtrack_id == sen.govtrack_id;
+    }));
+    console.log(sen);
+
 }
 
 

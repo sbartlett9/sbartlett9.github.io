@@ -244,13 +244,13 @@ text-indent: 2px;
     font-family: Georgia, Helvetica, Arial, sans-serif;
     height: 60em;
 	margin: auto;
-    width: 355px;
+    width: 40em;
     /*border-style: solid;*/
     position: relative;
     /*left:75%;
 	top:40%;*/
 	position:absolute;
-	left:70%;
+	left:66%;
 	top:4em;
 	background:whitesmoke;
 	box-shadow:inset 1px 1px 0 white;
