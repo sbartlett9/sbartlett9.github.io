@@ -34,6 +34,7 @@ div.tooltip {
 	width:80em;
 	position:absolute;
 	left:5%;
+	top:10%;
 	background:whitesmoke;
 	box-shadow:inset 1px 1px 0 white;
 	border-radius:5px;
