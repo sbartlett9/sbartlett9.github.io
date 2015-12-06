@@ -30,7 +30,8 @@ div.tooltip {
     pointer-events: none;
 }
 
-#senator_info {
+#senator_info,
+#org_info {
     position: relative;
     border: 1px solid black;
     height: 20em;

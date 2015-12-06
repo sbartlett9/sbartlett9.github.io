@@ -1,7 +1,7 @@
 var tm_height = 550;
 
 sen_rect_width = 84.6;
-sen_rect_scale = d3.scale.linear().range([0, sen_rect_width]);
+sen_rect_scale = d3.scale.linear().rangeRound([0, sen_rect_width]);
 
 //Gets called when the page is loaded.
 function init() {
@@ -113,6 +113,16 @@ function update_orgs(rawdata) {
                 this.style.border = "solid 2px black"; //("border-style", "solid");
                 selectSenators(master_org_list.get(d.name));
             }
+            if (!d.selected) {
+                var div = d3.select('#org_info')
+                    .transition()
+                    .style("visibility", "collapse");
+            }
+            var infoPane_html = '<div class="col-lg-10">' + '<div class="row">' + '<span><h2 class="Senator_Name">' + d.name + '</h2></span>' + '<span><div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Total Contributions: ' + d.value + '</p>' + '</div>' + '</div>';
+            var div = d3.select('#org_info');
+            div.transition()
+                .style("visibility", "visible");
+            div.html(infoPane_html);
         })
         //.on("mouseover", org_tip.show)
         //.on("mouseout", org_tip.hide);
