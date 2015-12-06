@@ -220,7 +220,7 @@ function srch() {
     console.log(filtered);
     filtered.forEach(function (d) {
         console.log(d)
-        var seln = d3.select(d).style("stroke", "black");;
+        var seln = d3.select(d);
         console.log(seln);
         seln.classed("foobar", true);
     })
