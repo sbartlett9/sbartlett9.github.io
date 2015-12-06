@@ -158,9 +158,16 @@ function update_orgs(flatdata) {
         .attr("title", function (d) {
             return d.depth == 1 ? d.name + ': $' + formatdollar(d.value) : null;
         })
+		.style("font-size","1em")
+		.style("line-height","1em")
+		.style("padding-top","0.5em")
+		.style("padding-left","0.5em")
+		.style("text-transform","lowercase")
+		.style("color","#ffffff")
         .text(function (d) {
             return d.children ? d.name : null
         })
+		
         .on("click", function (d) {
             clearSenatorSelection();
             d.selected = !d.selected;
