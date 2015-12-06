@@ -375,12 +375,30 @@
                 </div-->
                 <!--searchbox-->
                
+                <div class="searchSenatorInfo">
+
+                <div id="searchbox" class="input-group-item" onSubmit = "srch()">
+                    <div class="input-group">
+                        <input type="text" id = "schbx" class="form-control" placeholder="Search for Senator Name" >
+
+                        <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" onClick = "srch()">
+                        <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                    </div>
+                    <!-- /input-group -->
+
+                    <br>
+                </div>
+                <!--searchbox-->
+
                 <div class="input-group-item dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Select from List of States
+                        <input type="TextBox" ID="datebox" Class="form-control" value = "Select from List of States"></input>
                         <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <ul class="dropdown-menu" id = "ddlist" aria-labelledby="dropdownMenu1">
                         <li><a href="#">AL</a></li>
                         <li><a href="#">AK</a></li>
                         <li><a href="#">AS</a></li>
@@ -439,6 +457,7 @@
                 <!--dropdown-->
 
             </div>
+
         </div>
         <!--searchForSenatorInfo-->
  <div id="chart"></div> 
@@ -457,10 +476,12 @@
     
          <script type="text/javascript" src="js/app.js"></script>
          <script>
-         $(function(){
-				if($('li').text().indexOf('Alan') != -1){
-					 console.log("Has Alan");
-					//$('#id412378').attr('class','selected');
-				}
-			});
+         $('#ddlist li').on('click', function(){
+    $('#datebox').val($(this).text());
+    var seln = $(this).text();
+    console.log(seln);
+    stateseln(seln);
+});
+
+
          </script>
