@@ -130,18 +130,18 @@ function update_orgs(flatdata) {
         .attr("title", function (d) {
             return d.depth == 1 ? d.name + ': $' + formatdollar(d.value) : null;
         })
-		.style("font-size","1.2em")
-		.style("line-height","1em")
-		.style("padding-top","0.5em")
-		.style("padding-left","0.5em")
-		.style("padding-bottom","0.5em")
-		.style("text-transform","lowercase")
-		.style("color","#000")
+        .style("font-size", "1.2em")
+        .style("line-height", "1em")
+        .style("padding-top", "0.5em")
+        .style("padding-left", "0.5em")
+        .style("padding-bottom", "0.5em")
+        .style("text-transform", "lowercase")
+        .style("color", "#000")
         .text(function (d) {
             return d.children ? d.name : null
         })
-		
-        .on("click", function (d) {
+
+    .on("click", function (d) {
             clearSenatorSelection();
             d.selected = !d.selected;
             if (d.selected) {
@@ -149,15 +149,15 @@ function update_orgs(flatdata) {
                 selectSenators(master_org_list.get(d.name));
                 selected_org = d;
             }
-            if (!d.selected) {
-                var div = d3.select('#org_info')
-                    .transition()
-                    .style("visibility", "collapse");
-            }
+            //            if (!d.selected) {
+            //                var div = d3.select('#org_info')
+            //                    .transition()
+            //                    .style("visibility", "collapse");
+            //            }        
         })
-		.on("mouseover", function(d){
-				
-		})
+        .on("mouseover", function (d) {
+
+        })
 
     init_senators();
 }
@@ -213,7 +213,11 @@ function selectSenators(org) {
     });
 }
 
-function clearOrgSelection() {}
+function clearOrgSelection() {
+    //select all tmap .node divs
+    //set selected false
+    //remove border
+}
 
 function clearSenatorSelection() {
     var senators = d3.select('#Layer_1')
