@@ -138,7 +138,6 @@ text-indent: 2px;
     width: 80%;
     height: auto;
     pointer-events: none;
-    opacity: 0;
 }
 
 .seating-chart-duplicate rect {
