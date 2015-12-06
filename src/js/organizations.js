@@ -5,7 +5,7 @@ sen_rect_scale = d3.scale.linear().rangeRound([0, sen_rect_width]);
 
 //Gets called when the page is loaded.
 function init() {
-    var width = 350;
+    var width = 330;
     var margin = {
         top: 1,
         right: 0,

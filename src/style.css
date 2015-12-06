@@ -31,6 +31,7 @@ div.tooltip {
 }
 
 #senator_info{
+	width:45em;
 	position:absolute;
 	left:28%;
 	background:whitesmoke;
@@ -240,15 +241,22 @@ text-indent: 2px;
 }
 
 .treemap {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin: auto;
-    float: right;
+    font-family: Georgia, Helvetica, Arial, sans-serif;
+    height: 50em;
+	margin: auto;
     width: 355px;
-    border-style: solid;
+    /*border-style: solid;*/
     position: relative;
     /*left:75%;
 	top:40%;*/
-    height: 620px;
+	position:absolute;
+	left:70%;
+	top:4em;
+	background:whitesmoke;
+	box-shadow:inset 1px 1px 0 white;
+	border-radius:5px;
+	border:1px solid rgba(0,0,0,0.2);
+	padding:1em 1em;
 }
 
 .treemap h5 {
