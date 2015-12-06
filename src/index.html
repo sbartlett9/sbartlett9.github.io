@@ -30,7 +30,7 @@
 
 </head>
 
-<body onload="init()" ng-app>
+<body onload="init()" ng-app="">
 
 
 </head>
@@ -335,26 +335,20 @@
             <div class="row" id="senator_hover"></div>
 			
 
-            <div class="searchSenatorInfo" ng-app="myModule">
 
-			   <myWidget>
-                	<div id="one" class="box"></div>
-                    <div id="two" class="box"></div>
-                </myWidget>
-                
-                <div id="senatorsSearchList" class="input-group-item" ng-app ng-controller="senatorListCtrl">
+			  
+                <div id="senatorsSearchList" class="input-group-item" ng-controller="senatorListCtrl">
                     <div class="input-group">
-                     
                         <input type="text" class="form-control" id="query" placeholder="Search for Senator" ng-model="query"/>
                         <select ng-model="orderList">
                             <option value="name">By Name</option>
-                             <option value="state">By State</option>
+                            <option value="state">By State</option>
                             <option value="-term_year">Oldest</option>
                             <option value="term_year">Newest</option>
                           </select>
                           
                             <ul id="senator_ul">
-                            <li ng-repeat="senator in senators | filter:query | orderBy: orderList" ng-click="setClickedSenator(senator)">
+                            <li ng-repeat="senator in senators | filter:query | orderBy: orderList">
                               name: {{senator.name}}<br/>
                               state: {{senator.state}}<br/>
                               term: {{senator.term_year}}<br/>
@@ -364,9 +358,7 @@
 
 
                     </div>
-                    <!-- /input-group -->
-				<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js'></script>
-                <script src="js/senatorSearch.js"></script> 
+             
                     <br>
                 </div>
                 <!--searchbox-->
