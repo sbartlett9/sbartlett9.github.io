@@ -57,9 +57,11 @@ function update_senators(rawdata) {
         var formatdollar = d3.format("0,000");
         var total = d3.sum(totals.values());
         var ind_cont = "$ " + formatdollar(totals.get("light"));
-        var ies = (ies === undefined) ? 0 : totals.get("dark");
+        var ies = totals.get("dark");
+        ies = (ies === undefined) ? 0 : ies;
         var indep_exp_supporting = "$ " + formatdollar(ies);
-        var iei = (iei === undefined) ? 0 : totals.get("dark indirect");
+        var iei = totals.get("dark indirect");
+        iei = (iei === undefined) ? 0 : iei;
         var indep_exp_indirect = "$ " + formatdollar(iei);
         var imgStringBegin = " <img src= Images/";
         var imgLocation = d.govtrack_id + ".jpeg";
