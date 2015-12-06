@@ -31,9 +31,9 @@ div.tooltip {
 }
 
 #senator_info{
-	width:45em;
+	width:80em;
 	position:absolute;
-	left:28%;
+	left:5%;
 	background:whitesmoke;
 	box-shadow:inset 1px 1px 0 white;
 	border-radius:5px;
