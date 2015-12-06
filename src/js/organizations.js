@@ -170,7 +170,9 @@ function selectSenators(org) {
         d3.select(lid)
             .transition()
             .attr("width", sen_rect_scale(d.Total))
-            .attr("fill", color_scale(d.type))
+            .attr("fill", function () {
+                return color_scale(d.type);
+            })
             .style("opacity", .9);
     });
 }

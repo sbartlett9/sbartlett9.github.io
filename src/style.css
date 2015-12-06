@@ -143,7 +143,6 @@ text-indent: 2px;
 
 .seating-chart-duplicate rect {
     opacity: 0;
-    fill: #CCCCCC;
 }
 
 .d3-tip:after {
