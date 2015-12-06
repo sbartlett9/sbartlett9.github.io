@@ -1,27 +1,5 @@
-var myModule = angular.module("myModule",[]);
+var myApp = angular.module('myApp' , []);
 
-myModule.directive('myWidget' ,function(){
-	var linkFn;
-	linkFn = function(scope, element, attrs){
-		var animateDown, animateRight;
-		animateRight = function(){
-			$(this).animate({
-				left:'+=50'		
-			})
-		}
-		animateDown = function(){
-			$(this).animate({
-				top:'+=50'		
-			});
-		}
-		
-		
-		$('#one').on('click' , animateDown);
-		$('#two').on('click' , animateRight);
-		
-	};	
-	return{
-		restrict:'E',
-		link: linkFn	
-	}
-})
+//Controller
+//place to put code associate with this controller
+//this is the controller for the view, any code inside of here will be controlling the html inside the sub-div with ng-controller name

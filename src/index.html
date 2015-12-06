@@ -26,11 +26,11 @@
     <script src="js/prefixfree.min.js"></script>
 
     <script src="js/senatorSearch.js"></script>
-     <script type="text/javascript" src="js/app.js"></script>
+
 
 </head>
 
-<body onload="init()" ng-app="">
+<body onload="init()" ng-app="myApp">
 
 
 </head>
@@ -340,7 +340,7 @@
                 <div id="senatorsSearchList" class="input-group-item" ng-controller="senatorListCtrl">
                     <div class="input-group">
                         <input type="text" class="form-control" id="query" placeholder="Search for Senator" ng-model="query"/>
-                        <select ng-model="orderList">
+                        	<select ng-model="orderList">
                             <option value="name">By Name</option>
                             <option value="state">By State</option>
                             <option value="-term_year">Oldest</option>
@@ -348,13 +348,15 @@
                           </select>
                           
                             <ul id="senator_ul">
-                            <li ng-repeat="senator in senators | filter:query | orderBy: orderList">
-                              name: {{senator.name}}<br/>
-                              state: {{senator.state}}<br/>
-                              term: {{senator.term_year}}<br/>
-                              <div class="right top">term length:{{senator.term_year}}</div>
-                            </li>
-                           </ul>
+                                <li ng-reply="test" ng-repeat="senator in senators | filter:query | orderBy: orderList">
+                                  name: {{senator.name}}<br/>
+                                  state: {{senator.state}}<br/>
+                                  term: {{senator.term_year}}<br/>
+                                  <div class="right top">term length:{{senator.term_year}}</div>
+                                </li>
+                            </ul>
+                            
+                            
 
 
                     </div>
@@ -362,6 +364,11 @@
                     <br>
                 </div>
                 <!--searchbox-->
+                <script>
+					var senTemp = $('li').attr('ng-reply');
+                	//console.log($('li').attr('ng-reply'));
+					console.log(senTemp);
+                </script>
 
                 <div class="input-group-item dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -441,3 +448,5 @@
     </div>
     <!--row-->
     </div>
+    
+         <script type="text/javascript" src="js/app.js"></script>
