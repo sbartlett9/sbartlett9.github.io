@@ -18,10 +18,14 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/organizations.js"></script>
     <script src="js/senators.js"></script>
+     <script src="js/angular.js"></script>
+    <script src="js/prefixfree.min.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js'></script>
+    <script src="js/senatorSearch.js"></script>
 
 </head>
 
-<body onload="init()" ng-app="myApp">
+<body onload="init()" ng-app>
 
     <h3 id="title">Visualizing Campaign Contributions to the 114th Senate</h3>
     <div id='viz_container'>
@@ -315,18 +319,30 @@
 
             <div class="searchSenatorInfo">
 
-                <div id="searchbox" class="input-group-item">
+                <div id="senatorsSearchList" class="input-group-item" ng-controller="senatorListCtrl">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for Senator Name">
-
-                        <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                    	<i class="fa fa-search"></i>
-                    </button>
-                  </span>
+                     
+                        <input type="text" class="form-control" id="query" placeholder="Search for Senator Name" ng-model="query"/>
+                        <select ng-model="orderList">
+                            <option value="name">By Name</option>
+                             <option value="state">By State</option>
+                            <option value="-term_year">Oldest</option>
+                            <option value="term_year">Newest</option>
+                          </select>
+                          
+                            <ul id="senator_ul">
+                            <li ng-repeat="senator in senators | filter:query | orderBy: orderList">
+                              name: {{senator.name}}<br/>
+                              state: {{senator.state}}<br/>
+                              term: {{senator.term_year}}<br/>
+                              <div class="right top">term length:{{senator.term_year}}</div>
+                            </li>
+                           </ul>
+                       
                     </div>
                     <!-- /input-group -->
-
+				<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js'></script>
+                <script src="js/senatorSearch.js"></script> 
                     <br>
                 </div>
                 <!--searchbox-->
