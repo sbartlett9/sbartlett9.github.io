@@ -32,7 +32,10 @@ function init() {
         .domain(["light", "dark", "dark indirect"])
         .range(colorbrewer.Greys[3]);
 
-    d3.json('data/light_and_dark_money2.json', update_orgs);
+    d3.json('data/light_and_dark_money2.json', function (data) {
+        //prefilter here
+        update_orgs(data);
+    });
 
 }
 
@@ -51,16 +54,17 @@ function update_orgs(rawdata) {
         })
         .rollup(function (leaves) {
             return d3.sum(leaves, function (d) {
-                return d.Total;
+                return d.Total; //TODO move this to prefilter in the calling method
             })
         })
         .map(rawdata, d3.map);
 
     nested_data = d3.nest()
         .key(function (d) {
-            return d.type;
-        }).key(function (d) {
             return d.DonorOrganization;
+        })
+        .key(function (d) {
+            return d.type;
         })
         .rollup(function (leaves) {
             return d3.sum(leaves, function (d) {
@@ -95,16 +99,19 @@ function update_orgs(rawdata) {
     //div.call(org_tip);
 
     var node = div.datum(root).selectAll(".node")
-        .data(nodes)
-        .enter().append("div")
-        .attr("class", "node")
-        .call(position)
+        .data(nodes);
+    node.enter().append("div")
+        .attr("class", "node");
+    node.call(position)
         .style("background", function (d) {
             //return d.children ? null : color_scale(master_org_list.get(d.key).type);
-            return d.depth == 1 ? color_scale(d.name) : null;
+            return d.depth == 2 ? color_scale(d.name) : null;
+        })
+        .style("z-index", function (d) {
+            return d.depth == 1 ? 20 : 0;
         })
         .text(function (d) {
-            return d.children ? null : d.name;
+            return d.children ? d.name : null
         })
         .on("click", function (d) {
             clearSenatorSelection();
@@ -126,7 +133,7 @@ function update_orgs(rawdata) {
         })
         //.on("mouseover", org_tip.show)
         //.on("mouseout", org_tip.hide);
-
+    node.exit().remove();
     init_senators();
 }
 

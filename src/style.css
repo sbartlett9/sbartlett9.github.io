@@ -270,16 +270,6 @@ text-indent: 2px;
     opacity: .6;
 }
 
-.searchSenatorInfo {
-    position: absolute;
-    left: 35%;
-    top: 8%;
-    width: 50em;
-    height: 10em;
-    border-radius: 10px;
-    opacity: .6;
-}
-
 .searchSenatorInfo .input-group-item {
     width: 16em;
     position: relative;
