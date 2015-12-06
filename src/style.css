@@ -140,19 +140,19 @@ text-indent: 2px;
 
 .seating-chart {
     position: absolute;
+	width:90em;
     left: 20px;
     top: 27em;
     z-index: 20;
-    width: 80%;
     height: auto;
 }
 
 .seating-chart-duplicate {
     position: absolute;
+	width:90em;
     left: 20px;
     top: 27em;
     z-index: 99;
-    width: 80%;
     height: auto;
     pointer-events: none;
 }
