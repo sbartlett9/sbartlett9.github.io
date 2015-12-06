@@ -34,7 +34,7 @@ function init() {
 
     color_scale = d3.scale.ordinal()
         .domain(["light", "dark", "dark indirect"])
-        .range(colorbrewer.Greys[3]);
+        .range(colorbrewer.Greens[3]);
 
 
     d3.json('data/light_and_dark_money2.json', function (data) {
