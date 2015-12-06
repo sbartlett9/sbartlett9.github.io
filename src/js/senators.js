@@ -74,10 +74,13 @@ function update_senators(rawdata) {
         var imgStringEnd = ">";
         var imgURL = imgStringBegin + imgLocation + imgStringEnd;
         var infoPane_html =
-            '<div class="col-lg-2">' + imgURL + '</div>' + '<div class="col-lg-9">' + '<div class="row">' + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' + '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' + '</div>'
-
-        +'<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont
-            + '<br>Independent Expenditures: ' + indep_exp_supporting + '<br> Opponent Opposition: ' + indep_exp_indirect + '<br/></p>' + '</div>' + '</div>'
+            '<div class="col-lg-2">' + imgURL + '</div>' 
+			+ '<div class="col-lg-9">' 
+			+ '<div class="row">' + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' + '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' + '</div>'
+			+'<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont
+            + '<br>Independent Expenditures: ' + indep_exp_supporting + '<br> Opponent Opposition: ' + indep_exp_indirect + '<br/></p>' + '</div>' 
+			+'<div class="row">' + '<p>' + 'Age:' + age + '</p>' + '</div>'
+			+ '</div>'
 			
 			
 		;
