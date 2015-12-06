@@ -31,9 +31,9 @@ div.tooltip {
 }
 
 #senator_info{
-	width:45em;
+	width:80em;
 	position:absolute;
-	left:28%;
+	left:5%;
 	background:whitesmoke;
 	box-shadow:inset 1px 1px 0 white;
 	border-radius:5px;
@@ -140,19 +140,19 @@ text-indent: 2px;
 
 .seating-chart {
     position: absolute;
+	width:90em;
     left: 20px;
     top: 27em;
     z-index: 20;
-    width: 80%;
     height: auto;
 }
 
 .seating-chart-duplicate {
     position: absolute;
+	width:90em;
     left: 20px;
     top: 27em;
     z-index: 99;
-    width: 80%;
     height: auto;
     pointer-events: none;
 }
