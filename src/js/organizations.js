@@ -158,12 +158,13 @@ function update_orgs(flatdata) {
         .attr("title", function (d) {
             return d.depth == 1 ? d.name + ': $' + formatdollar(d.value) : null;
         })
-		.style("font-size","1em")
+		.style("font-size","1.2em")
 		.style("line-height","1em")
 		.style("padding-top","0.5em")
 		.style("padding-left","0.5em")
+		.style("padding-bottom","0.5em")
 		.style("text-transform","lowercase")
-		.style("color","#ffffff")
+		.style("color","#000")
         .text(function (d) {
             return d.children ? d.name : null
         })
@@ -182,6 +183,9 @@ function update_orgs(flatdata) {
                     .style("visibility", "collapse");
             }
         })
+		.on("mouseover", function(d){
+				
+		})
 
     init_senators();
 }
