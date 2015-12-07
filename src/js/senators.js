@@ -114,7 +114,7 @@ function selectSenator(sen) {
 
 }
 
-function deselectSenator(sen) {
+function deselectSenator() {
     selected_senator = null;
     resetOrgMap();
 }

@@ -131,18 +131,19 @@ function updateOrgMap(flatdata) {
         })
 
     node.on("click", function (d) {
-            clearSenatorSelection();
-            clearOrgSelection()
-            d.selected = !d.selected;
-            if (d.selected) {
-                this.style.border = "solid 4px yellow"; //("border-style", "solid");
-                selectSenators(master_org_list.get(d.name));
-                selected_org = d;
+        clearSenatorSelection();
+        clearOrgSelection()
+        d.selected = !d.selected;
+        if (d.selected) {
+            if (selected_senator) {
+                //the data is filtered, clear it
+                deselectSenator();
             }
-        })
-        .on("mouseover", function (d) {
-
-        })
+            selectSenators(master_org_list.get(d.name));
+            selected_org = d;
+            this.style.border = "solid 4px yellow"; //("border-style", "solid");
+        }
+    });
 }
 //Callback for when data is loaded
 function update_orgs(flatdata) {
@@ -233,7 +234,6 @@ function clearSenatorSelection() {
 
 //turns nested data into format needed for treemap
 function reSortRoot(root, value_key) {
-    //console.log("Calling");
     for (var key in root) {
         if (key == "key") {
             root.name = root.key;
