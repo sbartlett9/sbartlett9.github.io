@@ -7,6 +7,11 @@
     src: url(fonts/Georgia.ttf);
 }
 
+@font-face {
+    font-family: HelveticaBold;
+    src: url(fonts/Helvetica.ttf);
+}
+
 #title {
     text-align: center;
     width: 100%;
@@ -114,7 +119,7 @@ div .total_contribution_amount{
 #senator_info h4 {
     float: left;
     font-weight: 800;
-    padding-left: 1em;
+    padding-left: 0.5em;
     display: inline-block;
     font-family: Georgia, Helvetica, Arial, sans-serif;
 }
@@ -263,7 +268,7 @@ text-indent: 2px;
 	top:40%;*/
     position: absolute;
     left: 66%;
-    top: 4em;
+    top: 7.5em;
     background: whitesmoke;
     box-shadow: inset 1px 1px 0 white;
     border-radius: 5px;
