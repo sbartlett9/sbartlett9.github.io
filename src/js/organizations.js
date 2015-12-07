@@ -111,7 +111,7 @@ function updateOrgMap(flatdata) {
     node.enter().append("div")
         .attr("class", "node");
     node.transition()
-        .duration(500)
+        .duration(1000)
         .call(position)
         .style("background", function (d) {
             //return d.children ? null : color_scale(master_org_list.get(d.key).type);
@@ -231,13 +231,8 @@ function clearOrgSelection() {
 }
 
 function clearSenatorSelection() {
-    var senators = d3.select('#Layer_1')
-        .selectAll('rect')
-        .transition()
-        .style("opacity", 1)
-        .style("stroke", "none");
-
-    d3.select('#senate_overlay').selectAll('rect')
+    m, k.m,
+        d3.select('#senate_overlay').selectAll('rect')
         .transition()
         .attr('width', 0)
         .style('opacity', 0);
@@ -270,6 +265,3 @@ function reSortRoot(root, value_key) {
     }
     return root;
 }
-
-
-

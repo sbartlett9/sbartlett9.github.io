@@ -95,7 +95,8 @@ function update_senators(rawdata) {
                 senatorInfoDiv.html(infoPane_html);
                 this.selected = !this.selected;
                 if (this.selected) {
-                    this.style.stroke = "yellow";
+                    //                    this.style.stroke = "yellow";
+                    //                    this.style.strokeWidth = "3px";
                     selectSenator(d);
                 } else {
                     this.style.stroke = "none";
@@ -123,12 +124,18 @@ function update_senators(rawdata) {
 
 
 function selectSenator(sen) {
-    //TODO clear any org selections
+    //TODO clear any org selections or other senator selections
+    var senators = d3.select('#Layer_1')
+        .selectAll('rect')
+        .style("stroke", "none");
+    d3.select("#id" + sen.govtrack_id)
+        .style("stroke", "yellow")
+        .style("stroke-width", "4px");
+
     selected_senator = sen;
     updateOrgMap(org_rawdata.filter(function (d) {
         var filter = d3.select("#orgslider")[0][0].value;
         return d.govtrack_id == sen.govtrack_id && d.Total > filter;
-        //return d.govtrack_id == sen.govtrack_id;
     }));
     console.log(sen);
 
