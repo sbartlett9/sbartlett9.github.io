@@ -30,21 +30,22 @@ div.tooltip {
     pointer-events: none;
 }
 
-#senator_info{
-	width:80em;
-	height:15em;
-	position:absolute;
-	left:5%;
-	top:10%;
-	background:whitesmoke;
-	box-shadow:inset 1px 1px 0 white;
-	border-radius:5px;
-	border:1px solid rgba(0,0,0,0.2);
-	padding:1em 1em;
-	}
-#senator_info p{
-	font-size:20px;
-	}
+#senator_info {
+    width: 80em;
+    height: 15em;
+    position: absolute;
+    left: 5%;
+    top: 10%;
+    background: whitesmoke;
+    box-shadow: inset 1px 1px 0 white;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 1em 1em;
+}
+
+#senator_info p {
+    font-size: 20px;
+}
 
 #org_info {
     position: relative;
@@ -66,19 +67,18 @@ div.tooltip {
 }
 
 #senator_info .icon.state img {
-	margin: 1em 0 0 2em;
-	padding: 0;
-	float: left;
-	height: 2em;
+    margin: 1em 0 0 2em;
+    padding: 0;
+    float: left;
+    height: 2em;
 }
 
 #senator_info .icon.party img {
-	margin: 1em 0 0 2em;
-	padding: 0;
-	float: left;
-	height: 2em;
+    margin: 1em 0 0 2em;
+    padding: 0;
+    float: left;
+    height: 2em;
 }
-
 
 .donation_details {
     float: left;
@@ -152,7 +152,7 @@ text-indent: 2px;
 
 .seating-chart {
     position: absolute;
-	width:70em;
+    width: 70em;
     left: 20px;
     top: 27em;
     z-index: 20;
@@ -161,7 +161,7 @@ text-indent: 2px;
 
 .seating-chart-duplicate {
     position: absolute;
-	width:70em;
+    width: 70em;
     left: 20px;
     top: 27em;
     z-index: 99;
@@ -255,24 +255,25 @@ text-indent: 2px;
 .treemap {
     font-family: Georgia, Helvetica, Arial, sans-serif;
     height: 60em;
-	margin: auto;
+    margin: auto;
     width: 40em;
     /*border-style: solid;*/
     position: relative;
     /*left:75%;
 	top:40%;*/
-	position:absolute;
-	left:66%;
-	top:4em;
-	background:whitesmoke;
-	box-shadow:inset 1px 1px 0 white;
-	border-radius:5px;
-	border:1px solid rgba(0,0,0,0.2);
-	padding:1em 1em;
+    position: absolute;
+    left: 66%;
+    top: 4em;
+    background: whitesmoke;
+    box-shadow: inset 1px 1px 0 white;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 1em 1em;
 }
-.node title{
-	font-size:20px;
-	}
+
+.node title {
+    font-size: 20px;
+}
 
 .treemap h5 {
     margin-top: 1em;
@@ -297,10 +298,14 @@ text-indent: 2px;
     overflow: hidden;
     position: absolute;
     text-indent: 2px;
-
+    font-size: 1.2em;
+    line-height: 1eml;
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+    padding-bottom: 0.5em;
+    text-transform: lowercase;
+    color: #000;
 }
-
-
 
 .democrat-circle {
     width: 10em;
@@ -324,7 +329,10 @@ text-indent: 2px;
     line-height: 1.5em;
     padding-left: 1em;
 }
+
+
 /*SEARCH FOR SENATOR SEARCH BOX STYLING*/
+
 
 /*.searchSenatorInfo{
 	}
@@ -345,39 +353,38 @@ text-indent: 2px;
     overflow-y: scroll;
 }
 
-
-
 .right {
-  float: right;
+    float: right;
 }
 
 .top {
-  margin-top: -30px;
+    margin-top: -30px;
 }
 
 #senatorsSearchList {
-  background: whitesmoke;
-  position: absolute;
-  left: 2em;
-  top:4em;
-  width: 400px;
-  padding: 15px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  box-shadow: inset 1px 1px 0 white;
-  max-height: 450px;
+    background: whitesmoke;
+    position: absolute;
+    left: 2em;
+    top: 4em;
+    width: 400px;
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    box-shadow: inset 1px 1px 0 white;
+    max-height: 450px;
 }
 
 ul {
-  margin: 0 auto;
-  padding: 0;
-  max-height: 200px;
-  overflow-y: auto;
-  /*border: 1px solid rgba(0, 0, 0, 0.1);*/
-  padding: 5px 5px 0 5px;
-  border-left: none;
-  border-right: none;
+    margin: 0 auto;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    /*border: 1px solid rgba(0, 0, 0, 0.1);*/
+    padding: 5px 5px 0 5px;
+    border-left: none;
+    border-right: none;
 }
+
 
 /*li {
   list-style: none;
@@ -400,93 +407,95 @@ ul {
 }*/
 
 #query {
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 19px;
-  padding: 5px;
-  font-family: calibri light;
-  margin-bottom: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 19px;
+    padding: 5px;
+    font-family: calibri light;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
 #senatorsSearchList span {
-  display: block;
-  position: absolute;
-  background: #FFD32E;
-  bottom: -35px;
-  left: -1px;
-  width: 360px;
-  border-radius: 0 0 5px 5px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: inset 1px 1px rgba(255, 255, 255, 0.5);
+    display: block;
+    position: absolute;
+    background: #FFD32E;
+    bottom: -35px;
+    left: -1px;
+    width: 360px;
+    border-radius: 0 0 5px 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 #senatorsSearchList select {
-  width: 120px;
-  height:34px;
-  margin-left:-8.5em;
-  /*margin-left: 230px;
+    width: 120px;
+    height: 34px;
+    margin-left: -8.5em;
+    /*margin-left: 230px;
   margin-top: -45px;*/
-  border-radius: 0 3px 3px 0;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
-  position: absolute;
-  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
-  z-index:99;
+    border-radius: 0 3px 3px 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    position: absolute;
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
+    z-index: 99;
 }
 
-#senatorsSearchList select:focus, #query:focus {
-  border: 1px solid #FFD32E;
-  box-shadow: 0 0 10px rgba(255, 255, 0, 0.1);
-  outline: none;
+#senatorsSearchList select:focus,
+#query:focus {
+    border: 1px solid #FFD32E;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.1);
+    outline: none;
 }
 
-.box{
-	position:relative;
-	z-index:9999;
-	width:40px;
-	height:40px;
-	float:left;
-	margin:5px;
-	background-color:#abc;
-}
-.bigger{
-	width:120%;
-	height:120%;
-	}
-	
-@keyframes bounce {
-     
+.box {
+    position: relative;
+    z-index: 9999;
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin: 5px;
+    background-color: #abc;
 }
 
-.selected{
-	stroke: black;
-	stroke-width: 20;
-	stroke-linecap:round;
+.bigger {
+    width: 120%;
+    height: 120%;
 }
+
+@keyframes bounce {}
+
+.selected {
+    stroke: black;
+    stroke-width: 20;
+    stroke-linecap: round;
+}
+
 
 /*D3 BAR CHART*/
-#chart rect{
-  fill: #4aaeea;
+
+#chart rect {
+    fill: #4aaeea;
 }
 
-#chart text{
-  fill: black;
-  font: 10px sans-serif;
-  text-anchor: end; 
+#chart text {
+    fill: black;
+    font: 10px sans-serif;
+    text-anchor: end;
 }
 
-.axis text{
-  font: 10px sans-serif;
+.axis text {
+    font: 10px sans-serif;
 }
 
-.axis path, .axis line{
-  fill: none;
-  stroke : #fff;
-  shape-rendering: crispEdges;
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #fff;
+    shape-rendering: crispEdges;
 }
-

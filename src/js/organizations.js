@@ -120,16 +120,12 @@ function updateOrgMap(flatdata) {
         .style("z-index", function (d) {
             return d.depth == 1 ? 20 : 0;
         })
+        .style("border-width", function (d) {
+            return d.depth == 1 ? "3px" : "1px";
+        })
         .attr("title", function (d) {
             return d.depth == 1 ? d.name + ': $' + formatdollar(d.value) : null;
         })
-        .style("font-size", "1.2em")
-        .style("line-height", "1em")
-        .style("padding-top", "0.5em")
-        .style("padding-left", "0.5em")
-        .style("padding-bottom", "0.5em")
-        .style("text-transform", "lowercase")
-        .style("color", "#000")
         .text(function (d) {
             return d.children ? d.name : null
         })
