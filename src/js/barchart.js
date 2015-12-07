@@ -83,6 +83,31 @@ function renderSummaryChart() {
 
 		
 }
+
+function clearSenateOrganizationContributionValues()
+{
+	global_senate_data.forEach(function (d) {
+		d.org_contribution = 0;	
+	});
+	renderSummaryChart();
+}
+
+function updateSenateOrganizationContributionValues(senator_org_map)
+{
+	global_senate_data.forEach(function (d) {
+		if (senator_org_map.has(d.id))
+		{
+			d.org_contribution = senator_org_map.get(d.id);
+		}
+		else
+		{
+			d.org_contribution = 0;
+		}
+		
+	});
+	renderSummaryChart();
+	
+}
     	
 	/*
 		
