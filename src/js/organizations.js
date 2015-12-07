@@ -181,6 +181,7 @@ function position() {
 }
 
 function selectSenators(org) {
+	var senate_org_map = new Map();
     var senators = d3.select('#Layer_1').selectAll('rect').transition().style("opacity", .2);
     var tip = d3.tip()
         .attr('class', 'd3-tip')
@@ -197,6 +198,7 @@ function selectSenators(org) {
         var sen = master_senators_list.get(d.govtrack_id)[0];
         var scale = getScale(sen);
         var rect = d3.select(id);
+        senate_org_map.set(d.govtrack_id, d.Total);
         rect.transition()
             .style("opacity", 1)
             .style("stroke", "yellow")
@@ -215,12 +217,14 @@ function selectSenators(org) {
         //            })
         //            .style("opacity", .9);    
     });
+    updateSenateOrganizationContributionValues(senate_org_map);
 }
 
 function clearOrgSelection() {
     var tmap_nodes = d3.selectAll(".node");
     tmap_nodes.style("border", "solid 1px white");
     tmap_nodes.selected = false;
+    clearSenateOrganizationContributionValues();
 }
 
 function clearSenatorSelection() {
