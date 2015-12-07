@@ -121,6 +121,7 @@ function updateOrgMap(flatdata) {
         .style("border-width", function (d) {
             return d.depth == 1 ? "3px" : "1px";
         })
+		.style("line-height","0.9em")
         .attr("id", function (d) {
             return d.depth == 1 ? nameToId(d.name) : "";
         })

@@ -277,8 +277,9 @@ text-indent: 2px;
     padding: 1em 1em;
 }
 
-.node title {
+.node{
     font-size: 20px;
+	line-height:1em;
 }
 
 .treemap h5 {
