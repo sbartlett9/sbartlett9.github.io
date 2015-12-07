@@ -32,6 +32,7 @@ div.tooltip {
 
 #senator_info{
 	width:80em;
+	height:15em;
 	position:absolute;
 	left:5%;
 	top:10%;
@@ -44,10 +45,7 @@ div.tooltip {
 #senator_info p{
 	font-size:20px;
 	}
-#senator_info img{
-	padding-top:0;
-	padding-bottom:2em;
-	}
+
 #org_info {
     position: relative;
     border: 1px solid black;
@@ -61,13 +59,26 @@ div.tooltip {
 }
 
 #senator_info img {
-    margin: 3em 0 0 2em;
-    padding: 0 auto;
+    margin: 1em 0 0 2em;
+    padding: auto;
     opacity: 1;
     float: left;
-    /*    width: 150px;
-    */
 }
+
+#senator_info .icon.state img {
+	margin: 1em 0 0 2em;
+	padding: 0;
+	float: left;
+	height: 2em;
+}
+
+#senator_info .icon.party img {
+	margin: 1em 0 0 2em;
+	padding: 0;
+	float: left;
+	height: 2em;
+}
+
 
 .donation_details {
     float: left;
