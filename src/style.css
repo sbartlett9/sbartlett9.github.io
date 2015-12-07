@@ -481,6 +481,21 @@ ul {
     stroke-linecap: round;
 }
 
+.summary-chart rect .republican {
+	fill: #D80206;
+	stroke: none;
+}
+
+.summary-chart rect .democrat {
+	fill: #3045C4;
+	stroke: none;
+}
+
+.summary-chart rect .independent {
+	fill: #c4b130;
+	stroke: none;
+}
+
 
 /*D3 BAR CHART*/
 

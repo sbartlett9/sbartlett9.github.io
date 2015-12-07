@@ -2,7 +2,7 @@ function renderSummaryChart() {
 	
 	console.log("rendering summary chart");
 	
-	var width = 400
+	var width = 800
 		height = 200;
 		
 	var barWidth = width / global_senate_data.length;
@@ -28,7 +28,20 @@ function renderSummaryChart() {
 	bar.append("rect")
 		.attr("y", function(d) { return yScale(d.total); })
 		.attr("height", function(d) { return height - yScale(d.total); })
-		.attr("width", barWidth);
+		.attr("width", barWidth)
+		.attr("class", function(d) {
+			return d.party.toLowerCase();
+		})
+		.attr("fill", function(d) {
+			if (d.party === "Republican")
+				return "#D80206";
+			else if (d.party === "Democrat")
+				return "#3045C4";
+			else if (d.party === "Independent")
+				return "#c4b130";
+			else
+				return "#000000";				
+		})
 		
 }
     	
