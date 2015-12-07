@@ -2,28 +2,39 @@ function renderSummaryChart() {
 
     console.log("rendering summary chart");
 
-    var width = 1000
+    var width = 1100
     height = 400;
 
     var margin = {
         top: 20,
-        right: 20,
+        right: 10,
         bottom: 20,
-        left: 10
+        left: 30
     };
+    width = width - margin.left - margin.right;
+    height = height - margin.top - margin.bottom;
 
-    var barWidth = width / global_senate_data.length;
+    var barWidth = (width - 100) / global_senate_data.length;
     var maxContribution = d3.max(global_senate_data, function (d) {
         return +d.total;
     });
 
+    var x = d3.scale.ordinal()
+        .domain(global_senate_data.map(function (d) {
+            return d.initials;
+        }))
+        .rangeRoundBands([0, width], 0.1);
+
+    //    var xAxis = d3.svg.axis()
+    //        .scale(x)
+    //        .orient("bottom");    
     var yScale = d3.scale.linear()
         .domain([0, maxContribution]) //maxContribution])
         .range([height, 0]);
 
     var yAxis = d3.svg.axis()
         .scale(yScale)
-        .orient("right")
+        .orient("left")
         .ticks(5)
         .tickFormat(d3.format('5s'));
     //		.tickValues([0, 5000000, 10000000, 15000000, 20000000, 25000000, 30000000]);
@@ -31,10 +42,10 @@ function renderSummaryChart() {
     var chart = d3.select(".summary-chart")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
-        .attr("padding", -20)
+        //.attr("padding", -20)
         .append("g")
         .attr("class", "y axis")
-        .attr("transform", "translate(" + 1 + ",0)")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
         .call(yAxis);
 
     console.log(maxContribution); // $29,309,043
@@ -49,14 +60,13 @@ function renderSummaryChart() {
             return "<strong>" + d.name + ":</strong> <span style='color:red'>$" + formatdollar(d.total) + "</span>";
         })
 
-    var bar = chart.selectAll("g")
+    var bar = chart.selectAll(".bar")
         .data(global_senate_data)
-        .enter()
-        .append("g")
-        .attr("transform", function (d, i) {
-            return "translate(" + i * barWidth + ", 0)";
-        });
-    bar.call(tip);
+        .enter();
+    //   .append("g");
+    //        .attr("transform", function (d, i) {
+    //            return "translate(" + i * barWidth + ", 0)";
+    //        });    bar.call(tip);
 
     bar.append("rect")
         .attr("y", function (d) {
@@ -65,7 +75,11 @@ function renderSummaryChart() {
         .attr("height", function (d) {
             return height - yScale(d.total);
         })
-        .attr("width", barWidth)
+        .attr("x", function (d) {
+            return x(d.initials);
+        })
+        .attr("width", x.rangeBand())
+        //.attr("width", barWidth)
         .attr("class", function (d) {
             return d.party.toLowerCase();
         })
@@ -87,7 +101,11 @@ function renderSummaryChart() {
         .attr("height", function (d) {
             return height - yScale(d.total);
         })
-        .attr("width", barWidth - 2)
+        .attr("x", function (d) {
+            return x(d.initials);
+        })
+        .attr("width", x.rangeBand() - 2)
+        // .attr("width", barWidth - 2)
         .attr("class", "indep_contributor")
         .style("fill", color_scale("light"))
         .on('mouseover', tip.show)
@@ -100,7 +118,11 @@ function renderSummaryChart() {
         .attr("height", function (d) {
             return height - yScale(d.indep_exp_indirect + d.indep_exp_supporting);
         })
-        .attr("width", barWidth - 2)
+        .attr("x", function (d) {
+            return x(d.initials);
+        })
+        .attr("width", x.rangeBand() - 2)
+        //   .attr("width", barWidth - 2)
         .attr("class", "indep_exp_supporting")
         .style("fill", color_scale("dark")); //:rgb(161, 217, 155);");
     bar.append("rect")
@@ -110,7 +132,11 @@ function renderSummaryChart() {
         .attr("height", function (d) {
             return height - yScale(d.indep_exp_indirect);
         })
-        .attr("width", barWidth - 2)
+        .attr("x", function (d) {
+            return x(d.initials);
+        })
+        .attr("width", x.rangeBand() - 2)
+        //       .attr("width", barWidth - 2)
         .attr("class", "indep_exp_indirect")
         .style("fill", color_scale("dark indirect")); //":rgb(49, 163, 84);");    
     bar.append("rect")
@@ -120,7 +146,11 @@ function renderSummaryChart() {
         .attr("height", function (d) {
             return height - yScale(d.org_contribution);
         })
-        .attr("width", barWidth - 2)
+        .attr("x", function (d) {
+            return x(d.initials);
+        })
+        .attr("width", x.rangeBand())
+        //.attr("width", barWidth - 2)
         .attr("class", "org_contribution")
         .style("fill", function () {
             return color_scale("light"); //:rgb(0, 0, 0);"); 
