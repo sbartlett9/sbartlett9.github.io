@@ -60,7 +60,7 @@ div.tooltip {
 
 #senator_info img {
     margin: 1em 0 0 2em;
-    padding: 0 auto;
+    padding: auto;
     opacity: 1;
     float: left;
 }
@@ -69,14 +69,14 @@ div.tooltip {
 	margin: 1em 0 0 2em;
 	padding: 0;
 	float: left;
-	height: 32px;
+	height: 2em;
 }
 
 #senator_info .icon.party img {
 	margin: 1em 0 0 2em;
 	padding: 0;
 	float: left;
-	height: 32px;
+	height: 2em;
 }
 
 
