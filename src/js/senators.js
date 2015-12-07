@@ -1,4 +1,6 @@
 //global
+var global_senate_data;
+
 selected_senator = null;
 
 repub_scale = d3.scale.quantize()
@@ -10,19 +12,55 @@ dem_scale = d3.scale.quantize()
 ind_scale = d3.scale.quantize()
     .range(colorbrewer.Greens[5]);
 
+var init_message = "<h3>Each rectangle represents a senator. Find where the senators are seated via the dropdown list and search bar. Click on rectangle to see senator's information. Adjust the slider to change the treemap view.</h3>";
+
 function init_senators() {
     senatorInfoDiv = d3.select("#senator_info")
         .html(function (d) {
-            return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
-        });
+            return init_message;
+        })
+		.style("line-height","2em");
 
     d3.json('data/senators_with_totals.json', update_senators);
+}
+
+function updateGlobalSenateData(rawdata) {
+	global_senate_data = [];
+	rawdata.forEach(function (d) {
+		var data = {};
+		var totals = senator_totals.get(d.govtrack_id); //map like "dark": 567890, "light": 345668
+		data.total = totals ? d3.sum(totals.values()) : 0;
+		data.total_range = data.total;
+		data.name = d.first_name + " " + d.last_name;
+		data.initials = d.first_name[0] + d.last_name[0];
+		data.state = d.state;
+		data.party = d.party;
+		data.indep_contributor = 0;
+		data.indep_exp_supporting = 0;
+		data.indep_exp_indirect = 0;
+		if (totals) {
+	        var ic = totals.get("light");
+	        ic = (ic === undefined) ? 0 : ic; //NaN check
+			data.indep_contributor = ic;
+	        var ies = totals.get("dark");
+	        ies = (ies === undefined) ? 0 : ies;
+	        data.indep_exp_supporting = ies;
+	        var iei = totals.get("dark indirect");
+	        iei = (iei === undefined) ? 0 : iei;
+	    	data.indep_exp_indirect = iei;
+	    	data.total_range = ic + ies + iei;
+    	}
+		global_senate_data.push(data); //set(d.govtrack_id, data);
+    });
+    console.log(global_senate_data);
+	renderSummaryChart();
 }
 
 
 //Callback for when data is loaded
 function update_senators(rawdata) {
     console.log("senator data load success");
+    updateGlobalSenateData(rawdata);
     var min = d3.min(senator_totals.values(), function (d) {
         return d3.sum(d.values());
     }); // var min = 0;
@@ -100,10 +138,13 @@ function selectSenator(sen) {
     //TODO clear any org selections or other senator selections
     var senators = d3.select('#Layer_1')
         .selectAll('rect')
-        .style("stroke", "none");
+        .style("stroke", "none")
+		.style("rx","6px")
+		.style("ry","6px");
     d3.select("#id" + sen.govtrack_id)
-        .style("stroke", "orangered")
-        .style("stroke-width", "4px");
+        .style("stroke", "#B0B0B0")
+        .style("stroke-width", "5px");
+	
 
     selected_senator = sen;
     updateOrgMap(org_rawdata.filter(function (d) {
@@ -152,7 +193,30 @@ function getSenateInfoPaneHTML(d, totals) {
     var imgURL = imgStringBegin + imgLocation + imgStringEnd;
 
     var senate_info_html =
-        '<div class="col-lg-2">' + '<div class="row">' + portraitImgURL + '</div/>' + '<div class="row">' + stateImgURL + partyImgURL + '</div>' + '</div>' + '<div class="col-lg-9">' + '<div class="row">' + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' + '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' + '</div>' + '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br>Independent Expenditures: ' + indep_exp_supporting + '<br> Opponent Opposition: ' + indep_exp_indirect + '<br/></p>' + '</div>' + '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Age:' + age + '</p>' + '</div>' + '</div>'
+        '<div class="col-lg-2">' 
+			+ '<div class="row">' + portraitImgURL
+		 	+ '</div/>' 
+		 	+ '<div class="row">' + stateImgURL + partyImgURL + '</div>' 
+		+ '</div>' 
+		+ '<div class="col-lg-6">'
+			 + '<div class="row">' 
+			 	+ '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>'
+				+ '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' 
+			+ '</div>' 
+			+ '<div class="row contribution-amount">' 
+				+ '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br>Independent Expenditures: ' + indep_exp_supporting + '<br> Opponent Opposition: ' + indep_exp_indirect 
+				+ '<br/></p>' 
+		   + '</div>'
+	    + '</div>'
+			
+		+ '<div class="col-lg-4">' 
+			 + '<br>'
+			 + '<br>'
+			 + '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Age:' + age +'</p>' 
+		     + '</div>'
+			 + '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Tenure:' + tenure +'</p>' 
+		     + '</div>'
+		+ '</div>'
 
 
     ;
@@ -176,7 +240,7 @@ function stateseln(State) {
     //console.log(State);
     var x = "." + State
         //console.log(x);
-    var rec = d3.select('#Layer_1').selectAll("rect").filter(x).attr("style", "stroke: orangered; stroke-width: 4");
+    var rec = d3.select('#Layer_1').selectAll("rect").filter(x).attr("style", "stroke: grey; stroke-width: 4");
     rec.classed('foobar', true)
         //console.log(rec)
 
@@ -248,7 +312,7 @@ function srch() {
         seln.classed("foobar", true);
         seln.transition()
             .style("opacity", 1)
-            .style("stroke", "orangered");
+            .style("stroke", "#B0B0B0");
     })
 
 }

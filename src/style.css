@@ -7,9 +7,15 @@
     src: url(fonts/Georgia.ttf);
 }
 
+
+
 #title {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight:700;
+	font-size:5em;
     text-align: center;
     width: 100%;
+
 }
 
 .viz_container {
@@ -31,11 +37,11 @@ div.tooltip {
 }
 
 #senator_info {
-    width: 80em;
+    width: 60%;
     height: 15em;
     position: absolute;
     left: 5%;
-    top: 10%;
+    top: 20%;
     background: whitesmoke;
     box-shadow: inset 1px 1px 0 white;
     border-radius: 5px;
@@ -114,7 +120,7 @@ div .total_contribution_amount{
 #senator_info h4 {
     float: left;
     font-weight: 800;
-    padding-left: 1em;
+    padding-left: 0.5em;
     display: inline-block;
     font-family: Georgia, Helvetica, Arial, sans-serif;
 }
@@ -263,7 +269,7 @@ text-indent: 2px;
 	top:40%;*/
     position: absolute;
     left: 66%;
-    top: 4em;
+    top:  20%;
     background: whitesmoke;
     box-shadow: inset 1px 1px 0 white;
     border-radius: 5px;
@@ -365,7 +371,7 @@ text-indent: 2px;
     background: whitesmoke;
     position: absolute;
     left: 2em;
-    top: 4em;
+    top: 2em;
     width: 400px;
     padding: 15px;
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -417,6 +423,8 @@ ul {
     border-radius: 3px;
     box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
+
+
 
 #senatorsSearchList span {
     display: block;
