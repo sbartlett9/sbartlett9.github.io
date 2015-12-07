@@ -1,4 +1,6 @@
 //global
+var global_senate_data;
+
 selected_senator = null;
 
 repub_scale = d3.scale.quantize()
@@ -19,10 +21,43 @@ function init_senators() {
     d3.json('data/senators_with_totals.json', update_senators);
 }
 
+function updateGlobalSenateData(rawdata) {
+	global_senate_data = [];
+	rawdata.forEach(function (d) {
+		var data = {};
+		var totals = senator_totals.get(d.govtrack_id); //map like "dark": 567890, "light": 345668
+		data.total = totals ? d3.sum(totals.values()) : 0;
+		data.total_range = data.total;
+		data.name = d.first_name + " " + d.last_name;
+		data.initials = d.first_name[0] + d.last_name[0];
+		data.state = d.state;
+		data.party = d.party;
+		data.indep_contributor = 0;
+		data.indep_exp_supporting = 0;
+		data.indep_exp_indirect = 0;
+		if (totals) {
+	        var ic = totals.get("light");
+	        ic = (ic === undefined) ? 0 : ic; //NaN check
+			data.indep_contributor = ic;
+	        var ies = totals.get("dark");
+	        ies = (ies === undefined) ? 0 : ies;
+	        data.indep_exp_supporting = ies;
+	        var iei = totals.get("dark indirect");
+	        iei = (iei === undefined) ? 0 : iei;
+	    	data.indep_exp_indirect = iei;
+	    	data.total_range = ic + ies + iei;
+    	}
+		global_senate_data.push(data); //set(d.govtrack_id, data);
+    });
+    console.log(global_senate_data);
+	renderSummaryChart();
+}
+
 
 //Callback for when data is loaded
 function update_senators(rawdata) {
     console.log("senator data load success");
+    updateGlobalSenateData(rawdata);
     var min = d3.min(senator_totals.values(), function (d) {
         return d3.sum(d.values());
     }); // var min = 0;
