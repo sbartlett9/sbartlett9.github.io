@@ -43,7 +43,7 @@ function updateGlobalSenateData(rawdata) {
 		data.indep_contributor = 0;
 		data.indep_exp_supporting = 0;
 		data.indep_exp_indirect = 0;
-		data.org_contribution = 0;
+		data.org_contribution = Math.floor(Math.random() * data.total);
 		if (totals) {
 	        var ic = totals.get("light");
 	        ic = (ic === undefined) ? 0 : ic; //NaN check

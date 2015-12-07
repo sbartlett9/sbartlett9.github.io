@@ -35,7 +35,8 @@ function renderSummaryChart() {
     
     var bar = chart.selectAll("g")
     		.data(global_senate_data)
-		.enter().append("g")
+		.enter()
+		.append("g")
 			.attr("transform", function(d, i) { return "translate(" + i * barWidth + ", 0)"; });
 			
 	bar.append("rect")
@@ -55,8 +56,31 @@ function renderSummaryChart() {
 			else
 				return "#000000";				
 		});
-	
-	
+	bar.append("rect")
+		.attr("y", function(d) { return yScale(d.indep_contributor + d.indep_exp_supporting + d.indep_exp_indirect); })
+		.attr("height", function(d) { return height - yScale(d.indep_contributor + d.indep_exp_supporting + d.indep_exp_indirect); })
+		.attr("width", barWidth - 2)
+		.attr("class", "indep_exp_indirect")
+		.attr("style", "fill:rgb(49, 163, 84);");
+	bar.append("rect")
+		.attr("y", function(d) { return yScale(d.indep_contributor + d.indep_exp_supporting); })
+		.attr("height", function(d) { return height - yScale(d.indep_contributor + d.indep_exp_supporting); })
+		.attr("width", barWidth - 2)
+		.attr("class", "indep_exp_supporting")
+		.attr("style", "fill:rgb(161, 217, 155);"); 		
+	bar.append("rect")
+		.attr("y", function(d) { return yScale(d.indep_contributor); })
+		.attr("height", function(d) { return height - yScale(d.indep_contributor); })
+		.attr("width", barWidth - 2)
+		.attr("class", "indep_contributor")
+		.attr("style", "fill:rgb(229, 245, 224);"); 
+	bar.append("rect")
+		.attr("y", function(d) { return yScale(d.org_contribution); })
+		.attr("height", function(d) { return height - yScale(d.org_contribution); })
+		.attr("width", barWidth - 2)
+		.attr("class", "org_contribution")
+		.attr("style", "fill:rgb(0, 0, 0);"); 
+
 		
 }
     	
