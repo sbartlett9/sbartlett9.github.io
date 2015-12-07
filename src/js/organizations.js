@@ -1,4 +1,4 @@
-var tm_height = 550;
+var tm_height = 600;
 
 sen_rect_width = 84.6;
 sen_rect_scale = d3.scale.linear().rangeRound([0, sen_rect_width]);
@@ -121,7 +121,7 @@ function updateOrgMap(flatdata) {
         .style("border-width", function (d) {
             return d.depth == 1 ? "3px" : "1px";
         })
-		.style("line-height","0.9em")
+        .style("line-height", "0.9em")
         .attr("id", function (d) {
             return d.depth == 1 ? nameToId(d.name) : "";
         })
@@ -200,7 +200,7 @@ function position() {
 }
 
 function selectSenators(org) {
-	var senate_org_map = new Map();
+    var senate_org_map = new Map();
     var senators = d3.select('#Layer_1').selectAll('rect').transition().style("opacity", .2);
     //    var tip = d3.tip()
     //        .attr('class', 'd3-tip')
