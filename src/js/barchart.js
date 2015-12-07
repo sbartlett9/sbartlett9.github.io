@@ -8,7 +8,7 @@ function renderSummaryChart() {
     var margin = {
         top: 20,
         right: 10,
-        bottom: 20,
+        bottom: 30,
         left: 30
     };
     width = width - margin.left - margin.right;
@@ -62,24 +62,23 @@ function renderSummaryChart() {
 
     var bar = chart.selectAll(".bar")
         .data(global_senate_data)
-        .enter();
-    //   .append("g");
+        .enter()
+        .append("g").call(tip);
     //        .attr("transform", function (d, i) {
     //            return "translate(" + i * barWidth + ", 0)";
-    //        });    bar.call(tip);
-
+    //        });    
     bar.append("rect")
         .attr("y", function (d) {
             return yScale(d.total);
         })
         .attr("height", function (d) {
-           	return 500;
-		   // return height - yScale(d.total);
+            return 500;
+            // return height - yScale(d.total);
         })
         .attr("x", function (d) {
             return x(d.initials);
         })
-        .attr("width", x.rangeBand() -2)
+        .attr("width", x.rangeBand() - 2)
         //.attr("width", barWidth)
         .attr("class", function (d) {
             return d.party.toLowerCase();
@@ -93,8 +92,9 @@ function renderSummaryChart() {
                 return "#c4b130";
             else
                 return "#000000";
-        });
-
+        })
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
     bar.append("rect")
         .attr("y", function (d) {
             return yScale(d.total);
@@ -108,9 +108,7 @@ function renderSummaryChart() {
         .attr("width", x.rangeBand() - 2)
         // .attr("width", barWidth - 2)
         .attr("class", "indep_contributor")
-        .style("fill", color_scale("light"))
-        .on('mouseover', tip.show)
-        .on('mouseout', tip.hide);
+        .style("fill", color_scale("light"));
     //:rgb(229, 245, 224);");
     bar.append("rect")
         .attr("y", function (d) {
