@@ -119,7 +119,9 @@ function getSenateInfoPaneHTML(d, totals) {
     var age = ((new Date("06/12/2015") - new Date(d.birthday)) / (1000 * 3600 * 24 * 365)).toFixed(0);
     var tenure = ((new Date("06/12/2015") - new Date(d.assumed_office)) / (1000 * 3600 * 24 * 365)).toFixed(1);
     if (totals) {
-        var ind_cont = "$ " + formatdollar(totals.get("light"));
+	    var ic = totals.get("light");
+	    ic = (ic === undefined) ? 0 : ic; //NaN check
+        var ind_cont = "$ " + formatdollar(ic);
         var ies = totals.get("dark");
         ies = (ies === undefined) ? 0 : ies;
         var indep_exp_supporting = "$ " + formatdollar(ies);
@@ -128,16 +130,16 @@ function getSenateInfoPaneHTML(d, totals) {
         var indep_exp_indirect = "$ " + formatdollar(iei);
     }
     var portraitImgURL = ' <img src= "img/portraits/' + d.govtrack_id + '.jpeg' + '">';
-    var stateImgURL = ' <div class="icon state"><img alt="' + d.state + '" src="img/states/' + d.state + '.png"></div>';
+    var stateImgURL = ' <div class="icon state"><img title="' + d.state + '" src="img/states/' + d.state + '.png"></div>';
     var partyImgURL = ' <div class="icon party';
     if (d.party === "Republican") {
-	    partyImgURL += ' republican"><img alt="Republican" src="img/party/color/elephant';
+	    partyImgURL += ' republican"><img title="Republican" src="img/party/color/elephant';
 	    }
 	else if (d.party === "Democrat") {
-	    partyImgURL += ' democrat"><img alt="Democrat" src="img/party/color/donkey';
+	    partyImgURL += ' democrat"><img title="Democrat" src="img/party/color/donkey';
 	    }
 	else if (d.party === "Independent") {
-		partyImgURL += ' independent"><img alt="Independent" src="img/party/color/moose';
+		partyImgURL += ' independent"><img title="Independent" src="img/party/color/moose';
 	}
 	partyImgURL += '.png"></div>';
 	
