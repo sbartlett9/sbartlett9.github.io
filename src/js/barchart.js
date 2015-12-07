@@ -39,31 +39,32 @@ function renderSummaryChart() {
         .tickFormat(d3.format('5s'));
     //		.tickValues([0, 5000000, 10000000, 15000000, 20000000, 25000000, 30000000]);
 
-    var chart = d3.select(".summary-chart")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        //.attr("padding", -20)
-        .append("g")
-        .attr("class", "y axis")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-        .call(yAxis);
-
-    console.log(maxContribution); // $29,309,043
-    console.log(d3.sum(global_senate_data, function (d) {
-        return d.total;
-    })); // $459,768,168
-
     var tip = d3.tip()
         .attr('class', 'd3-tip')
         .offset([2, -5])
         .html(function (d) {
             return "<strong><h3>" + d.name + ":</h3></strong> <h3 style='color:green'>$" + formatdollar(d.total) + "</h3>";
         })
+    var chart = d3.select(".summary-chart")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        //.attr("padding", -20)
+        .append("svg")
+        .append("g")
+        .attr("class", "y axis")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        .call(yAxis);
+    chart.call(tip);
+    console.log(maxContribution); // $29,309,043
+    console.log(d3.sum(global_senate_data, function (d) {
+        return d.total;
+    })); // $459,768,168
+
 
     var bar = chart.selectAll(".bar")
         .data(global_senate_data)
-        .enter()
-        .append("g").call(tip);
+        .enter();
+    // .append("g").call(tip);
     //        .attr("transform", function (d, i) {
     //            return "translate(" + i * barWidth + ", 0)";
     //        });    
