@@ -127,18 +127,38 @@ function getSenateInfoPaneHTML(d, totals) {
         iei = (iei === undefined) ? 0 : iei;
         var indep_exp_indirect = "$ " + formatdollar(iei);
     }
+    var portraitImgURL = ' <img src= "img/portraits/' + d.govtrack_id + '.jpeg' + '">';
+    var stateImgURL = ' <div class="icon state"><img alt="' + d.state + '" src="img/states/' + d.state + '.png"></div>';
+    var partyImgURL = ' <div class="icon party';
+    if (d.party === "Republican") {
+	    partyImgURL += ' republican"><img alt="Republican" src="img/party/color/elephant';
+	    }
+	else if (d.party === "Democrat") {
+	    partyImgURL += ' democrat"><img alt="Democrat" src="img/party/color/donkey';
+	    }
+	else if (d.party === "Independent") {
+		partyImgURL += ' independent"><img alt="Independent" src="img/party/color/moose';
+	}
+	partyImgURL += '.png"></div>';
+	
     var imgStringBegin = " <img src= img/portraits/";
     var imgLocation = d.govtrack_id + ".jpeg";
     var imgStringEnd = ">";
     var imgURL = imgStringBegin + imgLocation + imgStringEnd;
 	
     var senate_info_html =
-        '<div class="col-lg-2">' + imgURL + '</div>' + '<div class="col-lg-9">' + '<div class="row">' + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' + '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' + '</div>'
-
-    +'<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont
-        + '<br>Independent Expenditures: ' + indep_exp_supporting + '<br> Opponent Opposition: ' + indep_exp_indirect + '<br/></p>' + '</div>'
-
-    + '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Age:' + age + '</p>' + '</div>' + '</div>'
+        '<div class="col-lg-2">' 
+        	+ '<div class="row">' + portraitImgURL + '</div/>' 
+			+ '<div class="row">' + stateImgURL + partyImgURL + '</div>'
+        + '</div>' 
+        + '<div class="col-lg-9">' 
+	        + '<div class="row">' + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' + '<span><h2 class="Senator_State_Party">' 
+	        	+ d.state + ' | ' + d.party + '</h2></span>' + '</div>'
+			+ '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont
+	        + '<br>Independent Expenditures: ' + indep_exp_supporting 
+	        + '<br> Opponent Opposition: ' + indep_exp_indirect + '<br/></p>' + '</div>'
+			+ '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Age:' + age + '</p>' + '</div>' 
+		+ '</div>'
 
 
     ;
