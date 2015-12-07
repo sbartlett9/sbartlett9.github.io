@@ -1,7 +1,4 @@
-function renderSummaryChart() {
-
-    console.log("rendering summary chart");
-
+function init_chart() {
     var width = 1100
     height = 400;
 
@@ -14,12 +11,12 @@ function renderSummaryChart() {
     width = width - margin.left - margin.right;
     height = height - margin.top - margin.bottom;
 
-    var barWidth = (width - 100) / global_senate_data.length;
+    //var barWidth = (width - 100) / global_senate_data.length;
     var maxContribution = d3.max(global_senate_data, function (d) {
         return +d.total;
     });
 
-    var x = d3.scale.ordinal()
+    x = d3.scale.ordinal()
         .domain(global_senate_data.map(function (d) {
             return d.initials;
         }))
@@ -28,7 +25,7 @@ function renderSummaryChart() {
     //    var xAxis = d3.svg.axis()
     //        .scale(x)
     //        .orient("bottom");    
-    var yScale = d3.scale.linear()
+    yScale = d3.scale.linear()
         .domain([0, maxContribution]) //maxContribution])
         .range([height, 0]);
 
@@ -39,13 +36,14 @@ function renderSummaryChart() {
         .tickFormat(d3.format('5s'));
     //		.tickValues([0, 5000000, 10000000, 15000000, 20000000, 25000000, 30000000]);
 
-    var tip = d3.tip()
+    tip = d3.tip()
         .attr('class', 'd3-tip')
         .offset([2, -5])
         .html(function (d) {
             return "<strong><h3>" + d.name + ":</h3></strong> <h3 style='color:green'>$" + formatdollar(d.total) + "</h3>";
-        })
-    var chart = d3.select(".summary-chart")
+        });
+
+    chart = d3.select(".summary-chart")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         //.attr("padding", -20)
@@ -60,15 +58,30 @@ function renderSummaryChart() {
         return d.total;
     })); // $459,768,168
 
+    renderSummaryChart();
+}
+
+function renderSummaryChart() {
+
+    console.log("rendering summary chart");
+
+
 
     var bar = chart.selectAll(".bar")
-        .data(global_senate_data)
-        .enter();
+        .data(global_senate_data).enter();
+    bar
+    //        .append("g")
+    //        .attr("class", "g")
+    //        .attr("id", function (d) {
+    //            "bid" + d.id;
+    //        })        //        .attr("transform", function (d) {
+    //            return "translate(" + x(d.initials) + ",0)";
+    //        })        // .enter();
     // .append("g").call(tip);
     //        .attr("transform", function (d, i) {
     //            return "translate(" + i * barWidth + ", 0)";
     //        });    
-    bar.append("rect")
+        .append("rect")
         .attr("y", function (d) {
             return yScale(d.total);
         })
@@ -138,8 +151,8 @@ function renderSummaryChart() {
         .attr("width", x.rangeBand() - 2)
         //       .attr("width", barWidth - 2)
         .attr("class", "indep_exp_indirect")
-        .style("fill", color_scale("dark indirect")); //":rgb(49, 163, 84);");    
-    bar.append("rect")
+        .style("fill", color_scale("dark indirect")) //":rgb(49, 163, 84);");    
+        .append("rect")
         .attr("y", function (d) {
             return yScale(d.org_contribution);
         })
@@ -147,14 +160,16 @@ function renderSummaryChart() {
             return height - yScale(d.org_contribution);
         })
         .attr("x", function (d) {
-            return x(d.initials);
+            return x(d.initials) + x.rangeBand() / 2;
         })
-        .attr("width", x.rangeBand())
+        .attr("width", "2px")
         //.attr("width", barWidth - 2)
-        .attr("class", "org_contribution")
-        .style("fill", function () {
-            return color_scale("light"); //:rgb(0, 0, 0);"); 
-        });
+        .attr("class", "org_contribution") //where is this class?
+        //.style("fill", ":rgb(0, 0, 0);")
+        .style("border", "2px gray");
+
+    // bar.exit().remove();
+
 }
 
 function clearSenateOrganizationContributionValues() {

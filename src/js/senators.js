@@ -62,12 +62,15 @@ function updateGlobalSenateData(rawdata) {
             democrats.push(data);
         global_senate_data_map.set(data.id, data);
     });
-    global_senate_data = global_senate_data.concat(republicans, democrats);
-    global_senate_data.sort(function (a, b) { //this breaks the bar chart for some reason
+    democrats.sort(function (a, b) {
         return d3.descending(a.total, b.total);
     });
+    republicans.sort(function (a, b) {
+        return d3.descending(a.total, b.total);
+    });
+    global_senate_data = global_senate_data.concat(democrats, republicans);
     console.log(global_senate_data);
-    renderSummaryChart();
+    init_chart();
 }
 
 function updateGlobalContributions(contributionData) {
@@ -100,14 +103,13 @@ function update_senators(rawdata) {
         .attr("class", "tooltip")
         .style("opacity", 0);
 
-    var tip = d3.tip()
-        .attr('class', 'd3-tip')
-        .attr('opacity', .9)
-        //.offset([-10, 0])
-        .html(function (d) {
-            return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
-        });
-
+//    var tip = d3.tip()
+       //        .attr('class', 'd3-tip')
+       //        .attr('opacity', .9)
+       //        //.offset([-10, 0])
+       //        .html(function (d) {
+       //            return "<strong>Name:</strong> <span style='color:red'>" + 'test' + "</span>";
+       //        });
     rawdata.forEach(function (d) {
         var id = '#id' + d.govtrack_id;
         var scale = getScale(d);
