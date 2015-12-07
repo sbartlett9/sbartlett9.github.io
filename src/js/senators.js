@@ -63,9 +63,9 @@ function updateGlobalSenateData(rawdata) {
         global_senate_data_map.set(data.id, data);
     });
     global_senate_data = global_senate_data.concat(republicans, democrats);
-    global_senate_data.sort(function (a, b) {
-        return d3.descending(a.total, b.total);
-    });
+    //    global_senate_data.sort(function (a, b) { //this breaks the bar chart for some reason
+    //        return d3.descending(a.total, b.total);
+    //    });
     console.log(global_senate_data);
     renderSummaryChart();
 }

@@ -9,7 +9,7 @@ function renderSummaryChart() {
         top: 20,
         right: 20,
         bottom: 20,
-        left: 20
+        left: 10
     };
 
     var barWidth = width / global_senate_data.length;
@@ -17,7 +17,7 @@ function renderSummaryChart() {
         return +d.total;
     });
 
-    var yScale = d3.scale.sqrt()
+    var yScale = d3.scale.linear()
         .domain([0, maxContribution]) //maxContribution])
         .range([height, 0]);
 
@@ -25,7 +25,7 @@ function renderSummaryChart() {
         .scale(yScale)
         .orient("right")
         .ticks(5)
-        .tickFormat(d3.format('.1s'));
+        .tickFormat(d3.format('5s'));
     //		.tickValues([0, 5000000, 10000000, 15000000, 20000000, 25000000, 30000000]);
 
     var chart = d3.select(".summary-chart")
@@ -39,8 +39,15 @@ function renderSummaryChart() {
 
     console.log(maxContribution); // $29,309,043
     console.log(d3.sum(global_senate_data, function (d) {
-        return +d.total;
+        return d.total;
     })); // $459,768,168
+
+    var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-5, 0])
+        .html(function (d) {
+            return "<strong>" + d.name + ":</strong> <span style='color:red'>$" + formatdollar(d.total) + "</span>";
+        })
 
     var bar = chart.selectAll("g")
         .data(global_senate_data)
@@ -49,6 +56,7 @@ function renderSummaryChart() {
         .attr("transform", function (d, i) {
             return "translate(" + i * barWidth + ", 0)";
         });
+    bar.call(tip);
 
     bar.append("rect")
         .attr("y", function (d) {
@@ -71,16 +79,20 @@ function renderSummaryChart() {
             else
                 return "#000000";
         });
+
     bar.append("rect")
         .attr("y", function (d) {
-            return yScale(d.indep_contributor + d.indep_exp_supporting + d.indep_exp_indirect);
+            return yScale(d.total);
         })
         .attr("height", function (d) {
-            return height - yScale(d.indep_contributor + d.indep_exp_supporting + d.indep_exp_indirect);
+            return height - yScale(d.total);
         })
         .attr("width", barWidth - 2)
         .attr("class", "indep_contributor")
-        .style("fill", color_scale("light")) //:rgb(229, 245, 224);");
+        .style("fill", color_scale("light"))
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
+    //:rgb(229, 245, 224);");
     bar.append("rect")
         .attr("y", function (d) {
             return yScale(d.indep_exp_indirect + d.indep_exp_supporting);
@@ -101,18 +113,18 @@ function renderSummaryChart() {
         .attr("width", barWidth - 2)
         .attr("class", "indep_exp_indirect")
         .style("fill", color_scale("dark indirect")); //":rgb(49, 163, 84);");    
-    //    bar.append("rect")
-    //        .attr("y", function (d) {
-    //            return yScale(d.org_contribution);
-    //        })
-    //        .attr("height", function (d) {
-    //            return height - yScale(d.org_contribution);
-    //        })
-    //        .attr("width", barWidth - 2)
-    //        .attr("class", "org_contribution")
-    //        .style("fill", function () {
-    //            return color_scale("light"); //:rgb(0, 0, 0);"); 
-    //        });
+    bar.append("rect")
+        .attr("y", function (d) {
+            return yScale(d.org_contribution);
+        })
+        .attr("height", function (d) {
+            return height - yScale(d.org_contribution);
+        })
+        .attr("width", barWidth - 2)
+        .attr("class", "org_contribution")
+        .style("fill", function () {
+            return color_scale("light"); //:rgb(0, 0, 0);"); 
+        });
 }
 
 function clearSenateOrganizationContributionValues() {
