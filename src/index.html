@@ -428,16 +428,33 @@
             <div class="col-lg-5">
             
             	
-                <div class="panel panel-primary">
+                <div class="panel panel-primary" >
                   <div class="panel-heading">
                     <h3 class="panel-title">Money Contribution Type</h3>
                   </div>
-                  <div class="panel-body" id="senator_info">
-                    <input id="orgslider" type="range" min="0" step="25000" value="50000" onchange="updateMoneyRange(this.value)" />
-            			<div class="treemap" style="float:right;"></div>
-                  <div class="panel-footer">Panel footer</div>
-                </div>     
+                  <div class="panel-body" id="senator_info" style="height:650px;">
+                    <input id="orgslider" type="range" min="0" step="25000" value="50000" onchange="updateMoneyRange(this.value)" />					 <div id="tmap"></div>
+                      
+                 
+                 </div>  <!--panel-body-->
+                 <div class="panel-footer">
+                 	&nbsp <div class="row">
+                    	&nbsp <i class="fa fa-circle fa-2x" style="color:rgb(229, 245, 224);"></i>
+                        <h4 style="display:inline-block;">&nbsp Individual Contributions</h4>
+                    </div>
+                    &nbsp <div class="row">
+                    	&nbsp <i class="fa fa-circle fa-2x" style="color:rgb(161, 217, 155);"></i>
+                        <h4 style="display:inline-block;">&nbsp Independent Expenditures</h4>
+                    </div>
+                    &nbsp <div class="row">
+                    	&nbsp <i class="fa fa-circle fa-2x" style="color:rgb(49, 163, 84);"></i>
+                        <h4 style="display:inline-block;"> &nbsp Opponent Oppositions</h4>
+                    </div>
+                                		
             
+                 </div> 
+                	
+            	</div>
             
      
     
@@ -448,16 +465,9 @@
                 <br>
                
     
-                <div id="tmap"></div>
-                <div class="legend" style="position:relative;margin-top:40em;">
-                    <div class="white"><i class="fa fa-circle fa-2x" style="color:rgb(229, 245, 224);"></i>
-                        <h4 style="display:inline-block;">&nbsp Individual Contributions</h4></div>
-                    <div class="grey"><i class="fa fa-circle fa-2x" style="color:rgb(161, 217, 155);"></i>
-                        <h4 style="display:inline-block;">&nbsp Independent Expenditures</h4></div>
-                    <div class="dark_grey"><i class="fa fa-circle fa-2x" style="color:rgb(49, 163, 84);"></i>
-                        <h4 style="display:inline-block;"> &nbsp Opponent Oppositions</h4></div>
-                </div>
-            </div><!--treemap-->
+               
+             
+          
             
           </div><!--col-lg-5-->
         </div><!--row-->
