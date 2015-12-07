@@ -484,12 +484,24 @@ ul {
     stroke-linecap: round;
 }
 
+.summary-chart rect .republican {
+	fill: #D80206;
+	stroke: none;
+}
+
+.summary-chart rect .democrat {
+	fill: #3045C4;
+	stroke: none;
+}
+
+.summary-chart rect .independent {
+	fill: #c4b130;
+	stroke: none;
+}
+
 
 /*D3 BAR CHART*/
 
-#chart rect {
-    fill: #4aaeea;
-}
 
 #chart text {
     fill: black;
@@ -503,7 +515,7 @@ ul {
 
 .axis path,
 .axis line {
-    fill: none;
-    stroke: #fff;
-    shape-rendering: crispEdges;
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
 }
