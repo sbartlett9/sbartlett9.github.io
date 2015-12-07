@@ -10,12 +10,14 @@ dem_scale = d3.scale.quantize()
 ind_scale = d3.scale.quantize()
     .range(colorbrewer.Greens[5]);
 
-var init_message = "test";
+var init_message = "<h3>Each rectangle represents a senator. Find where the senators are seated via the dropdown list and search bar. Click on rectangle to see senator's information. Adjust the slider to change the treemap view.</h3>";
+
 function init_senators() {
     senatorInfoDiv = d3.select("#senator_info")
         .html(function (d) {
             return init_message;
-        });
+        })
+		.style("line-height","2em");
 
     d3.json('data/senators_with_totals.json', update_senators);
 }
