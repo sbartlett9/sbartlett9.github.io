@@ -10,7 +10,7 @@ function renderSummaryChart() {
 	var barWidth = width / global_senate_data.length;
     var maxContribution = d3.max(global_senate_data, function(d) { return +d.total;} );
 		
-	var yScale = d3.scale.linear()
+	var yScale = d3.scale.sqrt()
 		.domain([0, 30000000]) //maxContribution])
     	.range([height, 0]);
     	
@@ -82,6 +82,31 @@ function renderSummaryChart() {
 		.attr("style", "fill:rgb(0, 0, 0);"); 
 
 		
+}
+
+function clearSenateOrganizationContributionValues()
+{
+	global_senate_data.forEach(function (d) {
+		d.org_contribution = 0;	
+	});
+	renderSummaryChart();
+}
+
+function updateSenateOrganizationContributionValues(senator_org_map)
+{
+	global_senate_data.forEach(function (d) {
+		if (senator_org_map.has(d.id))
+		{
+			d.org_contribution = senator_org_map.get(d.id);
+		}
+		else
+		{
+			d.org_contribution = 0;
+		}
+		
+	});
+	renderSummaryChart();
+	
 }
     	
 	/*
