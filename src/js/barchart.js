@@ -71,9 +71,9 @@ function renderSummaryChart() {
 
     console.log("rendering summary chart");
 
-    var bar = chart.selectAll(".bar")
-        .data(global_senate_data)
-        .enter();
+    var bars = chart.selectAll(".bar")
+        .data(global_senate_data);
+    var bar = bars.enter();
     bar.append("rect")
         .attr("y", function (d) {
             return yScale(d.total);
@@ -100,6 +100,7 @@ function renderSummaryChart() {
             else
                 return "#000000";
         })
+        // .style("stroke", "black")
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide);
     bar.append("rect")
@@ -153,13 +154,14 @@ function renderSummaryChart() {
             return height - yScale(d.org_contribution);
         })
         .attr("x", function (d) {
-            return x(d.id) + x.rangeBand() / 2; //center
+            return x(d.id) + x.rangeBand() / 2 - 3; //center
         })
-        .attr("width", "5px")
+        .attr("width", "6px")
         //.attr("width", barWidth - 2)
         .attr("class", "org_contribution") //where is this class?
         //.style("fill", ":rgb(0, 0, 0);")
         .style("border", "2px gray"); // bar.exit().remove();
+    bars.exit().remove();
 
 }
 
