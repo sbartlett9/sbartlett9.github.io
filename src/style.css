@@ -502,9 +502,6 @@ ul {
 
 /*D3 BAR CHART*/
 
-#chart rect {
-    fill: #4aaeea;
-}
 
 #chart text {
     fill: black;
@@ -518,7 +515,7 @@ ul {
 
 .axis path,
 .axis line {
-    fill: none;
-    stroke: #fff;
-    shape-rendering: crispEdges;
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
 }

@@ -2,23 +2,36 @@ function renderSummaryChart() {
 	
 	console.log("rendering summary chart");
 	
-	var width = 800
-		height = 200;
+	var width = 1000
+		height = 400;
+		
+	var margin = { top: 20, right: 20, bottom: 20, left: 20 };
 		
 	var barWidth = width / global_senate_data.length;
     var maxContribution = d3.max(global_senate_data, function(d) { return +d.total;} );
 		
 	var yScale = d3.scale.linear()
-		.domain([0, maxContribution])
+		.domain([0, 30000000]) //maxContribution])
     	.range([height, 0]);
     	
-    var chart = d3.select(".summary-chart")
-    	.attr("width", width)
-    	.attr("height", height);
+    var yAxis = d3.svg.axis()
+    	.scale(yScale)
+    	.orient("right")
+    	.ticks(5)
+    	.tickFormat(d3.format('.1s'));
+//		.tickValues([0, 5000000, 10000000, 15000000, 20000000, 25000000, 30000000]);
     	
-
+    var chart = d3.select(".summary-chart")
+    	.attr("width", width + margin.left + margin.right)
+    	.attr("height", height + margin.top + margin.bottom)
+    	.attr("padding", -20)
+    	.append("g")
+    		.attr("class", "y axis")
+    		.attr("transform", "translate(" + 1 + ",0)")
+    		.call(yAxis);
     
-	console.log(barWidth, maxContribution);
+	console.log(maxContribution);	// $29,309,043
+	console.log(d3.sum(global_senate_data, function(d) { return +d.total;} )); // $459,768,168
     
     var bar = chart.selectAll("g")
     		.data(global_senate_data)
@@ -41,7 +54,9 @@ function renderSummaryChart() {
 				return "#c4b130";
 			else
 				return "#000000";				
-		})
+		});
+	
+	
 		
 }
     	
