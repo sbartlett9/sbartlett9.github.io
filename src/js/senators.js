@@ -62,7 +62,10 @@ function updateGlobalSenateData(rawdata) {
             democrats.push(data);
         global_senate_data_map.set(data.id, data);
     });
-    global_senate_data = global_senate_data.concat(democrats, republicans);
+    global_senate_data = global_senate_data.concat(republicans, democrats);
+    global_senate_data.sort(function (a, b) {
+        return d3.descending(a.total, b.total);
+    });
     console.log(global_senate_data);
     renderSummaryChart();
 }
@@ -210,23 +213,10 @@ function getSenateInfoPaneHTML(d, totals) {
     var imgURL = imgStringBegin + imgLocation + imgStringEnd;
 
     var senate_info_html =
-        '<div class="col-lg-3">' 
-			+ '<div class="row">' + portraitImgURL + '</div/>' 
-			+ '<div class="row">' + stateImgURL + partyImgURL + '</div>' 
-		+ '</div>' 
-		+ '<div class="col-lg-9">' 
-			+ '<div class="row">' 
-				+ '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' 
-				+ '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' + '</div>' 
-				+ '<div class="row contribution-amount">' 
-					+ '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br>Independent Expenditures: ' + indep_exp_supporting + '<br> Opponent Opposition: ' + indep_exp_indirect 
-					+ '<br/></p>' 
-				+ '<p class="total_contribution_amount">' + 'Age:' + age
-				+ '</p>' + '<p class="total_contribution_amount">' + 'Tenure:' + tenure + '</p>' 
-					
-					
-			+ '</div>' 
-			+ '</div>'
+        '<div class="col-lg-3">' + '<div class="row">' + portraitImgURL + '</div/>' + '<div class="row">' + stateImgURL + partyImgURL + '</div>' + '</div>' + '<div class="col-lg-9">' + '<div class="row">' + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' + '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' + '</div>' + '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br>Independent Expenditures: ' + indep_exp_supporting + '<br> Opponent Opposition: ' + indep_exp_indirect + '<br/></p>' + '<p class="total_contribution_amount">' + 'Age:' + age + '</p>' + '<p class="total_contribution_amount">' + 'Tenure:' + tenure + '</p>'
+
+
+    +'</div>' + '</div>'
 
 
     ;

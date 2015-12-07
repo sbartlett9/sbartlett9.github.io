@@ -1,115 +1,141 @@
 function renderSummaryChart() {
-	
-	console.log("rendering summary chart");
-	
-	var width = 1000
-		height = 400;
-		
-	var margin = { top: 20, right: 20, bottom: 20, left: 20 };
-		
-	var barWidth = width / global_senate_data.length;
-    var maxContribution = d3.max(global_senate_data, function(d) { return +d.total;} );
-		
-	var yScale = d3.scale.sqrt()
-		.domain([0, 30000000]) //maxContribution])
-    	.range([height, 0]);
-    	
+
+    console.log("rendering summary chart");
+
+    var width = 1000
+    height = 400;
+
+    var margin = {
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 20
+    };
+
+    var barWidth = width / global_senate_data.length;
+    var maxContribution = d3.max(global_senate_data, function (d) {
+        return +d.total;
+    });
+
+    var yScale = d3.scale.sqrt()
+        .domain([0, maxContribution]) //maxContribution])
+        .range([height, 0]);
+
     var yAxis = d3.svg.axis()
-    	.scale(yScale)
-    	.orient("right")
-    	.ticks(5)
-    	.tickFormat(d3.format('.1s'));
-//		.tickValues([0, 5000000, 10000000, 15000000, 20000000, 25000000, 30000000]);
-    	
+        .scale(yScale)
+        .orient("right")
+        .ticks(5)
+        .tickFormat(d3.format('.1s'));
+    //		.tickValues([0, 5000000, 10000000, 15000000, 20000000, 25000000, 30000000]);
+
     var chart = d3.select(".summary-chart")
-    	.attr("width", width + margin.left + margin.right)
-    	.attr("height", height + margin.top + margin.bottom)
-    	.attr("padding", -20)
-    	.append("g")
-    		.attr("class", "y axis")
-    		.attr("transform", "translate(" + 1 + ",0)")
-    		.call(yAxis);
-    
-	console.log(maxContribution);	// $29,309,043
-	console.log(d3.sum(global_senate_data, function(d) { return +d.total;} )); // $459,768,168
-    
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .attr("padding", -20)
+        .append("g")
+        .attr("class", "y axis")
+        .attr("transform", "translate(" + 1 + ",0)")
+        .call(yAxis);
+
+    console.log(maxContribution); // $29,309,043
+    console.log(d3.sum(global_senate_data, function (d) {
+        return +d.total;
+    })); // $459,768,168
+
     var bar = chart.selectAll("g")
-    		.data(global_senate_data)
-		.enter()
-		.append("g")
-			.attr("transform", function(d, i) { return "translate(" + i * barWidth + ", 0)"; });
-			
-	bar.append("rect")
-		.attr("y", function(d) { return yScale(d.total); })
-		.attr("height", function(d) { return height - yScale(d.total); })
-		.attr("width", barWidth)
-		.attr("class", function(d) {
-			return d.party.toLowerCase();
-		})
-		.attr("fill", function(d) {
-			if (d.party === "Republican")
-				return "#D80206";
-			else if (d.party === "Democrat")
-				return "#3045C4";
-			else if (d.party === "Independent")
-				return "#c4b130";
-			else
-				return "#000000";				
-		});
-	bar.append("rect")
-		.attr("y", function(d) { return yScale(d.indep_contributor + d.indep_exp_supporting + d.indep_exp_indirect); })
-		.attr("height", function(d) { return height - yScale(d.indep_contributor + d.indep_exp_supporting + d.indep_exp_indirect); })
-		.attr("width", barWidth - 2)
-		.attr("class", "indep_exp_indirect")
-		.attr("style", "fill:rgb(49, 163, 84);");
-	bar.append("rect")
-		.attr("y", function(d) { return yScale(d.indep_contributor + d.indep_exp_supporting); })
-		.attr("height", function(d) { return height - yScale(d.indep_contributor + d.indep_exp_supporting); })
-		.attr("width", barWidth - 2)
-		.attr("class", "indep_exp_supporting")
-		.attr("style", "fill:rgb(161, 217, 155);"); 		
-	bar.append("rect")
-		.attr("y", function(d) { return yScale(d.indep_contributor); })
-		.attr("height", function(d) { return height - yScale(d.indep_contributor); })
-		.attr("width", barWidth - 2)
-		.attr("class", "indep_contributor")
-		.attr("style", "fill:rgb(229, 245, 224);"); 
-	bar.append("rect")
-		.attr("y", function(d) { return yScale(d.org_contribution); })
-		.attr("height", function(d) { return height - yScale(d.org_contribution); })
-		.attr("width", barWidth - 2)
-		.attr("class", "org_contribution")
-		.attr("style", "fill:rgb(0, 0, 0);"); 
+        .data(global_senate_data)
+        .enter()
+        .append("g")
+        .attr("transform", function (d, i) {
+            return "translate(" + i * barWidth + ", 0)";
+        });
 
-		
+    bar.append("rect")
+        .attr("y", function (d) {
+            return yScale(d.total);
+        })
+        .attr("height", function (d) {
+            return height - yScale(d.total);
+        })
+        .attr("width", barWidth)
+        .attr("class", function (d) {
+            return d.party.toLowerCase();
+        })
+        .attr("fill", function (d) {
+            if (d.party === "Republican")
+                return "#D80206";
+            else if (d.party === "Democrat")
+                return "#3045C4";
+            else if (d.party === "Independent")
+                return "#c4b130";
+            else
+                return "#000000";
+        });
+    bar.append("rect")
+        .attr("y", function (d) {
+            return yScale(d.indep_contributor + d.indep_exp_supporting + d.indep_exp_indirect);
+        })
+        .attr("height", function (d) {
+            return height - yScale(d.indep_contributor + d.indep_exp_supporting + d.indep_exp_indirect);
+        })
+        .attr("width", barWidth - 2)
+        .attr("class", "indep_contributor")
+        .style("fill", color_scale("light")) //:rgb(229, 245, 224);");
+    bar.append("rect")
+        .attr("y", function (d) {
+            return yScale(d.indep_exp_indirect + d.indep_exp_supporting);
+        })
+        .attr("height", function (d) {
+            return height - yScale(d.indep_exp_indirect + d.indep_exp_supporting);
+        })
+        .attr("width", barWidth - 2)
+        .attr("class", "indep_exp_supporting")
+        .style("fill", color_scale("dark")); //:rgb(161, 217, 155);");
+    bar.append("rect")
+        .attr("y", function (d) {
+            return yScale(d.indep_exp_indirect);
+        })
+        .attr("height", function (d) {
+            return height - yScale(d.indep_exp_indirect);
+        })
+        .attr("width", barWidth - 2)
+        .attr("class", "indep_exp_indirect")
+        .style("fill", color_scale("dark indirect")); //":rgb(49, 163, 84);");    
+    //    bar.append("rect")
+    //        .attr("y", function (d) {
+    //            return yScale(d.org_contribution);
+    //        })
+    //        .attr("height", function (d) {
+    //            return height - yScale(d.org_contribution);
+    //        })
+    //        .attr("width", barWidth - 2)
+    //        .attr("class", "org_contribution")
+    //        .style("fill", function () {
+    //            return color_scale("light"); //:rgb(0, 0, 0);"); 
+    //        });
 }
 
-function clearSenateOrganizationContributionValues()
-{
-	global_senate_data.forEach(function (d) {
-		d.org_contribution = 0;	
-	});
-	renderSummaryChart();
+function clearSenateOrganizationContributionValues() {
+    global_senate_data.forEach(function (d) {
+        d.org_contribution = 0;
+    });
+    renderSummaryChart();
 }
 
-function updateSenateOrganizationContributionValues(senator_org_map)
-{
-	global_senate_data.forEach(function (d) {
-		if (senator_org_map.has(d.id))
-		{
-			d.org_contribution = senator_org_map.get(d.id);
-		}
-		else
-		{
-			d.org_contribution = 0;
-		}
-		
-	});
-	renderSummaryChart();
-	
+function updateSenateOrganizationContributionValues(senator_org_map) {
+    global_senate_data.forEach(function (d) {
+        if (senator_org_map.has(d.id)) {
+            d.org_contribution = senator_org_map.get(d.id);
+        } else {
+            d.org_contribution = 0;
+        }
+
+    });
+    renderSummaryChart();
+
 }
-    	
-	/*
+
+/*
 		
 		<script id="csv" type="text/csv">DonorOrganization,RecipientCandidateNameNormalized,RecipientCandidateFECID,DonorEntityType,Total,govtrack_id,type Retired,Thom R Tillis,S4NC00162,Individual,1480122,412668,light Self Employed,Thom R Tillis,S4NC00162,Individual,764708,412668,light Homemaker,Thom R Tillis,S4NC00162,Individual 589425,412668,light Elliott Management,Thom R Tillis ,S4NC00162,Individual,101400 ,412668,light Kleinberg Kaplan ,Thom R Tillis,S4NC00162,Individual,50912,412668,light
         </script>		
