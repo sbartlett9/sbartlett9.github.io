@@ -55,9 +55,9 @@ function renderSummaryChart() {
 
     var tip = d3.tip()
         .attr('class', 'd3-tip')
-        .offset([-5, 0])
+        .offset([2, -5])
         .html(function (d) {
-            return "<strong>" + d.name + ":</strong> <span style='color:red'>$" + formatdollar(d.total) + "</span>";
+            return "<strong><h3>" + d.name + ":</h3></strong> <h3 style='color:green'>$" + formatdollar(d.total) + "</h3>";
         })
 
     var bar = chart.selectAll(".bar")
