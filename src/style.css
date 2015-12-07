@@ -156,14 +156,14 @@ text-indent: 2px;
     border-radius: 2px;
 }
 
-.seating-chart {
+/*.seating-chart {
     position: absolute;
     width: 70em;
     left: 20px;
     top: 27em;
     z-index: 20;
     height: auto;
-}
+}*/
 
 .seating-chart-duplicate {
     position: absolute;
@@ -192,12 +192,12 @@ text-indent: 2px;
     text-align: center;
 }
 
-.placeholder {
+/*.placeholder {
     border: 3px solid grey;
     background-color: #D2D0D0;
     display: block;
     text-align: center;
-}
+}*/
 
 .placeholder h4 {
     margin: 0 auto;
