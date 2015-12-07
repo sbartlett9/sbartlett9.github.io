@@ -132,17 +132,13 @@ function updateOrgMap(flatdata) {
 
     node.on("click", function (d) {
             clearSenatorSelection();
+            clearOrgSelection()
             d.selected = !d.selected;
             if (d.selected) {
                 this.style.border = "solid 4px yellow"; //("border-style", "solid");
                 selectSenators(master_org_list.get(d.name));
                 selected_org = d;
             }
-            //            if (!d.selected) {
-            //                var div = d3.select('#org_info')
-            //                    .transition()
-            //                    .style("visibility", "collapse");
-            //            }        
         })
         .on("mouseover", function (d) {
 
@@ -185,7 +181,7 @@ function position() {
 }
 
 function selectSenators(org) {
-    var senators = d3.select('#Layer_1').selectAll('rect').transition().style("opacity", .1);
+    var senators = d3.select('#Layer_1').selectAll('rect').transition().style("opacity", .2);
     var tip = d3.tip()
         .attr('class', 'd3-tip')
         .offset([-10, 0])
@@ -197,13 +193,14 @@ function selectSenators(org) {
     })]);
     org.forEach(function (d) {
         var id = '#id' + d.govtrack_id;
-        var lid = '#lid' + d.govtrack_id;
+        //var lid = '#lid' + d.govtrack_id;
         var sen = master_senators_list.get(d.govtrack_id)[0];
         var scale = getScale(sen);
         var rect = d3.select(id);
         rect.transition()
             .style("opacity", 1)
-            .style("stroke", "yellow");
+            .style("stroke", "yellow")
+            .style("stroke-width", "3px");
         //        rect.on('mouseover', function (d) {
         //                //TODO show hover tip with d.total
         //            })
@@ -221,21 +218,17 @@ function selectSenators(org) {
 }
 
 function clearOrgSelection() {
-    //select all tmap .node divs
-    //set selected false
-    //remove border
-}
-
-function clearSenatorSelection() {
-    m, k.m,
-        d3.select('#senate_overlay').selectAll('rect')
-        .transition()
-        .attr('width', 0)
-        .style('opacity', 0);
-    //reset tree map selections
     var tmap_nodes = d3.selectAll(".node");
     tmap_nodes.style("border", "solid 1px white");
     tmap_nodes.selected = false;
+}
+
+function clearSenatorSelection() {
+    d3.select('#Layer_1').selectAll('rect')
+        .transition()
+        .style('opacity', 1)
+        .style('stroke', 'none');
+    //reset tree map selections
 }
 
 //turns nested data into format needed for treemap

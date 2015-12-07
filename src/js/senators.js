@@ -56,8 +56,8 @@ function update_senators(rawdata) {
         var id = '#id' + d.govtrack_id;
         var scale = getScale(d);
         var totals = senator_totals.get(d.govtrack_id); //map like "dark": 567890, "light": 345668
-		var total = totals ? d3.sum(totals.values()) : 0;
-        
+        var total = totals ? d3.sum(totals.values()) : 0;
+
         var rect = d3.select(id)
             .style("fill", function () {
                 return scale(total);
@@ -70,8 +70,6 @@ function update_senators(rawdata) {
                 senatorInfoDiv.html(getSenateInfoPaneHTML(d, totals));
                 this.selected = !this.selected;
                 if (this.selected) {
-                    //                    this.style.stroke = "yellow";
-                    //                    this.style.strokeWidth = "3px";
                     selectSenator(d);
                 } else {
                     this.style.stroke = "none";
@@ -104,7 +102,7 @@ function selectSenator(sen) {
         .selectAll('rect')
         .style("stroke", "none");
     d3.select("#id" + sen.govtrack_id)
-        .style("stroke", "yellow")
+        .style("stroke", "orangered")
         .style("stroke-width", "4px");
 
     selected_senator = sen;
@@ -122,12 +120,12 @@ function deselectSenator(sen) {
 }
 
 function getSenateInfoPaneHTML(d, totals) {
-	var senatorName = d.first_name + " " + d.last_name;
+    var senatorName = d.first_name + " " + d.last_name;
     var age = ((new Date("06/12/2015") - new Date(d.birthday)) / (1000 * 3600 * 24 * 365)).toFixed(0);
     var tenure = ((new Date("06/12/2015") - new Date(d.assumed_office)) / (1000 * 3600 * 24 * 365)).toFixed(1);
     if (totals) {
-	    var ic = totals.get("light");
-	    ic = (ic === undefined) ? 0 : ic; //NaN check
+        var ic = totals.get("light");
+        ic = (ic === undefined) ? 0 : ic; //NaN check
         var ind_cont = "$ " + formatdollar(ic);
         var ies = totals.get("dark");
         ies = (ies === undefined) ? 0 : ies;
@@ -140,38 +138,25 @@ function getSenateInfoPaneHTML(d, totals) {
     var stateImgURL = ' <div class="icon state"><img title="' + d.state + '" src="img/states/' + d.state + '.png"></div>';
     var partyImgURL = ' <div class="icon party';
     if (d.party === "Republican") {
-	    partyImgURL += ' republican"><img title="Republican" src="img/party/color/elephant';
-	    }
-	else if (d.party === "Democrat") {
-	    partyImgURL += ' democrat"><img title="Democrat" src="img/party/color/donkey';
-	    }
-	else if (d.party === "Independent") {
-		partyImgURL += ' independent"><img title="Independent" src="img/party/color/moose';
-	}
-	partyImgURL += '.png"></div>';
-	
+        partyImgURL += ' republican"><img title="Republican" src="img/party/color/elephant';
+    } else if (d.party === "Democrat") {
+        partyImgURL += ' democrat"><img title="Democrat" src="img/party/color/donkey';
+    } else if (d.party === "Independent") {
+        partyImgURL += ' independent"><img title="Independent" src="img/party/color/moose';
+    }
+    partyImgURL += '.png"></div>';
+
     var imgStringBegin = " <img src= img/portraits/";
     var imgLocation = d.govtrack_id + ".jpeg";
     var imgStringEnd = ">";
     var imgURL = imgStringBegin + imgLocation + imgStringEnd;
-	
+
     var senate_info_html =
-        '<div class="col-lg-2">' 
-        	+ '<div class="row">' + portraitImgURL + '</div/>' 
-			+ '<div class="row">' + stateImgURL + partyImgURL + '</div>'
-        + '</div>' 
-        + '<div class="col-lg-9">' 
-	        + '<div class="row">' + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' + '<span><h2 class="Senator_State_Party">' 
-	        	+ d.state + ' | ' + d.party + '</h2></span>' + '</div>'
-			+ '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont
-	        + '<br>Independent Expenditures: ' + indep_exp_supporting 
-	        + '<br> Opponent Opposition: ' + indep_exp_indirect + '<br/></p>' + '</div>'
-			+ '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Age:' + age + '</p>' + '</div>' 
-		+ '</div>'
+        '<div class="col-lg-2">' + '<div class="row">' + portraitImgURL + '</div/>' + '<div class="row">' + stateImgURL + partyImgURL + '</div>' + '</div>' + '<div class="col-lg-9">' + '<div class="row">' + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' + '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' + '</div>' + '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br>Independent Expenditures: ' + indep_exp_supporting + '<br> Opponent Opposition: ' + indep_exp_indirect + '<br/></p>' + '</div>' + '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Age:' + age + '</p>' + '</div>' + '</div>'
 
 
     ;
-	
+
     return senate_info_html;
 
 }
