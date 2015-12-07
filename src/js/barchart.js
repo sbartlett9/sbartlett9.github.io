@@ -73,12 +73,13 @@ function renderSummaryChart() {
             return yScale(d.total);
         })
         .attr("height", function (d) {
-            return height - yScale(d.total);
+           	return 500;
+		   // return height - yScale(d.total);
         })
         .attr("x", function (d) {
             return x(d.initials);
         })
-        .attr("width", x.rangeBand())
+        .attr("width", x.rangeBand() -2)
         //.attr("width", barWidth)
         .attr("class", function (d) {
             return d.party.toLowerCase();
