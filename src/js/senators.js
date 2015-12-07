@@ -20,55 +20,55 @@ function init_senators() {
         .html(function (d) {
             return init_message;
         })
-		.style("line-height","2em");
+        .style("line-height", "2em");
 
     d3.json('data/senators_with_totals.json', update_senators);
 }
 
 function updateGlobalSenateData(rawdata) {
-	var democrats = [];
-	var republicans = [];
-	global_senate_data = [];
-	global_senate_data_map = new Map();
-	rawdata.forEach(function (d) {
-		var data = {};
-		var totals = senator_totals.get(d.govtrack_id); //map like "dark": 567890, "light": 345668
-		data.id = d.govtrack_id;
-		data.total = totals ? d3.sum(totals.values()) : 0;
-		data.total_range = data.total;
-		data.name = d.first_name + " " + d.last_name;
-		data.initials = d.first_name[0] + d.last_name[0];
-		data.state = d.state;
-		data.party = d.party;
-		data.indep_contributor = 0;
-		data.indep_exp_supporting = 0;
-		data.indep_exp_indirect = 0;
-		data.org_contribution = 0; //Math.floor(Math.random() * data.total);
-		if (totals) {
-	        var ic = totals.get("light");
-	        ic = (ic === undefined) ? 0 : ic; //NaN check
-			data.indep_contributor = ic;
-	        var ies = totals.get("dark");
-	        ies = (ies === undefined) ? 0 : ies;
-	        data.indep_exp_supporting = ies;
-	        var iei = totals.get("dark indirect");
-	        iei = (iei === undefined) ? 0 : iei;
-	    	data.indep_exp_indirect = iei;
-	    	data.total_range = ic + ies + iei;
-    	}
-    	if (data.party === "Republican")
-    		republicans.push(data);
-    	else
-    		democrats.push(data);
-    	global_senate_data_map.set(data.id, data);
+    var democrats = [];
+    var republicans = [];
+    global_senate_data = [];
+    global_senate_data_map = new Map();
+    rawdata.forEach(function (d) {
+        var data = {};
+        var totals = senator_totals.get(d.govtrack_id); //map like "dark": 567890, "light": 345668
+        data.id = d.govtrack_id;
+        data.total = totals ? d3.sum(totals.values()) : 0;
+        data.total_range = data.total;
+        data.name = d.first_name + " " + d.last_name;
+        data.initials = d.first_name[0] + d.last_name[0];
+        data.state = d.state;
+        data.party = d.party;
+        data.indep_contributor = 0;
+        data.indep_exp_supporting = 0;
+        data.indep_exp_indirect = 0;
+        data.org_contribution = 0; //Math.floor(Math.random() * data.total);
+        if (totals) {
+            var ic = totals.get("light");
+            ic = (ic === undefined) ? 0 : ic; //NaN check
+            data.indep_contributor = ic;
+            var ies = totals.get("dark");
+            ies = (ies === undefined) ? 0 : ies;
+            data.indep_exp_supporting = ies;
+            var iei = totals.get("dark indirect");
+            iei = (iei === undefined) ? 0 : iei;
+            data.indep_exp_indirect = iei;
+            data.total_range = ic + ies + iei;
+        }
+        if (data.party === "Republican")
+            republicans.push(data);
+        else
+            democrats.push(data);
+        global_senate_data_map.set(data.id, data);
     });
     global_senate_data = global_senate_data.concat(democrats, republicans);
     console.log(global_senate_data);
-	renderSummaryChart();
+    renderSummaryChart();
 }
 
 function updateGlobalContributions(contributionData) {
-	
+
 }
 
 
@@ -151,15 +151,17 @@ function update_senators(rawdata) {
 
 function selectSenator(sen) {
     //TODO clear any org selections or other senator selections
-    var senators = d3.select('#Layer_1')
-        .selectAll('rect')
-        .style("stroke", "none")
-		.style("rx","6px")
-		.style("ry","6px");
+    //clearOrgSelection();
+    clearSenatorSelection();
+    //    var senators = d3.select('#Layer_1')
+    //        .selectAll('rect')
+    //        .style("stroke", "none")
+    //        .style("rx", "6px") //what is this for?
+    //        .style("ry", "6px");    
     d3.select("#id" + sen.govtrack_id)
         .style("stroke", "#B0B0B0")
         .style("stroke-width", "5px");
-	
+
 
     selected_senator = sen;
     updateOrgMap(org_rawdata.filter(function (d) {
@@ -170,7 +172,7 @@ function selectSenator(sen) {
 
 }
 
-function deselectSenator(sen) {
+function deselectSenator() {
     selected_senator = null;
     resetOrgMap();
 }
@@ -208,30 +210,9 @@ function getSenateInfoPaneHTML(d, totals) {
     var imgURL = imgStringBegin + imgLocation + imgStringEnd;
 
     var senate_info_html =
-        '<div class="col-lg-2">' 
-			+ '<div class="row">' + portraitImgURL
-		 	+ '</div/>' 
-		 	+ '<div class="row">' + stateImgURL + partyImgURL + '</div>' 
-		+ '</div>' 
-		+ '<div class="col-lg-6">'
-			 + '<div class="row">' 
-			 	+ '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>'
-				+ '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' 
-			+ '</div>' 
-			+ '<div class="row contribution-amount">' 
-				+ '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br>Independent Expenditures: ' + indep_exp_supporting + '<br> Opponent Opposition: ' + indep_exp_indirect 
-				+ '<br/></p>' 
-		   + '</div>'
-	    + '</div>'
-			
-		+ '<div class="col-lg-4">' 
-			 + '<br>'
-			 + '<br>'
-			 + '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Age:' + age +'</p>' 
-		     + '</div>'
-			 + '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Tenure:' + tenure +'</p>' 
-		     + '</div>'
-		+ '</div>'
+        '<div class="col-lg-2">' + '<div class="row">' + portraitImgURL + '</div/>' + '<div class="row">' + stateImgURL + partyImgURL + '</div>' + '</div>' + '<div class="col-lg-6">' + '<div class="row">' + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' + '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' + '</div>' + '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br>Independent Expenditures: ' + indep_exp_supporting + '<br> Opponent Opposition: ' + indep_exp_indirect + '<br/></p>' + '</div>' + '</div>'
+
+    +'<div class="col-lg-4">' + '<br>' + '<br>' + '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Age:' + age + '</p>' + '</div>' + '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Tenure:' + tenure + '</p>' + '</div>' + '</div>'
 
 
     ;

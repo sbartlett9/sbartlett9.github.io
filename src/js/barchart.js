@@ -10,7 +10,7 @@ function renderSummaryChart() {
 	var barWidth = width / global_senate_data.length;
     var maxContribution = d3.max(global_senate_data, function(d) { return +d.total;} );
 		
-	var yScale = d3.scale.linear()
+	var yScale = d3.scale.sqrt()
 		.domain([0, 30000000]) //maxContribution])
     	.range([height, 0]);
     	
