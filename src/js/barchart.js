@@ -1,11 +1,11 @@
 function init_chart() {
-    var width = 1100
+    var width = 1000
     height = 400;
 
     var margin = {
         top: 20,
         right: 10,
-        bottom: 30,
+        bottom: 20,
         left: 30
     };
     width = width - margin.left - margin.right;
@@ -18,7 +18,7 @@ function init_chart() {
 
     x = d3.scale.ordinal()
         .domain(global_senate_data.map(function (d) {
-            return d.initials;
+            return d.id;
         }))
         .rangeRoundBands([0, width], 0.1);
 
@@ -43,16 +43,22 @@ function init_chart() {
             return "<strong><h3>" + d.name + ":</h3></strong> <h3 style='color:green'>$" + formatdollar(d.total) + "</h3>";
         });
 
-    chart = d3.select(".summary-chart")
+    chart = d3.select("#chart")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
-        //.attr("padding", -20)
         .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("class", "y axis")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-        .call(yAxis);
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     chart.call(tip);
+
+    // chart.call(tip);
+
+    chart.append("g")
+        .attr("class", "y axis")
+        .attr("transform", "translate(" + margin.left + "," + 0 + ")")
+        .call(yAxis);
     console.log(maxContribution); // $29,309,043
     console.log(d3.sum(global_senate_data, function (d) {
         return d.total;
@@ -65,23 +71,10 @@ function renderSummaryChart() {
 
     console.log("rendering summary chart");
 
-
-
     var bar = chart.selectAll(".bar")
-        .data(global_senate_data).enter();
-    bar
-    //        .append("g")
-    //        .attr("class", "g")
-    //        .attr("id", function (d) {
-    //            "bid" + d.id;
-    //        })        //        .attr("transform", function (d) {
-    //            return "translate(" + x(d.initials) + ",0)";
-    //        })        // .enter();
-    // .append("g").call(tip);
-    //        .attr("transform", function (d, i) {
-    //            return "translate(" + i * barWidth + ", 0)";
-    //        });    
-        .append("rect")
+        .data(global_senate_data)
+        .enter();
+    bar.append("rect")
         .attr("y", function (d) {
             return yScale(d.total);
         })
@@ -90,9 +83,9 @@ function renderSummaryChart() {
             // return height - yScale(d.total);
         })
         .attr("x", function (d) {
-            return x(d.initials);
+            return x(d.id);
         })
-        .attr("width", x.rangeBand() - 2)
+        .attr("width", x.rangeBand())
         //.attr("width", barWidth)
         .attr("class", function (d) {
             return d.party.toLowerCase();
@@ -117,9 +110,9 @@ function renderSummaryChart() {
             return height - yScale(d.total);
         })
         .attr("x", function (d) {
-            return x(d.initials);
+            return x(d.id);
         })
-        .attr("width", x.rangeBand() - 2)
+        .attr("width", x.rangeBand())
         // .attr("width", barWidth - 2)
         .attr("class", "indep_contributor")
         .style("fill", color_scale("light"));
@@ -132,9 +125,9 @@ function renderSummaryChart() {
             return height - yScale(d.indep_exp_indirect + d.indep_exp_supporting);
         })
         .attr("x", function (d) {
-            return x(d.initials);
+            return x(d.id);
         })
-        .attr("width", x.rangeBand() - 2)
+        .attr("width", x.rangeBand())
         //   .attr("width", barWidth - 2)
         .attr("class", "indep_exp_supporting")
         .style("fill", color_scale("dark")); //:rgb(161, 217, 155);");
@@ -146,13 +139,13 @@ function renderSummaryChart() {
             return height - yScale(d.indep_exp_indirect);
         })
         .attr("x", function (d) {
-            return x(d.initials);
+            return x(d.id);
         })
-        .attr("width", x.rangeBand() - 2)
+        .attr("width", x.rangeBand())
         //       .attr("width", barWidth - 2)
         .attr("class", "indep_exp_indirect")
-        .style("fill", color_scale("dark indirect")) //":rgb(49, 163, 84);");    
-        .append("rect")
+        .style("fill", color_scale("dark indirect")); //":rgb(49, 163, 84);");    
+    bar.append("rect")
         .attr("y", function (d) {
             return yScale(d.org_contribution);
         })
@@ -160,15 +153,13 @@ function renderSummaryChart() {
             return height - yScale(d.org_contribution);
         })
         .attr("x", function (d) {
-            return x(d.initials) + x.rangeBand() / 2;
+            return x(d.id) + x.rangeBand() / 2; //center
         })
-        .attr("width", "2px")
+        .attr("width", "5px")
         //.attr("width", barWidth - 2)
         .attr("class", "org_contribution") //where is this class?
         //.style("fill", ":rgb(0, 0, 0);")
-        .style("border", "2px gray");
-
-    // bar.exit().remove();
+        .style("border", "2px gray"); // bar.exit().remove();
 
 }
 
