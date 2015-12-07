@@ -259,10 +259,10 @@ text-indent: 2px;
 }
 
 .treemap {
-    font-family: Georgia, Helvetica, Arial, sans-serif;
+    /*font-family: Georgia, Helvetica, Arial, sans-serif;
     height: 60em;
     margin: auto;
-    width: inherit;
+    width: inherit;*/
     /*border-style: solid;*/
     position: relative;
     /*left:75%;

@@ -426,16 +426,27 @@
             </div><!--col-lg-7-->
             
             <div class="col-lg-5">
-            	<div class="treemap" style="float:right;">
-                <h2>Contribution Type</h2>
-    
+            
+            	
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Money Contribution Type</h3>
+                  </div>
+                  <div class="panel-body" id="senator_info">
+                    <input id="orgslider" type="range" min="0" step="25000" value="50000" onchange="updateMoneyRange(this.value)" />
+            			<div class="treemap" style="float:right;"></div>
+                  <div class="panel-footer">Panel footer</div>
+                </div>     
+            
+            
+     
     
                 <!--            <h6>* with totals > 40k</h6>-->
                 <!--
       <input type="checkbox" checked=true onchange="changeTreeSelection" name="individual">Individual</input>
     <input type="checkbox" checked=true onchange="changeTreeSelection" name="independent">PAC Spending</input>-->
                 <br>
-                <input id="orgslider" type="range" min="0" step="25000" value="50000" onchange="updateMoneyRange(this.value)" />
+               
     
                 <div id="tmap"></div>
                 <div class="legend" style="position:relative;margin-top:40em;">
