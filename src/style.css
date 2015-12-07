@@ -37,16 +37,16 @@ div.tooltip {
 }
 
 #senator_info {
-    width: 60%;
-    height: 15em;
-    position: absolute;
-    left: 5%;
-    top: 20%;
-    background: whitesmoke;
-    box-shadow: inset 1px 1px 0 white;
+    /*width: inherit;
+    height: 15em;*/
+   /* position: absolute; */
+    /*left: 5%;
+    top: 20%;*/
+    /*background: whitesmoke;*/
+    /*box-shadow: inset 1px 1px 0 white;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 1em 1em;
+    padding: 1em 1em;*/
 }
 
 #senator_info p {
@@ -262,14 +262,14 @@ text-indent: 2px;
     font-family: Georgia, Helvetica, Arial, sans-serif;
     height: 60em;
     margin: auto;
-    width: 40em;
+    width: inherit;
     /*border-style: solid;*/
     position: relative;
     /*left:75%;
 	top:40%;*/
-    position: absolute;
+    /*position: absolute;
     left: 66%;
-    top:  20%;
+    top:  20%;*/
     background: whitesmoke;
     box-shadow: inset 1px 1px 0 white;
     border-radius: 5px;
