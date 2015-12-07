@@ -1,5 +1,6 @@
 //global
 var global_senate_data;
+var global_senate_data_map;
 
 selected_senator = null;
 
@@ -25,10 +26,14 @@ function init_senators() {
 }
 
 function updateGlobalSenateData(rawdata) {
+    var democrats = [];
+    var republicans = [];
     global_senate_data = [];
+    global_senate_data_map = new Map();
     rawdata.forEach(function (d) {
         var data = {};
         var totals = senator_totals.get(d.govtrack_id); //map like "dark": 567890, "light": 345668
+        data.id = d.govtrack_id;
         data.total = totals ? d3.sum(totals.values()) : 0;
         data.total_range = data.total;
         data.name = d.first_name + " " + d.last_name;
@@ -38,6 +43,7 @@ function updateGlobalSenateData(rawdata) {
         data.indep_contributor = 0;
         data.indep_exp_supporting = 0;
         data.indep_exp_indirect = 0;
+        data.org_contribution = Math.floor(Math.random() * data.total);
         if (totals) {
             var ic = totals.get("light");
             ic = (ic === undefined) ? 0 : ic; //NaN check
@@ -50,10 +56,19 @@ function updateGlobalSenateData(rawdata) {
             data.indep_exp_indirect = iei;
             data.total_range = ic + ies + iei;
         }
-        global_senate_data.push(data); //set(d.govtrack_id, data);
+        if (data.party === "Republican")
+            republicans.push(data);
+        else
+            democrats.push(data);
+        global_senate_data_map.set(data.id, data);
     });
+    global_senate_data = global_senate_data.concat(democrats, republicans);
     console.log(global_senate_data);
     renderSummaryChart();
+}
+
+function updateGlobalContributions(contributionData) {
+
 }
 
 
