@@ -244,7 +244,7 @@ function stateseln(State) {
     //console.log(State);
     var x = "." + State
         //console.log(x);
-    var rec = d3.select('#Layer_1').selectAll("rect").filter(x).transition().attr("style", "stroke: grey; stroke-width: 4");
+    var rec = d3.select('#Layer_1').selectAll("rect").filter(x).transition().style("stroke", "grey").style("stroke-width", "4");
     rec.classed('foobar', true)
         //console.log(rec)
 
