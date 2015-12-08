@@ -20,9 +20,9 @@
     <link type="text/css" rel="stylesheet" href="css/c3.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-	<!--Google Fonts-->
+    <!--Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700|Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
-    
+
     <script src="lib/d3.js"></script>
     <script src="lib/c3.min.js"></script>
     <script src="lib/colorbrewer.js"></script>
@@ -37,130 +37,132 @@
     <script src="js/prefixfree.min.js"></script>
 
     <script src="js/senatorSearch.js"></script>
-     <script src="js/angular.js"></script>
+    <script src="js/angular.js"></script>
     <script src="js/prefixfree.min.js"></script>
     <script src="js/senatorSearch.js"></script>
 
 </head>
 
 <body onload="init()">
-	<div class="container">
-	<br>
-    <div class="row">
-    	<h1 id="title">Visualizing Campaign Contributions to the 114th Senate</h1>
-    	<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-4 col-sm-offset-3 col-sm-6 col-xs-12">
-               
-                        <div id="searchbox" class="input-group-item col-lg-7" onClick="srch()">
-                            <div class="input-group">
-                                <input type="text" id="schbx" class="form-control" placeholder="Search for Senator Name">
-                                <span class="input-group-btn">
+    <div class="container">
+        <br>
+        <div class="row">
+            <h1 id="title">Visualizing Campaign Contributions to the 114th Senate</h1>
+            <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-4 col-sm-offset-3 col-sm-6 col-xs-12">
+
+                <div id="searchbox" class="input-group-item col-lg-7" onClick="srch()">
+                    <div class="input-group">
+                        <input type="text" id="schbx" class="form-control" placeholder="Search for Senator Name">
+                        <span class="input-group-btn">
                                     <button class="btn btn-default" type="button" onClick = "srch()">
                                         <i class="fa fa-search"></i>
                                     </button>
                   				</span>
-                            </div>
-                            <!-- /input-group -->
+                    </div>
+                    <!-- /input-group -->
 
-                            <br>
-                        </div>
-                        <!--searchbox-->
-                        <div class="dropdown input-group-item">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Select from List of States
-                                <span class="caret"></span></button>
-                            <ul class="dropdown-menu" id="ddlist" aria-labelledby="dropdownMenu1"  style="left:60%;">
-                                <li><a href="#">AL</a></li>
-                                <li><a href="#">AK</a></li>
-                                <li><a href="#">AS</a></li>
-                                <!--li role="separator" class="divider"></li-->
-                                <li><a href="#">AZ</a></li>
-                                <li><a href="#">AR</a></li>
-                                <li><a href="#">CA</a></li>
-                                <li><a href="#">CO</a></li>
-                                <li><a href="#">CT</a></li>
-                                <li><a href="#">DE</a></li>
-                                <li><a href="#">DC</a></li>
-                                <li><a href="#">FL</a></li>
-                                <li><a href="#">GA</a></li>
-                                <li><a href="#">HI</a></li>
-                                <li><a href="#">ID</a></li>
-                                <li><a href="#">IL</a></li>
-                                <li><a href="#">IN</a></li>
-                                <li><a href="#">IA</a></li>
-                                <li><a href="#">KS</a></li>
-                                <li><a href="#">KY</a></li>
-                                <li><a href="#">LA</a></li>
-                                <li><a href="#">ME</a></li>
-                                <li><a href="#">MD</a></li>
-                                <li><a href="#">MH</a></li>
-                                <li><a href="#">MA</a></li>
-                                <li><a href="#">MI</a></li>
-                                <li><a href="#">MN</a></li>
-                                <li><a href="#">MS</a></li>
-                                <li><a href="#">MO</a></li>
-                                <li><a href="#">MT</a></li>
-                                <li><a href="#">NE</a></li>
-                                <li><a href="#">NJ</a></li>
-                                <li><a href="#">NM</a></li>
-                                <li><a href="#">NY</a></li>
-                                <li><a href="#">ND</a></li>
-                                <li><a href="#">MP</a></li>
-                                <li><a href="#">OH</a></li>
-                                <li><a href="#">OK</a></li>
-                                <li><a href="#">OR</a></li>
-                                <li><a href="#">PA</a></li>
-                                <li><a href="#">RI</a></li>
-                                <li><a href="#">SC</a></li>
-                                <li><a href="#">SD</a></li>
-                                <li><a href="#">TN</a></li>
-                                <li><a href="#">TX</a></li>
-                                <li><a href="#">UT</a></li>
-                                <li><a href="#">VT</a></li>
-                                <li><a href="#">VA</a></li>
-                                <li><a href="#">WA</a></li>
-                                <li><a href="#">WV</a></li>
-                                <li><a href="#">WI</a></li>
-                                <li><a href="#">WY</a></li>
+                    <br>
+                </div>
+                <!--searchbox-->
+                <div class="dropdown input-group-item">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Select from List of States
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu" id="ddlist" aria-labelledby="dropdownMenu1" style="left:60%;">
+                        <li><a href="#">AL</a></li>
+                        <li><a href="#">AK</a></li>
+                        <li><a href="#">AS</a></li>
+                        <!--li role="separator" class="divider"></li-->
+                        <li><a href="#">AZ</a></li>
+                        <li><a href="#">AR</a></li>
+                        <li><a href="#">CA</a></li>
+                        <li><a href="#">CO</a></li>
+                        <li><a href="#">CT</a></li>
+                        <li><a href="#">DE</a></li>
+                        <!--<li><a href="#">DC</a></li>-->
+                        <li><a href="#">FL</a></li>
+                        <li><a href="#">GA</a></li>
+                        <li><a href="#">HI</a></li>
+                        <li><a href="#">ID</a></li>
+                        <li><a href="#">IL</a></li>
+                        <li><a href="#">IN</a></li>
+                        <li><a href="#">IA</a></li>
+                        <li><a href="#">KS</a></li>
+                        <li><a href="#">KY</a></li>
+                        <li><a href="#">LA</a></li>
+                        <li><a href="#">ME</a></li>
+                        <li><a href="#">MD</a></li>
+                        <li><a href="#">MH</a></li>
+                        <li><a href="#">MA</a></li>
+                        <li><a href="#">MI</a></li>
+                        <li><a href="#">MN</a></li>
+                        <li><a href="#">MS</a></li>
+                        <li><a href="#">MO</a></li>
+                        <li><a href="#">MT</a></li>
+                        <li><a href="#">NE</a></li>
+                        <li><a href="#">NJ</a></li>
+                        <li><a href="#">NM</a></li>
+                        <li><a href="#">NY</a></li>
+                        <li><a href="#">ND</a></li>
+                        <li><a href="#">MP</a></li>
+                        <li><a href="#">OH</a></li>
+                        <li><a href="#">OK</a></li>
+                        <li><a href="#">OR</a></li>
+                        <li><a href="#">PA</a></li>
+                        <li><a href="#">RI</a></li>
+                        <li><a href="#">SC</a></li>
+                        <li><a href="#">SD</a></li>
+                        <li><a href="#">TN</a></li>
+                        <li><a href="#">TX</a></li>
+                        <li><a href="#">UT</a></li>
+                        <li><a href="#">VT</a></li>
+                        <li><a href="#">VA</a></li>
+                        <li><a href="#">WA</a></li>
+                        <li><a href="#">WV</a></li>
+                        <li><a href="#">WI</a></li>
+                        <li><a href="#">WY</a></li>
 
-                            </ul>
-                        </div>
-                         <br>
-                          <br>
+                    </ul>
+                </div>
+                <br>
+                <br>
 
-                        <!--dropdown-->
+                <!--dropdown-->
 
-                    <!--/div>
+                <!--/div>
                     <!--searchSenatorInfo-->
-                </div><!--col-lg-8-->
-    </div>
-    <br>
-     
-    <div class="row">
-    <!--div class="searchAndDropdown"-->
-                
-            <!--/div-->
-    </div><!--row-->
+            </div>
+            <!--col-lg-8-->
+        </div>
+        <br>
 
-          
-          <!--final layout-->
-            
-           <div class="row">
+        <div class="row">
+            <!--div class="searchAndDropdown"-->
+
+            <!--/div-->
+        </div>
+        <!--row-->
+
+
+        <!--final layout-->
+
+        <div class="row">
             <div class="col-lg-7">
-              
+
                 <div class="panel panel-success">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Senator Information</h3>
-                  </div>
-                  <div class="panel-body" id="senator_info">
-                    Panel content
-                  </div>
-                </div>            
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Senator Information</h3>
+                    </div>
+                    <div class="panel-body" id="senator_info">
+                        Panel content
+                    </div>
+                </div>
 
                 <div class="row">
                     <div id="main" ng-app="myApp">
-                                    
+
                         <div class="seating-chart">
                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1500 1000" enable-background="new 0 0 1474.9 949.2" xml:space="preserve" style="width:700px;">
-            
+
                                 <rect data-toggle="tooltip" data-placement="left" x="77.9" y="100.3" transform="matrix(0.988 0.1544 -0.1544 0.988 20.9382 -17.0441)" width="84.6" height="52" fill="#0B049E" class="democrat NJ" id="id412598" alt="Cory Booker" />
                                 <rect x="178.6" y="116" transform="matrix(0.988 0.1544 -0.1544 0.988 24.5752 -32.4037)" fill="#0B049E" width="84.6" height="52" class="democrat MA" id="id412542" alt="Elizabeth Warren" />
                                 <rect x="279.3" y="131.8" transform="matrix(0.988 0.1544 -0.1544 0.988 28.2121 -47.7634)" fill="#0B049E" width="84.6" height="52" class="democrat VA" id="id412582" alt="Timothy Kaine" />
@@ -169,19 +171,19 @@
                                 <rect x="461.4" y="689.8" transform="matrix(0.3561 -0.9344 0.9344 0.3561 -344.5121 931.5534)" fill="#0B049E" width="84.6" height="52" class="democrat CA" id="id300011" alt="Barbara Boxer" />
                                 <rect x="71.7" y="188.1" transform="matrix(0.998 6.332251e-02 -6.332251e-02 0.998 13.7857 -6.7888)" fill="#0B049E" width="84.6" height="52" class="democrat MI" id="id412305" alt="Gary Peters" />
                                 <rect x="173.4" y="194.5" transform="matrix(0.998 6.332251e-02 -6.332251e-02 0.998 14.3986 -13.2176)" fill="#0B049E" width="84.6" height="52" class="democrat ND" id="id412554" alt="Heidi Heitkamp	" />
-            
+
                                 <rect x="273.6" y="211.9" transform="matrix(0.9999 -1.413044e-02 1.413044e-02 0.9999 -3.3297 4.4878)" fill="#0B049E" width="84.6" height="52" class="independent ME" id="id412545" alt="Angus King" />
-            
+
                                 <rect x="375.5" y="210.4" transform="matrix(0.9999 -1.413044e-02 1.413044e-02 0.9999 -3.2992 5.9279)" fill="#0B049E" width="84.6" height="52" class="democrat HI" id="id412507" alt="Brian Schatz" />
-            
+
                                 <rect x="71.3" y="269.7" transform="matrix(0.9956 -9.321530e-02 9.321530e-02 0.9956 -27.0663 11.8756)" fill="#0B049E" width="84.6" height="52" class="democrat CT" id="id412490" alt="Richard Blumenthal" />
-            
+
                                 <rect x="172.8" y="260.2" transform="matrix(0.9956 -9.321530e-02 9.321530e-02 0.9956 -25.7387 21.2947)" fill="#0B049E" width="84.6" height="52" class="democrat HI" id="id412200" alt="Mazie Hirono" />
                                 <rect x="281.4" y="296.6" transform="matrix(0.979 -0.2041 0.2041 0.979 -59.0124 72.8424)" fill="#0B049E" width="84.6" height="52" class="democrat WI" id="id400013" alt="Tammy Baldwin" />
                                 <rect x="381.2" y="275.8" transform="matrix(0.979 -0.2041 0.2041 0.979 -52.6679 92.7681)" fill="#0B049E" width="84.6" height="52" class="democrat NY" id="id412223" alt="Kristen Gillibrand" />
                                 <rect x="82.1" y="346.9" transform="matrix(0.9801 -0.1984 0.1984 0.9801 -71.5316 32.1034)" fill="#0B049E" width="84.6" height="52" class="democrat MA" id="id400253" alt="Edward Markey	" />
                                 <rect x="182" y="326.7" transform="matrix(0.9801 -0.1984 0.1984 0.9801 -65.5306 51.5271)" fill="#0B049E" width="84.6" height="52" class="democrat IN" id="id412205" alt="Joe Donnelly" />
-            
+
                                 <rect x="131.2" y="489.1" transform="matrix(0.8909 -0.4542 0.4542 0.8909 -215.0131 135.0306)" fill="#0B049E" width="84.6" height="52" class="democrat NW" id="id412281" alt="Martin Heinrich" />
                                 <rect x="222.1" y="442.8" transform="matrix(0.8909 -0.4542 0.4542 0.8909 -184.077 171.2269)" fill="#0B049E" width="84.6" height="52" class="democrat WV" alt="Joe Manchin" id="id412391" />
                                 <rect x="312.9" y="396.5" transform="matrix(0.8909 -0.4542 0.4542 0.8909 -153.1409 207.423)" fill="#0B049E" width="84.6" height="52" class="democrat WA" alt="Maria Cantwell" id="id300018" />
@@ -200,8 +202,8 @@
                                 <rect x="327.2" y="583.9" transform="matrix(0.6877 -0.726 0.726 0.6877 -327.3748 458.7747)" fill="#0B049E" width="84.6" height="52" class="independent VT" id="id400357" alt="Bernard Sanders" />
                                 <rect x="369.8" y="622.9" transform="matrix(0.6529 -0.7574 0.7574 0.6529 -348.4726 537.3834)" fill="#0B049E" width="84.6" height="52" class="democrat DE" id="id300019" alt="Thomas Carper" />
                                 <rect x="421.6" y="535.3" transform="matrix(0.6625 -0.7491 0.7491 0.6625 -263.8846 536.9232)" fill="#0B049E" width="84.6" height="52" class="democrat MD" id="id400064" alt="Benjamin Cardin" />
-            
-            
+
+
                                 <rect x="497.7" y="594.5" transform="matrix(0.3561 -0.9344 0.9344 0.3561 -232.1325 904.149)" fill="#0B049E" width="84.6" height="52" class="democrat VT" id="id300065" alt="Patrick Leahy" />
                                 <rect x="559" y="616" transform="matrix(0.2409 -0.9706 0.9706 0.2409 -166.6444 1070.9442)" fill="#0B049E" width="84.6" height="52" class="democrat MD" id="id300073" alt="Barbara Mikulski" />
                                 <rect x="517.9" y="707.1" transform="matrix(0.2409 -0.9706 0.9706 0.2409 -286.1977 1100.2915)" fill="#0B049E" width="84.6" height="52" class="democrat MN" id="id412378" alt="Alan Franken" ng-style="myStyle" />
@@ -212,7 +214,7 @@
                                 <rect x="650.4" y="834.8" transform="matrix(-8.679444e-03 -1 1 -8.679444e-03 -162.0584 1560.9698)" fill="#0B049E" width="84.6" height="52" class="democrat NY" id="id300087" alt="Charles Schumer" />
                                 <rect x="534" y="499.3" transform="matrix(0.3561 -0.9344 0.9344 0.3561 -119.7528 876.7446)" fill="#0B049E" width="84.6" height="52" class="democrat IL" id="id300038" alt="Richard Durbin" />
                                 <rect x="635.8" y="526.5" transform="matrix(2.069917e-02 -0.9998 0.9998 2.069917e-02 111.7124 1219.0011)" fill="#0B049E" width="84.6" height="52" class="democrat NV" id="id300082" alt="Harry Reid" />
-            
+
                                 <rect x="1036.6" y="737.4" transform="matrix(-0.4821 -0.8761 0.8761 -0.4821 930.2346 2076.7996)" fill="#A00808" width="84.6" height="52" class="republican MO" id="id400034" alt="Roy Blunt" />
                                 <rect x="979.5" y="658.6" transform="matrix(-0.4821 -0.8761 0.8761 -0.4821 914.6341 1909.8462)" fill="#A00808" width="84.6" height="52" class="repubilcan WY" id="id300041" alt="Michael Enzi" />
                                 <rect x="905.4" y="579.4" transform="matrix(-0.4821 -0.8761 0.8761 -0.4821 874.1494 1727.6302)" fill="#A00808" width="84.6" height="52" class="republican AL" id="id300089" alt="Richard Shelby" />
@@ -244,9 +246,9 @@
                                 <rect x="1210.8" y="581.4" transform="matrix(-0.814 -0.576 0.5836 -0.812 1908.2319 1830.0063)" fill="#A00808" width="84.6" height="52" class="republican LA" id="id412269" alt="Bill Cassidy" />
                                 <rect x="1244.6" y="521.2" transform="matrix(-0.8563 -0.5164 0.5164 -0.8563 2094.4243 1701.4207)" fill="#A00808" width="84.6" height="52" class="republican UT" id="id412495" alt="Mike Lee" />
                                 <rect x="1277.2" y="453.9" transform="matrix(-0.9146 -0.4044 0.4044 -0.9146 2315.2576 1489.4412)" fill="#A00808" width="84.6" height="52" class="republican IN" id="id402675" alt="Daniel Coats" />
-            
+
                                 <rect x="1277.2" y="453.9" transform="matrix(-0.9246 -0.4044 0.4044 -0.9146 2350.5776 1440.7512)" fill="#A00808" width="84.6" height="52" class="republican OH" id="id400325" alt="Robert Portman" />
-            
+
                                 <rect x="915.3" y="455.3" transform="matrix(-0.6835 -0.73 0.73 -0.6835 1260.7845 1509.2665)" fill="#A00808" width="84.6" height="52" class="republican IA" id="id300048" alt="Charles Grassley" />
                                 <rect x="1310.8" y="307.4" transform="matrix(-0.9975 -7.061456e-02 7.061456e-02 -0.9975 2679.3757 810.5148)" fill="#A00808" width="84.6" height="52" class="republican PA" id="id400408" alt="Patrick Toomey" />
                                 <rect x="1207.9" y="299.5" transform="matrix(-0.9975 -7.061456e-02 7.061456e-02 -0.9975 2481.3772 785.4631)" fill="#A00808" width="84.6" height="52" class="republican TX" id="id412573" alt="Ted Cruz" />
@@ -260,115 +262,130 @@
                                 <rect x="1006.7" y="174.6" transform="matrix(-0.9968 8.012985e-02 -8.012985e-02 -0.9968 2110.7102 316.5731)" fill="#A00808" width="84.6" height="52" class="republican KY" id="id412492" alt="Rand Paul" />
                                 <rect x="1106.7" y="169.1" transform="matrix(-0.9968 8.012985e-02 -8.012985e-02 -0.9968 2307.0012 330.5073)" fill="#A00808" width="84.6" height="52" class="republican NH" id="id412493" alt="Kelly Ayotte" />
                                 <rect x="1196.7" y="96.8" transform="matrix(-0.9938 0.1109 -0.1109 -0.9938 2490.957 185.3827)" fill="#A00808" width="84.6" height="52" class="republican AR" id="id412508" alt="Tom Cotton" />
-            
+
                                 <rect x="1196.7" y="96.8" transform="matrix(-0.9938 0.1109 -0.1109 -0.9938 2482.957 130.3827)" fill="#A00808" width="84.6" height="52" class="republican IA" id="id412667" alt="Joni Ernst" />
-            
-            
-            
+
+
+
                                 <rect x="1196.7" y="96.8" transform="matrix(-0.9938 0.1109 -0.1109 -0.9938 2474.957 75.3827)" fill="#A00808" width="84.6" height="52" class="republican AK" id="id412665" alt="Dan Sullivan" />
-            
-            
+
+
                                 <rect x="1303.7" y="83.3" transform="matrix(-0.9938 0.1109 -0.1109 -0.9938 2688.8728 30.6516)" fill="#A00808" width="84.6" height="52" class="republican NE" id="id412671" alt="Benjamin Sasse" />
-            
+
                                 <rect x="1303.7" y="83.3" transform="matrix(-0.9938 0.1109 -0.1109 -0.9938 2695.8728 84.6516)" fill="#A00808" width="84.6" height="52" class="republican NC" id="id412668" alt="Thom Tillis" />
-            
+
                                 <rect x="1204" y="163.1" transform="matrix(-0.9968 8.012985e-02 -8.012985e-02 -0.9968 2510.8208 345.8108)" fill="#A00808" width="84.6" height="52" class="republican CO" id="id412406" alt="Cory Gardner" />
-            
+
                                 <rect x="1204" y="163.1" transform="matrix(-0.9968 8.012985e-02 -8.012985e-02 -0.9968 2611.8208 337.8108)" fill="#A00808" width="84.6" height="52" class="republican WI" id="id412496" alt="Ron Johnson" />
-            
-            
+
+
                                 <rect x="1208.5" y="233.2" transform="matrix(-0.9993 3.837445e-02 -3.837445e-02 -0.9993 2518.5771 525.2842)" fill="#A00808" width="84.6" height="52" class="republican OK" id="id412549" alt="Steve Daines" />
-            
+
                                 <rect x="1208.5" y="233.2" transform="matrix(-0.9993 3.837445e-02 -3.837445e-02 -0.9993 2618.5771 520.2842)" fill="#A00808" width="84.6" height="52" class="republican MT" id="id412464" alt="James Lankford" />
-            
+
                                 <rect x="1309.6" y="138.8" transform="matrix(-0.9972 7.504426e-02 -7.504426e-02 -0.9972 2710.3843 251.6198)" fill="#A00808" width="84.6" height="52" class="republican GA" id="id412666" alt="David Perdue" />
-            
+
                                 <rect x="634.8" y="725.8" transform="matrix(2.069917e-02 -0.9998 0.9998 2.069917e-02 -88.5684 1413.3033)" fill="#0B049E" width="84.6" height="52" class="democrat OR" id="id300100" alt="Ron Wyden" />
                                 <rect x="633.7" y="628.4" transform="matrix(2.069917e-02 -0.9998 0.9998 2.069917e-02 7.755 1316.6949)" fill="#0B049E" width="84.6" height="52" class="democrat WA" id="id300076" alt="Patty Murray" />
-            
+
                             </svg>
-                        </div><!--seating-chart-->
-                    </div><!--#main-->
-                </div><!--row-->
-            </div><!--col-lg-7-->
-            
+                        </div>
+                        <!--seating-chart-->
+                    </div>
+                    <!--#main-->
+                </div>
+                <!--row-->
+            </div>
+            <!--col-lg-7-->
+
             <div class="col-lg-5">
-            
-            	
-                <div class="panel panel-success" >
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Money Contribution Type</h3>
-                  </div>
-                  <div class="panel-body" id="senator_info" style="height:650px;">
-                    <div class="slider_value"></div>
-                    <input id="orgslider" type="range" min="0" step="25000" value="50000" onchange="updateMoneyRange(this.value)" />					 <div id="tmap"></div>
-                      
-                 
-                 </div>  <!--panel-body-->
-                 <div class="panel-footer">
-                 	&nbsp <div class="row">
-                    	&nbsp <i class="fa fa-circle fa-2x" style="color:rgb(229, 245, 224);"></i>
-                        <h4 style="display:inline-block;">&nbsp Individual Contributions</h4>
+
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Money Contribution Type</h3>
                     </div>
-                    &nbsp <div class="row">
-                    	&nbsp <i class="fa fa-circle fa-2x" style="color:rgb(161, 217, 155);"></i>
-                        <h4 style="display:inline-block;">&nbsp Independent Expenditures</h4>
+                    <div class="panel-body" id="senator_info" style="height:650px;">
+                        <div class="slider_value"></div>
+                        <input id="orgslider" type="range" min="0" step="25000" value="50000" onchange="updateMoneyRange(this.value)" />
+                        <div id="tmap"></div>
+
+
                     </div>
-                    &nbsp <div class="row">
-                    	&nbsp <i class="fa fa-circle fa-2x" style="color:rgb(49, 163, 84);"></i>
-                        <h4 style="display:inline-block;"> &nbsp Opponent Oppositions</h4>
+                    <!--panel-body-->
+                    <div class="panel-footer">
+                        &nbsp
+                        <div class="row">
+                            &nbsp <i class="fa fa-circle fa-2x" style="color:rgb(229, 245, 224);"></i>
+                            <h4 style="display:inline-block;">&nbsp Individual Contributions</h4>
+                        </div>
+                        &nbsp
+                        <div class="row">
+                            &nbsp <i class="fa fa-circle fa-2x" style="color:rgb(161, 217, 155);"></i>
+                            <h4 style="display:inline-block;">&nbsp Independent Expenditures</h4>
+                        </div>
+                        &nbsp
+                        <div class="row">
+                            &nbsp <i class="fa fa-circle fa-2x" style="color:rgb(49, 163, 84);"></i>
+                            <h4 style="display:inline-block;"> &nbsp Opponent Oppositions</h4>
+                        </div>
+
+
                     </div>
-                                		
-            
-                 </div> 
-                	
-            	</div><!--panel treemap-->
-            
-     
-    
+
+                </div>
+                <!--panel treemap-->
+
+
+
                 <!--            <h6>* with totals > 40k</h6>-->
                 <!--
       <input type="checkbox" checked=true onchange="changeTreeSelection" name="individual">Individual</input>
     <input type="checkbox" checked=true onchange="changeTreeSelection" name="independent">PAC Spending</input>-->
                 <br>
-               
-    
-               
-             
-          
-            
-          </div><!--col-lg-5-->
-        </div><!--row-->
-     
-    
-            <div class="row" id="senator_hover"></div>
-            
-            <div class="row">
-        	<div class="placeholder barchart">
-	        <!--where barchart should be draw, the below csv code should be replaced by the actual "data/light_and_dark_money2.json". 
-		        All the code generating the bar chart is inside barchart.js and will be put inside of  <div id="chart"> -->
-        <div id="chart">
-	            <svg class="summary-chart"></svg>
+
+
+
+
+
+
+            </div>
+            <!--col-lg-5-->
         </div>
-            <!--<h4>place holder for other bar chart</h4>-->
-            <div id="org_info"></div>
-        	</div>
-        </div><!--row-->
-            
-          <div class="row">
-    	  <div class="sources">
-        <h8>Data Sources:</h8>
-        <ul style="list-style-type:disc">
-            <li>Contributions from Organization from <a href="http://maplight.org/">Maplight Foundation</a> | Individual Contributions from <a href="http://sunlightfoundation.com/">Sunlight Foundation</a> | Senator information from <a href="https://www.govtrack.us/">Govtrack.us</a></li>
-        </ul>
+        <!--row-->
+
+
+        <div class="row" id="senator_hover"></div>
+
+        <div class="row">
+            <div class="placeholder barchart">
+                <!--where barchart should be draw, the below csv code should be replaced by the actual "data/light_and_dark_money2.json". 
+		        All the code generating the bar chart is inside barchart.js and will be put inside of  <div id="chart"> -->
+                <div id="chart">
+                    <svg class="summary-chart"></svg>
+                </div>
+                <!--<h4>place holder for other bar chart</h4>-->
+                <div id="org_info"></div>
+            </div>
+        </div>
+        <!--row-->
+
+        <div class="row">
+            <div class="sources">
+                <h8>Data Sources:</h8>
+                <ul style="list-style-type:disc">
+                    <li>Contributions from Organization from <a href="http://maplight.org/">Maplight Foundation</a> | Individual Contributions from <a href="http://sunlightfoundation.com/">Sunlight Foundation</a> | Senator information from <a href="https://www.govtrack.us/">Govtrack.us</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <!--row-->
     </div>
-
-    </div><!--row-->
-</div><!--container-->
+    <!--container-->
 
 
 
-            <!--div id="senatorsSearchList" class="input-group-item" ng-controller="senatorListCtrl">
+    <!--div id="senatorsSearchList" class="input-group-item" ng-controller="senatorListCtrl">
                     <div class="input-group">
                         <input type="text" class="form-control" id="query" placeholder="Search for Senator" ng-model="query"/>
                         	<select ng-model="orderList">
@@ -394,21 +411,21 @@
              
                     <br>
                 </div-->
-            <!--searchbox-->
+    <!--searchbox-->
 
-        </div>
-        <!--searchForSenatorInfo-->
-		
-        
+    </div>
+    <!--searchForSenatorInfo-->
 
 
 
-        <!--seating-chart col-lg-9-->
+
+
+    <!--seating-chart col-lg-9-->
     </div>
     <!--row-->
     </div>
-    
-  
+
+
     <script type="text/javascript" src="js/app.js"></script>
     <script>
         $('#ddlist li').on('click', function () {
