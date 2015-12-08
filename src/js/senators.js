@@ -217,7 +217,7 @@ function getSenateInfoPaneHTML(d, totals) {
     var imgURL = imgStringBegin + imgLocation + imgStringEnd;
 
     var senate_info_html =
-        '<div class="col-lg-3">' + '<div class="row">' + portraitImgURL + '</div/>' + '<div class="row">' + stateImgURL + partyImgURL + '</div>' + '</div>' + '<div class="col-lg-9">' + '<div class="row">' + '<span><h2 class="Senator_Name">' + senatorName + '</h2></span>' + '<span><h2 class="Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' + '</div>' + '<div class="row contribution-amount">' + '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br>Independent Expenditures: ' + indep_exp_supporting + '<br> Opponent Opposition: ' + indep_exp_indirect + '<br/></p>' + '<p class="total_contribution_amount">' + 'Age:' + age + '</p>' + '<p class="total_contribution_amount">' + 'Tenure:' + tenure + '</p>'
+        '<div class="col-lg-3">' + '<div class="row">' + portraitImgURL + '</div/>' + '<div class="row">' + stateImgURL + partyImgURL + '</div>' + '</div>' + '<div class="col-lg-9">' + '<div class="row">' + '<span><h2 class="senate_info_header Senator_Name">' + senatorName + '</h2></span>' + '<span><h2 class="senate_info_header Senator_State_Party">' + d.state + ' | ' + d.party + '</h2></span>' + '</div>' + '<div class="row  contribution-amount">' + '<p class="total_contribution_amount">' + 'Individual Contributions: ' + ind_cont + '<br>Independent Expenditures: ' + indep_exp_supporting + '<br> Opponent Opposition: ' + indep_exp_indirect + '<br/></p>' + '<p class="total_contribution_amount">' + 'Age:' + age + '</p>' + '<p class="total_contribution_amount">' + 'Tenure:' + tenure + '</p>'
 
 
     +'</div>' + '</div>'
