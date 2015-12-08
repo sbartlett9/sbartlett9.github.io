@@ -56,7 +56,7 @@ function init() {
 function updateMoneyRange(value) {
     //   update_orgs(org_rawdata.filter(function (d) {
     console.log("updating orgs");
-    d3.select(".slider_value").text("$ "+ formatdollar(value));
+    d3.select(".slider_value").text("$ " + formatdollar(value));
     update_orgs(org_rawdata.filter(function (d) {
         return d.Total > value;
     }));
@@ -103,7 +103,7 @@ function updateOrgMap(flatdata) {
 
     root = reSortRoot(root, "Total");
 
-    var nodes = treemap.nodes(root);
+    nodes = treemap.nodes(root);
 
     //div.call(org_tip);
 
@@ -132,11 +132,11 @@ function updateOrgMap(flatdata) {
             return d.children ? d.name : null
         })
         .on("click", function (d) {
-            clearSenatorSelection();
-            clearOrgSelection()
-            d.selected = !d.selected;
-            if (d.selected) {
+            if (!d.selected) {
+                clearSenatorSelection();
+                clearOrgSelection()
                 selected_org = d;
+                d.selected = true;
                 //this.style.border = "solid 4px yellow"; //("border-style", "solid");
                 if (selected_senator) {
                     //the data is filtered, clear it
@@ -145,6 +145,9 @@ function updateOrgMap(flatdata) {
                 selectOrg();
 
                 //selectSenators(master_org_list.get(d.name));
+            } else { //deselection
+                clearSenatorSelection();
+                clearOrgSelection()
             }
         });
 
@@ -240,6 +243,9 @@ function selectSenators(org) {
 }
 
 function clearOrgSelection() {
+    nodes.forEach(function (d) {
+        d.selected = false;
+    });
     var tmap_nodes = d3.selectAll(".node");
     tmap_nodes.style("border", "solid 1px white");
     tmap_nodes.selected = false;
