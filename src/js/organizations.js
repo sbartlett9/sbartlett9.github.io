@@ -57,7 +57,7 @@ function updateMoneyRange(value) {
     //   update_orgs(org_rawdata.filter(function (d) {
     console.log("updating orgs");
     d3.select(".slider_value").text("$ " + formatdollar(value));
-    update_orgs(org_rawdata.filter(function (d) {
+    updateOrgMap(org_rawdata.filter(function (d) {
         return d.Total > value;
     }));
 }
